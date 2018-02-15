@@ -1,0 +1,340 @@
+/* ------------------------*/ /* ---------->>> TABLE OF CONTENT <<<-----------*/ /* ------------------------*/
+
+/*
+1. Import
+	1.1 - Font imports
+2. Global
+	2.1 - CSS reset
+	2.2 - Variables
+	2.3 - Animation
+	2.4 - Titles
+3. Header
+	3.1 - General
+	3.2 - Logo
+	3.3 - Navigation
+4. Main
+	3.1 - General
+	3.2 - Hero
+	3.3 - Call To Action (CTA)
+5. Footer'
+	3.1 - General
+	3.2 - Copyright
+6. Dev Resources
+	5.1 - Color glossary
+	5.2 - Typography
+	5.3 - Centering
+	5.4 - Sizing
+	5.5 - Colors
+	5.6 - Display scaling
+7. Media Queries
+	6.1 - 600px and up
+	6.2 - 900px and up
+	6.3 - 1200px and up
+	6.4 - 1800px and up
+*/
+
+/* ------------------------*/ /* ---------->>> IMPORT <<<-----------*/ /* ------------------------*/
+
+/* ---------->>> Font imports <<<-----------*/
+
+
+
+/* ------------------------*/ /* ---------->>> GLOBAL <<<-----------*/ /* ------------------------*/
+
+/* ---------->>> My custom CSS reset <<<-----------*/
+
+html {
+  box-sizing: border-box; /* Makes padding be calculated with size on everything */
+  font-size: 62.5%; /* Sets REM and EM to be the same as 10px */
+}
+
+*, *:before, *:after {
+  box-sizing: inherit; /* Gives eveything a border box */
+}
+
+* {
+	margin: 0; /* Sets all margins to 0 */
+	padding: 0; /* Sets all padding to 0 */
+	border: 0; /* sets all borders to 0 */
+}
+
+a {
+	text-decoration-line: none; /* Removes the Underline from all links */
+}
+
+/* ---------->>> Variables <<<-----------*/
+
+:root {
+	--black: #202121;
+	--white: #F4F7F6;
+	--blue: #005CFF;
+
+} /* The place to put all the varaibles */
+
+/* ---------->>> Animation <<<-----------*/
+
+@keyframes animation-name-here { /* Makes an animation variable for later use */
+
+} /* Describe what the animation does here */
+
+@keyframes animation-name-here { /* Makes an animation variable for later use */
+
+} /* Describe what the animation does here */
+
+/* ---------->>> Titles <<<-----------*/
+
+h1 { /* Custom h1 */
+	font-family: sans-serif;
+	font-size: 2.2rem;
+	font-weight: 800;
+}
+
+
+/* ------------------------*/ /* ---------->>> HEADER <<<-----------*/ /* ------------------------*/
+
+/* ---------->>> General <<<-----------*/
+
+header {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 5rem; /* -- SCALE -- */
+	height: 100%; /* -- SCALE -- */
+	background-color: var(--black);
+
+	transition: 1s;
+}
+
+/* ---------->>> Logo <<<-----------*/
+
+.logo-container {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%; /* -- SCALE -- */
+	height: 5rem; /* -- SCALE -- */
+	outline: none;
+
+	z-index: 11;
+}
+
+/* ---------->>> Navigation <<<-----------*/
+
+nav {
+	position: relative;
+	display: flex;
+	flex-direction: column; /* -- SCALE -- */
+	justify-content: space-between;
+	align-items: center;
+	padding: 10rem 0; /* -- SCALE -- */
+
+	z-index: 10;
+}
+
+nav a {
+	flex-grow: 1;
+	transition: background-color 0.15s;
+}
+
+nav a:hover {
+	background-color: var(--blue);
+}
+
+/* ------------------------*/ /* ---------->>> MAIN <<<-----------*/ /* ------------------------*/
+
+/* ---------->>> General <<<-----------*/
+
+main {
+	padding-left: 5rem; /* -- SCALE -- */
+	height: 150rem; /* -- TEMP -- */
+	background-color: var(--white);
+}
+
+
+/* ---------->>> Hero <<<-----------*/
+
+
+
+
+/* ---------->>> Call to Action <<<-----------*/
+
+
+
+
+/* ------------------------*/ /* ---------->>> FOOTER <<<-----------*/ /* ------------------------*/
+
+/* ---------->>> General <<<-----------*/
+
+footer {
+	display: flex;
+	justify-content: flex-end;
+	align-items: flex-end;
+	padding-left: 5rem; /* -- SCALE -- */
+	background-color: var(--white);
+}
+
+/* ---------->>> Copyright <<<-----------*/
+
+footer div {
+	padding: 0.5rem 1rem;
+}
+
+/* ------------------------*/ /* ---------->>> DEV RESOURCES <<<-----------*/ /* ------------------------*/
+
+/* ---------->>> Color glossary <<<-----------*/
+
+/*
+#202121 - black
+#F4F7F6 - white
+#005CFF - blue
+#
+#
+*/
+
+/* ---------->>> Typography <<<-----------*/
+
+.bread {
+	font-size: 1.6rem;
+	font-family: sans-serif;
+	font-weight: 600;
+	color: var(--black);
+} /* Core text for general purposes */
+
+.note {
+	font-size: 1.2rem;
+	font-family: sans-serif;
+	font-weight: 500;
+	color: var(--black);
+	opacity: 0.50;
+} /* Note text for small notes */ 
+
+
+/* ---------->>> Centering <<<-----------*/
+
+.center-abs {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+} /* For perfect centering of objects inside relative containers */
+
+.center-rel {
+	position: relative;
+	margin: 0 auto;
+} /* For centering relative containers horizontaly */
+
+.center-flex {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+} /* For perfect centering of objects inside a flex container */
+
+.center-text {
+	text-align: center;
+} /* For centering text horizontaly */
+
+/* ---------->>> Sizing <<<-----------*/ 
+.full-w {
+	width: 100%;
+} /* Sizes things to be 100% of the width of its container */
+
+.full-h {
+	height: 100%;
+} /* Sizes things to be 100% of the height of its container */
+
+.half-w {
+	width: 50%;
+} /* Sizes things to be 50% of the width of its container */
+
+.half-h {
+	height: 50%;
+} /* Sizes things to be 50% of the height of its container */
+
+/* ---------->>> Color <<<-----------*/
+
+.black-txt {
+	color: var(--black);
+}
+
+.white-txt {
+	color: var(--white);
+}
+
+.blue-txt {
+	color: var(--blue);
+}
+
+/* ---------->>> Display scaling <<<-----------*/
+
+.pcshow {
+	display: none;
+}
+
+.pchide {
+	display: inline-block;
+}
+
+
+/* ------------------------*/ /* ---------->>> MEDIA QUERIES <<<-----------*/ /* ------------------------*/
+
+/* Mobile first, remember to change the breakpoint based on your design*/
+
+/* Small devices (Tablets, 600px and up) */
+@media (min-width: 600px) {
+
+}
+
+/* Medium devices (Tablet portrait, small desktops, 900px and up) */
+@media (min-width: 900px) {
+
+	/* ---------->>> Header <<<-----------*/
+
+	header {
+		width: 100%;
+		height: 5rem;
+
+	}
+
+	nav {
+		flex-direction: row;
+		padding: 0 20%;
+	}
+
+	.logo-container {
+	width: 20rem; /* -- SCALE -- */
+	height: 100%; /* -- SCALE -- */
+	}
+
+	/* ---------->>> Main <<<-----------*/
+
+	main {
+		padding: 5rem 0 0;
+	}
+
+	/* ---------->>> Footer <<<-----------*/
+
+	footer {
+		padding: 0;
+	}
+
+	/* ---------->>> Other <<<-----------*/
+
+	.pcshow {
+		display: inline-block;
+	}
+	
+	.pchide {
+		display: none;
+	}
+
+}
+
+/* Large devices (Medium to large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+}
+
+/* Huge devices (Big monitors and tvs, 1800px and up) */
+@media (min-width: 1800px) {
+
+}
