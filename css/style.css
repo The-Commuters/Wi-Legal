@@ -19,7 +19,8 @@
 	3.3 - Call To Action (CTA)
 5. Footer'
 	3.1 - General
-	3.2 - Copyright
+	3.2 - Top footer
+	3.3 - Bottom footer
 6. Dev Resources
 	5.1 - Color glossary
 	5.2 - Typography
@@ -27,6 +28,7 @@
 	5.4 - Sizing
 	5.5 - Colors
 	5.6 - Display scaling
+	5.7 - Quick fixes
 7. Media Queries
 	6.1 - 600px and up
 	6.2 - 900px and up
@@ -49,6 +51,10 @@ html {
   font-size: 62.5%; /* Sets REM and EM to be the same as 10px */
 }
 
+body {
+	background-color: var(--white); /* Makes the background of the page white */
+}
+
 *, *:before, *:after {
   box-sizing: inherit; /* Gives eveything a border box */
 }
@@ -63,32 +69,53 @@ a {
 	text-decoration-line: none; /* Removes the Underline from all links */
 }
 
+
 /* ---------->>> Variables <<<-----------*/
 
-:root {
-	--black: #202121;
-	--white: #F4F7F6;
-	--blue: #005CFF;
+:root { /* --->> GROUP <<--- */
+
+	/* --->> Colors <<--- */
+	--black: #202121; /* coal black */
+	--white: #F4F7F6; /* off white */
+	--blue: #005CFF; /*  vibrant blue */
+
+	--faded-black: rgba(32, 33, 33, 0.5); /* coal black with a 50% opacity */
+	--faded-white: rgba(244, 247, 246, 0.5); /* off white with a 50% opacity */
+	--faded-blue: rgba(0, 92, 255, 0.5); /* vibrant blue with a 50% opacity */
+
+	/* --->> Active <<--- */
+	--active: 0.75rem;
 
 } /* The place to put all the varaibles */
+
 
 /* ---------->>> Animation <<<-----------*/
 
 @keyframes animation-name-here { /* Makes an animation variable for later use */
 
+
+
 } /* Describe what the animation does here */
 
 @keyframes animation-name-here { /* Makes an animation variable for later use */
 
 } /* Describe what the animation does here */
 
+
 /* ---------->>> Titles <<<-----------*/
 
-h1 { /* Custom h1 */
+h1 {
 	font-family: sans-serif;
-	font-size: 2.2rem;
-	font-weight: 800;
-}
+	font-size: 2.6rem;
+	font-weight: 600;
+} /* Personalized h1 title */
+
+h2 {
+	font-family: sans-serif;
+	font-size: 2.4rem;
+	font-weight: 500;
+	padding-bottom: 2rem;
+} /* Personalized h2 title */
 
 
 /* ------------------------*/ /* ---------->>> HEADER <<<-----------*/ /* ------------------------*/
@@ -99,97 +126,144 @@ header {
 	position: fixed;
 	left: 0;
 	top: 0;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: space-between;
+
 	width: 5rem; /* -- SCALE -- */
 	height: 100%; /* -- SCALE -- */
 	background-color: var(--black);
 
+
 	transition: 1s;
-}
+} /* The Wrapper for the logo, navigation and login*/
+
 
 /* ---------->>> Logo <<<-----------*/
 
 .logo-container {
-	position: absolute;
-	top: 0;
-	left: 0;
 	width: 100%; /* -- SCALE -- */
 	height: 5rem; /* -- SCALE -- */
-	outline: none;
+} /* The container for the logo */
 
-	z-index: 11;
-}
+	.logo-container hover {
 
-/* ---------->>> Navigation <<<-----------*/ /* Trusted advice with a few clicks */
+	}
+
+
+/* ---------->>> Navigation <<<-----------*/ /* Trusted advice with only a few clicks */
 
 nav {
-	position: relative;
 	display: flex;
 	flex-direction: column; /* -- SCALE -- */
 	justify-content: space-between;
 	align-items: center;
+	flex-grow: 1;
 	padding: 10rem 0; /* -- SCALE -- */
+} /* The wrapper for the navigation items */
 
-	z-index: 10;
-}
-
-nav a {
+.nav-item {
 	flex-grow: 1;
 	color: var(--white);
 	transition: color 0.15s;
-}
+} /* The items inside the navigation bar */
 
-nav a:hover {
-	color: var(--blue);
-}
+	.nav-item:hover {
+		color: var(--blue);
+	} /* The hover for the nav items*/
+
 
 /* ---------->>> Login <<<-----------*/
 
 .login-container {
-	position: absolute;
-	bottom: 0;
-	left: 0;
 	width: 100%; /* -- SCALE -- */
 	height: 5rem; /* -- SCALE -- */
 	color: var(--white);
-	outline: none;
+	cursor: default;
+} /* The container for the login */
 
-	z-index: 11;
-}
+	.login-container:hover {
+		background-color: var(--blue);
+	} /* The hover for the login */
 
-.login-container:hover {
-	color: var(--blue);
-}
+.login-drop {
+	position: absolute;
+	top: 100%;
+	right: 0;
+
+	width: 100%;
+	height: 0;
+
+	transition: 0.2s background-color;
+
+	z-index: -10;
+} /* The dropdown for the login container */
+
+	.login-container:hover .login-drop {
+		height: 500rem;
+		background-color: var(--faded-black);
+	} /* The hover for the dropdown */
+
+.login-box-container {
+	position: absolute;
+	top: 10rem;
+	left: 50%;
+	transform: translateX(-50%);
+
+	width: 30rem;
+	height: 0;
+	border-radius: 0.5rem;
+	
+	transition: 0.2s background-color, 0.2s border;
+} /* The box containing the actual login form */
+
+	.login-container:hover .login-box-container {
+		height: 35rem;
+		background-color: var(--black);
+		border-top: 0.3rem solid var(--faded-blue);
+	} /* The hover for the login box */
+
 
 /* ---------->>> Active <<<-----------*/
 
 .active {
 	position: relative;
 	background-color: var(--blue);
-}
+} /* class used to define wich item is active */
+
+.active svg, .active span {
+	color: var(--white);
+	} /* The tekst color change */
 
 .active::before {
 	content: "";
 	position: absolute;
 	display: block;
-	top: -0.5rem;
-	right: -0.5rem;
-	width: 0;
-	height: 0;
+	bottom: 100%;
+	left: 100%;
+
+	/* TRIANGLE */
 	border-style: solid;
-	border-width: 0.5rem 0 0 0.5rem;
-	border-color: transparent transparent transparent #007bff;
-}
+	border-width: var(--active) 0 0 var(--active);
+	border-color: transparent transparent transparent var(--blue);
+	filter: brightness(0.6);
+	/* TRIANGLE */
+
+} /* The triangle added next to the active after*/
 
 .active::after {
 	content: "";
 	position: absolute;
 	display: block;
 	top: 0;
-	right: -0.5rem;
+	left: 100%;
+	width: var(--active);
 	height: 100%;
-	width: 0.5rem;
 	background-color: var(--blue);
-}
+} /* The block of color that shows what is currently active */
+
 
 /* ------------------------*/ /* ---------->>> MAIN <<<-----------*/ /* ------------------------*/
 
@@ -197,8 +271,7 @@ nav a:hover {
 
 main {
 	padding-left: 5rem; /* -- SCALE -- */
-	background-color: var(--white);
-}
+} /* The styling for the main section*/
 
 
 /* ---------->>> Hero <<<-----------*/
@@ -211,24 +284,49 @@ main {
 
 
 
+/* ---------->>> Info Container <<<-----------*/
+
+.info-wrapper-gray {
+	background-color: rgba(32, 33, 33, 0.2);
+}
+
+.info-wrapper-white {
+	
+}
+
+.info-container {
+	max-width: 72rem;
+	padding: 7.5rem 2rem;
+}
+
+/* ---------->>> Info Container <<<-----------*/
+
+.calender-wrapper {
+	/* Top title */
+	/* below calender containers */
+}
+
+.calender-container {
+	/* left date */
+	/* top right title */
+	/* bottom right text */
+}
+
+
 /* ------------------------*/ /* ---------->>> FOOTER <<<-----------*/ /* ------------------------*/
 
 /* ---------->>> General <<<-----------*/
 
 footer {
-	height: 5rem;
-	display: flex;
-	justify-content: flex-end;
-	align-items: flex-end;
 	padding-left: 5rem; /* -- SCALE -- */
-	background-color: var(--white);
-}
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	height: 4rem;
+	padding: 0 1rem 1rem 7rem;
+	border-top: 0.1rem solid var(--faded-blue);
+} /* The styling for the footer */
 
-/* ---------->>> Copyright <<<-----------*/
-
-footer div {
-	padding: 0.5rem 1rem;
-}
 
 /* ------------------------*/ /* ---------->>> DEV RESOURCES <<<-----------*/ /* ------------------------*/
 
@@ -248,20 +346,18 @@ footer div {
 	font-weight: 400;
 } /* Text format for navigation */
 
-.bread {
-	font-size: 1.6rem;
+.bread-txt {
+	font-size: 1.8rem;
 	font-family: sans-serif;
-	font-weight: 600;
-	color: var(--black);
-} /* Core text for general purposes */
+	font-weight: 400;
+	line-height: 2.6rem;
+} /* The format for text blocks */
 
-.note {
+.note-txt {
 	font-size: 1.2rem;
 	font-family: sans-serif;
-	font-weight: 500;
-	color: var(--black);
-	opacity: 0.50;
-} /* Note text for small notes */ 
+	font-weight: 400;
+} /* The format for small notations */ 
 
 
 /* ---------->>> Centering <<<-----------*/
@@ -273,10 +369,9 @@ footer div {
 	transform: translate(-50%, -50%);
 } /* For perfect centering of objects inside relative containers */
 
-.center-rel {
-	position: relative;
+.center-marg {
 	margin: 0 auto;
-} /* For centering relative containers horizontaly */
+} /* For centering containers horizontaly */
 
 .center-flex {
 	display: flex;
@@ -309,25 +404,43 @@ footer div {
 
 .black-txt {
 	color: var(--black);
-}
+} /* class aplied for black text */
 
 .white-txt {
 	color: var(--white);
-}
+} /* class aplied for white text */
 
 .blue-txt {
 	color: var(--blue);
-}
+} /* class aplied for blue text */
+
+.faded-black-txt {
+	color: var(--faded-black);
+} /* class aplied for faded black text */
+
+.faded-white-txt {
+	color: var(--faded-white);
+} /* class aplied for faded white text */
+
+.faded-blue-txt {
+	color: var(--faded-blue);
+} /* class aplied for faded blue text */
 
 /* ---------->>> Display scaling <<<-----------*/
 
 .pcshow {
 	display: none;
-}
+} /* Makes something show up on pc */
 
 .pchide {
 	display: inline-block;
-}
+} /* Makes something dissapear on pc */
+
+/* ---------->>> Quick fixes <<<-----------*/
+
+.img-fix {
+	display: block;
+} /* Fixes the gap created at the bottom of images */
 
 /* ------------------------*/ /* ---------->>> MEDIA QUERIES <<<-----------*/ /* ------------------------*/
 
@@ -344,67 +457,67 @@ footer div {
 	/* ---------->>> Header <<<-----------*/
 
 	header {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
 		width: 100%;
 		height: 5rem;
-	}
+	} /* Scaling for the header */
 
 	.logo-container {
-		width: 15rem;
+		width: 5rem;
 		height: 100%;
-	}
+	} /* The styling for the logo container asjusted for pc */
 
 	nav {
 		flex-direction: row;
 		padding: 0 20%;
-	}
+	} /* Sets the nav to be horisontal */
 
 	.login-container {
-		left: auto;
-		right: 0;
 		width: 10rem;
 		height: 100%;
-	}
+	} /* The styling for the login contaienr adjusted for pc */
 
 	.active::before {
-		top: auto;
-		right: -1rem;
-		bottom: -1rem;
-		width: 1;
-		height: 1;
-		border-width: 1rem 1rem 0 0;
-		border-color: #007bff transparent transparent transparent;
-	}
+		top: 100%;
+		bottom: auto;
+		left: 100%;
+		border-width: var(--active) var(--active) 0 0;
+		border-color: var(--blue) transparent transparent transparent;
+	} /* The triangle on top of the blue block that gives the cool behind the nav bar effect */
 
 	.active::after {
-		top: auto;
-		right: 0;
-		bottom: -1rem;
-		height: 1rem;
+		top: 100%;
+		left: 0;
+		height: var(--active);
 		width: 100%;
 		background-color: var(--blue);
-	}
+	} /* The blue block placed after the nav item */
 
 	/* ---------->>> Main <<<-----------*/
 
 	main {
 		padding: 5rem 0 0;
-	}
+	} /* scaling for the main section */
+
 
 	/* ---------->>> Footer <<<-----------*/
 
 	footer {
-		padding: 0;
+		padding-left: 2rem;
 	}
 
 	/* ---------->>> Other <<<-----------*/
 
 	.pcshow {
 		display: inline-block;
-	}
+	} /* Shows something on pc/tablet */
 	
 	.pchide {
 		display: none;
-	}
+	} /* hides something on pc/tablet */
 
 }
 
