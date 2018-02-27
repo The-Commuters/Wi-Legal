@@ -38,15 +38,15 @@
 	6.4 - 1800px and up
 */
 
-/* ------------------------*/ /* ---------->>> IMPORT <<<-----------*/ /* ------------------------*/
+/* ------------------------*/ /* ---------->>>IMPORT (1) <<<-----------*/ /* ------------------------*/
 
-/* ---------->>> Font imports <<<-----------*/
+/* ---------->>> Font imports (1.1) <<<-----------*/
 
 
 
-/* ------------------------*/ /* ---------->>> GLOBAL <<<-----------*/ /* ------------------------*/
+/* ------------------------*/ /* ---------->>> GLOBAL (2) <<<-----------*/ /* ------------------------*/
 
-/* ---------->>> My custom CSS reset <<<-----------*/
+/* ---------->>> My custom CSS reset  (2.1) <<<-----------*/
 
 html {
   box-sizing: border-box; /* Makes padding be calculated with size on everything */
@@ -72,7 +72,7 @@ a {
 }
 
 
-/* ---------->>> Variables <<<-----------*/
+/* ---------->>> Variables (2.2) <<<-----------*/
 
 :root { /* --->> GROUP <<--- */
 
@@ -86,12 +86,12 @@ a {
 	--faded-blue: rgba(0, 92, 255, 0.75); /* vibrant blue with a 50% opacity */
 
 	/* --->> Active <<--- */
-	--active: 0.75rem;
+	--active-size: 0.75rem;
 
 } /* The place to put all the varaibles */
 
 
-/* ---------->>> Animation <<<-----------*/
+/* ---------->>> Animation (2.3) <<<-----------*/
 
 @keyframes animation-name-here { /* Makes an animation variable for later use */
 
@@ -104,7 +104,7 @@ a {
 } /* Describe what the animation does here */
 
 
-/* ---------->>> Titles <<<-----------*/
+/* ---------->>> Titles (2.4) <<<-----------*/
 
 h1 {
 	font-family: sans-serif;
@@ -120,7 +120,7 @@ h2 {
 } /* Personalized h2 title */
 
 
-/* ------------------------*/ /* ---------->>> HEADER <<<-----------*/ /* ------------------------*/
+/* ------------------------*/ /* ---------->>> HEADER (3) <<<-----------*/ /* ------------------------*/
 
 /* ---------->>> General <<<-----------*/
 
@@ -187,16 +187,24 @@ nav {
 	height: 5rem; /* -- SCALE -- */
 	color: var(--faded-black);
 
-	cursor: default;
+	cursor: pointer;
 	transition: 0.2s;
 } /* The container for the login */
 
 	.login-container:hover {
-		background-color: var(--blue);
-		color: var(--white)
+		color: var(--blue);
 	} /* The hover for the login */
 
-.login-drop {
+	.login-jq .login-container {
+		background-color: var(--blue);
+		color: var(--white);
+	} /* Fuck javascript */
+
+	.login-jq .login-container:hover {
+		color: var(--white);
+	} /* Fuck javascript */
+
+.login-drop { /* FIX DETTE FOR MOBIL */
 	position: absolute;
 	top: 100%;
 	right: 0;
@@ -204,15 +212,16 @@ nav {
 	width: 100%;
 	height: 0;
 
+	cursor: default;
 	transition: 0.2s background-color;
 
 	z-index: -10;
 } /* The dropdown for the login container */
 
-	.login-container:hover .login-drop {
+	.login-jq .login-drop {
 		height: 500rem;
 		background-color: var(--faded-black);
-	} /* The hover for the dropdown */
+	} /* The hover for the dropdown / .login-container:hover .login-drop */
 
 .login-box-container {
 	position: absolute;
@@ -222,16 +231,34 @@ nav {
 
 	width: 30rem;
 	height: 0;
-	border-radius: 0.5rem;
-	
+	border-bottom-right-radius: 0.5rem;
+	border-bottom-left-radius: 0.5rem;
+
 	transition: 0.2s background-color, 0.2s border;
 } /* The box containing the actual login form */
 
-	.login-container:hover .login-box-container {
+	.login-jq .login-box-container {
 		height: 35rem;
-		background-color: var(--black);
+		background-color: var(--white);
 		border-top: 0.3rem solid var(--faded-blue);
-	} /* The hover for the login box */
+
+	} /* The hover for the login box / .login-container:hover .login-box-container*/
+
+.login-box {
+	position: relative;
+}
+
+.login-quit {
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	color: transparent;
+	cursor: pointer;
+}
+
+	.login-jq .login-quit {
+		color: var(--faded-black);
+	}
 
 
 /* ---------->>> Active <<<-----------*/
@@ -239,6 +266,7 @@ nav {
 .active {
 	position: relative;
 	background-color: var(--blue);
+	font-weight: 600;
 } /* class used to define wich item is active */
 
 .active svg, .active span {
@@ -254,7 +282,7 @@ nav {
 
 	/* TRIANGLE */
 	border-style: solid;
-	border-width: var(--active) 0 0 var(--active);
+	border-width: var(--active-size) 0 0 var(--active-size);
 	border-color: transparent transparent transparent var(--blue);
 	filter: brightness(0.6);
 	/* TRIANGLE */
@@ -267,7 +295,7 @@ nav {
 	display: block;
 	top: 0;
 	left: 100%;
-	width: var(--active);
+	width: var(--active-size);
 	height: 100%;
 	background-color: var(--blue);
 } /* The block of color that shows what is currently active */
@@ -302,13 +330,13 @@ main {
   perspective-origin-x: 100%; /* Webkit fix */
 }
 
-.parallax__group {
+.parallax-group {
   position: relative;
-  height: 100vh;
+  height: 95vh;
   transform-style: preserve-3d;
 }
 
-.parallax__layer {
+.parallax-layer {
   position: absolute;
   top: 0;
   right: 0;
@@ -317,12 +345,16 @@ main {
   transform-origin-x: 100%; /* Webkit fix */
 }
 
-.parallax__layer--base {
+.parallax-layer-base {
   transform: translateZ(0);
 }
 
-.parallax__layer--back {
-  transform: translateZ(-0.1rem) scale(2.1);
+.parallax-layer-back {
+  transform: translateZ(-0.1rem) scale(2.01);
+}
+
+.parallax-layer-deep-back {
+  transform: translateZ(-0.2rem) scale(3.02);
 }
 
 .base-layer {
@@ -348,13 +380,21 @@ main {
 
 footer {
 	padding-left: 5rem; /* -- SCALE -- */
+	border-top: 0.1rem solid var(--faded-blue);
+} /* The styling for the footer */
+
+.parallax-footer {
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.copyright {
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-end;
 	height: 4rem;
-	padding: 0 1rem 1rem 7rem;
-	border-top: 0.1rem solid var(--faded-blue);
-} /* The styling for the footer */
+	padding: 1rem 2rem;
+}
 
 
 /* ------------------------*/ /* ---------->>> DEV RESOURCES <<<-----------*/ /* ------------------------*/
@@ -373,7 +413,6 @@ footer {
 .nav-txt {
 	font-size: 1.4rem;
 	font-family: "proxima-nova", arial, sans-serif;
-	font-weight: 500;
 	font-style: normal;
 	font-smoothing: antialiased;
 } /* Text format for navigation */
@@ -524,7 +563,7 @@ footer {
 		flex-direction: row;
 		justify-content: space-between;
 		align-items: center;
-		width: 100%;
+		width: calc(100vw - 1.7rem );
 		height: 5rem;
 	} /* Scaling for the header */
 
@@ -547,14 +586,14 @@ footer {
 		top: 100%;
 		bottom: auto;
 		left: 100%;
-		border-width: var(--active) var(--active) 0 0;
+		border-width: var(--active-size) var(--active-size) 0 0;
 		border-color: var(--blue) transparent transparent transparent;
 	} /* The triangle on top of the blue block that gives the cool behind the nav bar effect */
 
 	.active::after {
 		top: 100%;
 		left: 0;
-		height: var(--active);
+		height: var(--active-size);
 		width: 100%;
 		background-color: var(--blue);
 	} /* The blue block placed after the nav item */
@@ -563,14 +602,14 @@ footer {
 	/* ---------->>> Main <<<-----------*/
 
 	main {
-		padding: 5rem 0 0;
+		padding: 0;
 	} /* scaling for the main section */
 
 
 	/* ---------->>> Footer <<<-----------*/
 
 	footer {
-		padding-left: 2rem;
+		padding-left: 0;
 	}
 
 
