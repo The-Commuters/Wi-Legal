@@ -32,23 +32,23 @@
 		<nav class="full-h full-w">
 
 			<a href="index.html" class="nav-item full-w full-h center-flex active">
-				<i class="pchide fas fa-home fa-fw fa-2x"></i>
-				<span class="pcshow nav-txt">Home</span>
+				<i class="pc-hide fas fa-home fa-fw fa-2x"></i>
+				<span class="pc-show nav-txt">Home</span>
 			</a>
 
 			<a href="#" class="nav-item full-w full-h center-flex">
-				<i class="pchide fas fa-list fa-fw fa-2x"></i>
-				<span class="pcshow nav-txt">Lawyers</span>
+				<i class="pc-hide fas fa-list fa-fw fa-2x"></i>
+				<span class="pc-show nav-txt">Lawyers</span>
 			</a>
 
 			<a href="#" class="nav-item full-w full-h center-flex">
-				<i class="pchide fas fa-info fa-fw fa-2x"></i>
-				<span class="pcshow nav-txt">About</span>
+				<i class="pc-hide fas fa-info fa-fw fa-2x"></i>
+				<span class="pc-show nav-txt">About</span>
 			</a>
 
 			<a href="#" class="nav-item full-w full-h center-flex">
-				<i class="pchide fas fa-comment fa-fw fa-2x"></i>
-				<span class="pcshow nav-txt">Contact</span>
+				<i class="pc-hide fas fa-comment fa-fw fa-2x"></i>
+				<span class="pc-show nav-txt">Contact</span>
 			</a>
 
 		</nav>
@@ -57,8 +57,8 @@
 		<div href="#" class="login-container">
 			<div class="full-w full-h center-flex">
 
-				<span class="pcshow nav-txt">Login</span>
-				<i class="pchide fas fa-sign-in-alt fa-fw fa-2x"></i>
+				<span class="pc-show nav-txt">Login</span>
+				<i class="pc-hide fas fa-sign-in-alt fa-fw fa-2x"></i>
 
 				<div class="login-drop">
 					<div class="login-box-container">
@@ -71,39 +71,58 @@
 
 	</header>
 
+	<!-- PARALLAX ENABLER -->
+	<div class="parallax">
 
-	<!-- MAIN -->
-	<main class="full-w">
+		<main>
 
-		<!-- HERO IMAGE -->
-		<div>
-			<img src="assets/img/TestStor.jpeg" alt="Test" class="full-w img-fix">
-		</div>
+			<!-- HERO IMAGE -->
 
-		<section class="info-wrapper-white full-w">
-			<div class="info-container center-marg">
-				<h2 class="center-text blue-txt">Noe</h2>
-				<p class="bread-txt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae felis mi. Sed aliquam tellus a augue ultrices, vitae viverra est cursus. Etiam lobortis sollicitudin pharetra. Nullam facilisis facilisis erat in ultricies. Phasellus erat augue, porttitor vitae semper at, commodo a libero. Donec dictum lacus ac nibh dictum, ac commodo augue auctor. Fusce consequat ex ac sapien finibus ullamcorper. Donec tincidunt sapien erat, sit amet euismod risus mollis elementum. Ut ultrices augue quis ipsum imperdiet, eget euismod metus luctus. Ut posuere tristique augue, et pellentesque dui pulvinar non. Fusce eu purus lectus.</p>
+			<section class="back-layer parallax__group">
+
+				<div class="center-flex parallax__layer parallax__layer--base">
+					
+				</div>
+
+				<div class="parallax__layer parallax__layer--back">
+					<img src="assets/img/TestStor.jpeg" alt="Test" class="full-w img-fix">
+				</div>
+
+			</section>
+
+			<section class="base-layer parallax__group">
+
+				<div class="center-flex parallax__layer parallax__layer--base white-bcg">
+					<h2 class="center-text blue-txt">Noe</h2>
+					<p class="bread-txt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae felis mi. Sed aliquam tellus a augue ultrices, vitae viverra est cursus. Etiam lobortis sollicitudin pharetra. Nullam facilisis facilisis erat in ultricies. Phasellus erat augue, porttitor vitae semper at, commodo a libero. Donec dictum lacus ac nibh dictum, ac commodo augue auctor. Fusce consequat ex ac sapien finibus ullamcorper. Donec tincidunt sapien erat, sit amet euismod risus mollis elementum. Ut ultrices augue quis ipsum imperdiet, eget euismod metus luctus. Ut posuere tristique augue, et pellentesque dui pulvinar non. Fusce eu purus lectus.</p>
+				</div>
+
+			</section>
+
+			<section class="base-layer parallax__group">
+
+				<div class="center-flex parallax__layer parallax__layer--base black-bcg">
+					<h2 class="center-text blue-txt">Noe</h2>
+					<p class="bread-txt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae felis mi. Sed aliquam tellus a augue ultrices, vitae viverra est cursus. Etiam lobortis sollicitudin pharetra. Nullam facilisis facilisis erat in ultricies. Phasellus erat augue, porttitor vitae semper at, commodo a libero. Donec dictum lacus ac nibh dictum, ac commodo augue auctor. Fusce consequat ex ac sapien finibus ullamcorper. Donec tincidunt sapien erat, sit amet euismod risus mollis elementum. Ut ultrices augue quis ipsum imperdiet, eget euismod metus luctus. Ut posuere tristique augue, et pellentesque dui pulvinar non. Fusce eu purus lectus.</p>
+				</div>
+
+			</section>
+
+		</main>
+
+
+		<!-- FOOTER -->
+		<footer class="full-w parallax__group">
+
+			<div class="parallax__layer parallax__layer--base">
+				<!-- COPYRIGHT -->
+				<div class="note-txt black-txt"><a href="#" class="blue-txt">Copyright</a> of WI-Legal (legal shit)</div>
+
 			</div>
-		</section>
 
-		<section class="info-wrapper-gray full-w">
-			<div class="info-container center-marg">
-				<h2 class="center-text blue-txt">Noe</h2>
-				<p class="bread-txt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae felis mi. Sed aliquam tellus a augue ultrices, vitae viverra est cursus. Etiam lobortis sollicitudin pharetra. Nullam facilisis facilisis erat in ultricies. Phasellus erat augue, porttitor vitae semper at, commodo a libero. Donec dictum lacus ac nibh dictum, ac commodo augue auctor. Fusce consequat ex ac sapien finibus ullamcorper. Donec tincidunt sapien erat, sit amet euismod risus mollis elementum. Ut ultrices augue quis ipsum imperdiet, eget euismod metus luctus. Ut posuere tristique augue, et pellentesque dui pulvinar non. Fusce eu purus lectus.</p>
-			</div>
-		</section>
+		</footer>
 
-	</main>
-
-
-	<!-- FOOTER -->
-	<footer class="full-w">
-
-		<!-- COPYRIGHT -->
-		<div class="note-txt black-txt"><a href="#" class="blue-txt">Copyright</a> of WI-Legal (legal shit)</div>
-		
-	</footer>
+	</div>
 
 </body>
 </html>

@@ -27,8 +27,10 @@
 	5.3 - Centering
 	5.4 - Sizing
 	5.5 - Colors
-	5.6 - Display scaling
-	5.7 - Quick fixes
+	5.6 - Background colors
+	5.7 - Display scaling
+	5.8 - Quick fixes
+	5.9 - Z-index list
 7. Media Queries
 	6.1 - 600px and up
 	6.2 - 900px and up
@@ -79,9 +81,9 @@ a {
 	--white: #F4F7F6; /* off white */
 	--blue: #005CFF; /*  vibrant blue */
 
-	--faded-black: rgba(32, 33, 33, 0.5); /* coal black with a 50% opacity */
-	--faded-white: rgba(244, 247, 246, 0.5); /* off white with a 50% opacity */
-	--faded-blue: rgba(0, 92, 255, 0.5); /* vibrant blue with a 50% opacity */
+	--faded-black: rgba(32, 33, 33, 0.75); /* coal black with a 50% opacity */
+	--faded-white: rgba(244, 247, 246, 0.75); /* off white with a 50% opacity */
+	--faded-blue: rgba(0, 92, 255, 0.75); /* vibrant blue with a 50% opacity */
 
 	/* --->> Active <<--- */
 	--active: 0.75rem;
@@ -134,10 +136,12 @@ header {
 
 	width: 5rem; /* -- SCALE -- */
 	height: 100%; /* -- SCALE -- */
-	background-color: var(--black);
-
+	background-color: var(--white);
+	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
 
 	transition: 1s;
+
+	z-index: 10;
 } /* The Wrapper for the logo, navigation and login*/
 
 
@@ -166,8 +170,9 @@ nav {
 
 .nav-item {
 	flex-grow: 1;
-	color: var(--white);
-	transition: color 0.15s;
+	color: var(--faded-black);
+
+	transition: color 0.2s;
 } /* The items inside the navigation bar */
 
 	.nav-item:hover {
@@ -180,12 +185,15 @@ nav {
 .login-container {
 	width: 100%; /* -- SCALE -- */
 	height: 5rem; /* -- SCALE -- */
-	color: var(--white);
+	color: var(--faded-black);
+
 	cursor: default;
+	transition: 0.2s;
 } /* The container for the login */
 
 	.login-container:hover {
 		background-color: var(--blue);
+		color: var(--white)
 	} /* The hover for the login */
 
 .login-drop {
@@ -284,33 +292,54 @@ main {
 
 
 
+/* ---------->>> Parallax images <<<-----------*/
+
+.parallax {
+  perspective: 0.1rem;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  perspective-origin-x: 100%; /* Webkit fix */
+}
+
+.parallax__group {
+  position: relative;
+  height: 100vh;
+  transform-style: preserve-3d;
+}
+
+.parallax__layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform-origin-x: 100%; /* Webkit fix */
+}
+
+.parallax__layer--base {
+  transform: translateZ(0);
+}
+
+.parallax__layer--back {
+  transform: translateZ(-0.1rem) scale(2.1);
+}
+
+.base-layer {
+	z-index: 2;
+}
+
+.back-layer {
+	z-index: 1;
+}
+
+.deep-back-layer {
+	z-index: 0;
+}
+
 /* ---------->>> Info Container <<<-----------*/
 
-.info-wrapper-gray {
-	background-color: rgba(32, 33, 33, 0.2);
-}
 
-.info-wrapper-white {
-	
-}
-
-.info-container {
-	max-width: 72rem;
-	padding: 7.5rem 2rem;
-}
-
-/* ---------->>> Info Container <<<-----------*/
-
-.calender-wrapper {
-	/* Top title */
-	/* below calender containers */
-}
-
-.calender-container {
-	/* left date */
-	/* top right title */
-	/* bottom right text */
-}
 
 
 /* ------------------------*/ /* ---------->>> FOOTER <<<-----------*/ /* ------------------------*/
@@ -338,12 +367,15 @@ footer {
 #005CFF - blue
 */
 
+
 /* ---------->>> Typography <<<-----------*/
 
 .nav-txt {
-	font-size: 1.6rem;
-	font-family: sans-serif;
-	font-weight: 400;
+	font-size: 1.4rem;
+	font-family: "proxima-nova", arial, sans-serif;
+	font-weight: 500;
+	font-style: normal;
+	font-smoothing: antialiased;
 } /* Text format for navigation */
 
 .bread-txt {
@@ -383,6 +415,7 @@ footer {
 	text-align: center;
 } /* For centering text horizontaly */
 
+
 /* ---------->>> Sizing <<<-----------*/ 
 .full-w {
 	width: 100%;
@@ -399,6 +432,7 @@ footer {
 .half-h {
 	height: 50%;
 } /* Sizes things to be 50% of the height of its container */
+
 
 /* ---------->>> Color <<<-----------*/
 
@@ -426,21 +460,50 @@ footer {
 	color: var(--faded-blue);
 } /* class aplied for faded blue text */
 
+
+/* ---------->>> Background-color <<<-----------*/
+
+.black-bcg {
+	background-color: var(--black);
+} /* class aplied for black background */
+
+.white-bcg {
+	background-color: var(--white);
+} /* class aplied for white background */
+
+.blue-bcg {
+	background-color: var(--blue);
+} /* class aplied for blue background */
+
+
 /* ---------->>> Display scaling <<<-----------*/
 
-.pcshow {
+.pc-show {
 	display: none;
 } /* Makes something show up on pc */
 
-.pchide {
+.pc-hide {
 	display: inline-block;
 } /* Makes something dissapear on pc */
+
 
 /* ---------->>> Quick fixes <<<-----------*/
 
 .img-fix {
 	display: block;
 } /* Fixes the gap created at the bottom of images */
+
+
+/* ---------->>> Z-index list <<<-----------*/
+
+/*
+0 - deep back layer
+1 - back layer
+2 - base layer
+
+10 - header layer
+*/
+
 
 /* ------------------------*/ /* ---------->>> MEDIA QUERIES <<<-----------*/ /* ------------------------*/
 
@@ -496,6 +559,7 @@ footer {
 		background-color: var(--blue);
 	} /* The blue block placed after the nav item */
 
+
 	/* ---------->>> Main <<<-----------*/
 
 	main {
@@ -509,13 +573,14 @@ footer {
 		padding-left: 2rem;
 	}
 
+
 	/* ---------->>> Other <<<-----------*/
 
-	.pcshow {
+	.pc-show {
 		display: inline-block;
 	} /* Shows something on pc/tablet */
 	
-	.pchide {
+	.pc-hide {
 		display: none;
 	} /* hides something on pc/tablet */
 
