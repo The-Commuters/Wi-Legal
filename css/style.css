@@ -137,7 +137,7 @@ header {
 	width: 5rem; /* -- SCALE -- */
 	height: 100%; /* -- SCALE -- */
 	background-color: var(--white);
-	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+	box-shadow: 1px 0px 2px rgba(0, 0, 0, 0.2);
 
 	transition: 1s;
 
@@ -206,39 +206,41 @@ nav {
 
 .login-drop { /* FIX DETTE FOR MOBIL */
 	position: absolute;
-	top: 100%;
-	right: 0;
+	top: 0;
+	left: 100%;
 
-	width: 100%;
-	height: 0;
+	width: 0;
+	height: 100%;
 
+	overflow: hidden;
 	cursor: default;
-	transition: 0.2s background-color;
+	transition: 0.3s background-color;
 
 	z-index: -10;
 } /* The dropdown for the login container */
 
 	.login-jq .login-drop {
-		height: 500rem;
+		width: calc(100vw - 5rem);
 		background-color: var(--faded-black);
 	} /* The hover for the dropdown / .login-container:hover .login-drop */
 
 .login-box-container {
 	position: absolute;
-	top: 10rem;
+	top: 25%;
 	left: 50%;
-	transform: translateX(-50%);
+	transform: translate(-50%, -50%);
 
-	width: 30rem;
+	width: 20rem;
 	height: 0;
 	border-bottom-right-radius: 0.5rem;
 	border-bottom-left-radius: 0.5rem;
 
-	transition: 0.2s background-color, 0.2s border;
+	transition: 0.2s background-color, 0.2s border, 0.3s top;
 } /* The box containing the actual login form */
 
 	.login-jq .login-box-container {
-		height: 35rem;
+		height: 25rem;
+		top: 40%;
 		background-color: var(--white);
 		border-top: 0.3rem solid var(--faded-blue);
 
@@ -259,6 +261,10 @@ nav {
 	.login-jq .login-quit {
 		color: var(--faded-black);
 	}
+
+.login-form {
+	opacity: 0;
+}
 
 
 /* ---------->>> Active <<<-----------*/
@@ -319,55 +325,6 @@ main {
 
 
 
-
-/* ---------->>> Parallax images <<<-----------*/
-
-.parallax {
-  perspective: 0.1rem;
-  height: 100vh;
-  overflow-x: hidden;
-  overflow-y: auto;
-  perspective-origin-x: 100%; /* Webkit fix */
-}
-
-.parallax-group {
-  position: relative;
-  height: 95vh;
-  transform-style: preserve-3d;
-}
-
-.parallax-layer {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  transform-origin-x: 100%; /* Webkit fix */
-}
-
-.parallax-layer-base {
-  transform: translateZ(0);
-}
-
-.parallax-layer-back {
-  transform: translateZ(-0.1rem) scale(2.01);
-}
-
-.parallax-layer-deep-back {
-  transform: translateZ(-0.2rem) scale(3.02);
-}
-
-.base-layer {
-	z-index: 2;
-}
-
-.back-layer {
-	z-index: 1;
-}
-
-.deep-back-layer {
-	z-index: 0;
-}
 
 /* ---------->>> Info Container <<<-----------*/
 
@@ -551,6 +508,14 @@ footer {
 /* Small devices (Tablets, 600px and up) */
 @media (min-width: 600px) {
 
+	.login-box-container {
+		width: 25rem;
+	} /* The box containing the actual login form */
+
+		.login-jq .login-box-container {
+			height: 30rem;
+		} /* The hover for the login box / .login-container:hover .login-box-container*/
+
 }
 
 /* Medium devices (Tablet portrait, small desktops, 900px and up) */
@@ -560,11 +525,12 @@ footer {
 
 	header {
 		display: flex;
+		width: 100%;
 		flex-direction: row;
 		justify-content: space-between;
 		align-items: center;
-		width: calc(100vw - 1.7rem );
 		height: 5rem;
+		box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
 	} /* Scaling for the header */
 
 	.logo-container {
@@ -581,6 +547,31 @@ footer {
 		width: 10rem;
 		height: 100%;
 	} /* The styling for the login contaienr adjusted for pc */
+
+	.login-drop {
+		top: 100%;
+		left: 0;
+
+		width: 100%;
+		height: 0;
+	} /* The dropdown for the login container */
+
+		.login-jq .login-drop {
+			width: 100%;
+			height: 100vh;
+			background-color: var(--faded-black);
+		} /* The hover for the dropdown / .login-container:hover .login-drop */
+
+	.login-box-container {
+		left: 50%;
+		transform: translate(-50%, -50%);
+
+		width: 30rem;
+	} /* The box containing the actual login form */
+
+		.login-jq .login-box-container {
+			height: 35rem;
+		} /* The hover for the login box / .login-container:hover .login-box-container*/
 
 	.active::before {
 		top: 100%;
@@ -627,6 +618,66 @@ footer {
 
 /* Large devices (Medium to large desktops, 1200px and up) */
 @media (min-width: 1200px) {
+
+	/* ---------->>> Header <<<-----------*/
+
+	header {
+		width: calc(100vw - 1.7rem);
+	}
+
+
+	/* ---------->>> Parallax layers <<<-----------*/
+
+	@supports ((perspective: 1px) and (not (-webkit-overflow-scrolling: touch))) {
+
+		.parallax {
+			perspective: 0.1rem;
+			height: 100vh;
+			overflow-x: hidden;
+			overflow-y: auto;
+			perspective-origin-x: 100%; /* Webkit fix */
+		}
+
+		.parallax-group {
+			position: relative;
+			height: 100vh;
+			transform-style: preserve-3d;
+		} /* You must scale the pictures after the height you choose */
+
+		.parallax-layer {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			transform-origin-x: 100%; /* Webkit fix */
+		}
+
+		.parallax-layer-base {
+			transform: translateZ(0);
+		}
+
+		.parallax-layer-back {
+			transform: translateZ(-0.1rem) scale(2.01);
+		}
+
+		.parallax-layer-deep-back {
+			transform: translateZ(-0.2rem) scale(3.02);
+		}
+
+		.base-layer {
+			z-index: 2;
+		}
+
+		.back-layer {
+			z-index: 1;
+		}
+
+		.deep-back-layer {
+			z-index: 0;
+		}
+	}
+
 
 }
 

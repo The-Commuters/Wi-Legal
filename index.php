@@ -83,7 +83,7 @@ include 'info.php';
 							</div>
 
 							<!-- LOGIN FORM.PHP -->
-							<form action="index.php" method="POST">
+							<form action="index.php" method="POST" class="login-form">
 
 								<!--Email input-box-->
 								<input type="email" name="l_email" placeholder="Email Address" value="<?php 
@@ -128,12 +128,10 @@ include 'info.php';
 
 				<section class="back-layer parallax-group">
 
-					<div class="center-flex parallax-layer parallax-layer-base">
-
-					</div>
+					<div class="center-flex parallax-layer parallax-layer-base"></div>
 
 					<div class="parallax-layer parallax-layer-back">
-						<img src="assets/img/Test.jpeg" alt="Test" class="full-w img-fix">
+						<img src="assets/img/Placeholder.png" alt="Test" class="full-w img-fix">
 					</div>
 
 				</section>
@@ -149,16 +147,13 @@ include 'info.php';
 
 				<section class="deep-back-layer parallax-group">
 
-					<div class="center-flex parallax-layer parallax-layer-base">
-
-					</div>
+					<div class="center-flex parallax-layer parallax-layer-base"></div>
 
 					<div class="parallax-layer parallax-layer-deep-back">
-						<img src="assets/img/TestStor.jpeg" alt="Test" class="full-w img-fix">
+						<img src="assets/img/Placeholder.png" alt="Test" class="full-w img-fix">
 					</div>
 
 				</section>
-
 
 				<section class="base-layer parallax-group">
 
@@ -171,12 +166,10 @@ include 'info.php';
 
 				<section class="back-layer parallax-group">
 
-					<div class="center-flex parallax-layer parallax-layer-base">
-
-					</div>
+					<div class="center-flex parallax-layer parallax-layer-base"></div>
 
 					<div class="parallax-layer parallax-layer-back">
-						<img src="assets/img/Test.jpeg" alt="Test" class="full-w img-fix">
+						<img src="assets/img/Placeholder.png" alt="Test" class="full-w img-fix">
 					</div>
 
 				</section>
