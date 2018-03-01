@@ -2,7 +2,9 @@
 
 $(function(){
 
-	// Displays and hides the login box onclick
+	// DROPDOWN FUNCTION
+
+	// Displays and hides the login box onclick anywhere
 	$(".login-container").click(function(){
 		$("header").toggleClass("login-jq");
 	});
@@ -16,5 +18,13 @@ $(function(){
 	$('.login-box-container').click(function(e) {
 		e.stopPropagation();
 	});
+
+	// END OF DROPDOWN FUNCTION
+
+
+
+	// ... FUNCTION
+
+	// END OF ... FUNCTION
 
 });

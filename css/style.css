@@ -2,40 +2,42 @@
 
 /*
 1. Import
-	1.1 - Font imports
+	1.1  - Font imports
 2. Global
-	2.1 - CSS reset
-	2.2 - Variables
-	2.3 - Animation
-	2.4 - Titles
+	2.1  - CSS reset
+	2.2  - Variables
+	2.3  - Animation
+	2.4  - Titles
 3. Header
-	3.1 - General
-	3.2 - Logo
-	3.3 - Navigation
-	3.4 - login
+	3.1  - General
+	3.2  - Logo
+	3.3  - Navigation
+	3.4  - login
+	3.5  - Active
 4. Main
-	3.1 - General
-	3.2 - Hero
-	3.3 - Call To Action (CTA)
+	4.1  - General
+	4.2  - Hero
+	4.3  - Call To Action (CTA)
 5. Footer'
-	3.1 - General
-	3.2 - Top footer
-	3.3 - Bottom footer
+	5.1  - General
+	5.2  - Top footer
+	5.3  - Bottom footer
 6. Dev Resources
-	5.1 - Color glossary
-	5.2 - Typography
-	5.3 - Centering
-	5.4 - Sizing
-	5.5 - Colors
-	5.6 - Background colors
-	5.7 - Display scaling
-	5.8 - Quick fixes
-	5.9 - Z-index list
+	6.1  - Color glossary
+	6.2  - Typography
+	6.3  - Centering
+	6.4  - Sizing
+	6.5  - Colors
+	6.6  - Background colors
+	6.7  - Display scaling
+	6.8  - Quick fixes
+	6.9  - Z-index list
+	6.10 - Margin
 7. Media Queries
-	6.1 - 600px and up
-	6.2 - 900px and up
-	6.3 - 1200px and up
-	6.4 - 1800px and up
+	7.1  - 600px and up
+	7.2  - 900px and up
+	7.3  - 1200px and up
+	7.4  - 1800px and up
 */
 
 /* ------------------------*/ /* ---------->>>IMPORT (1) <<<-----------*/ /* ------------------------*/
@@ -122,7 +124,7 @@ h2 {
 
 /* ------------------------*/ /* ---------->>> HEADER (3) <<<-----------*/ /* ------------------------*/
 
-/* ---------->>> General <<<-----------*/
+/* ---------->>> General (3.1) <<<-----------*/
 
 header {
 	position: fixed;
@@ -137,15 +139,15 @@ header {
 	width: 5rem; /* -- SCALE -- */
 	height: 100%; /* -- SCALE -- */
 	background-color: var(--white);
-	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+	box-shadow: 1px 0px 2px rgba(0, 0, 0, 0.2);
 
-	transition: 1s;
+	// transition: 0.5s;
 
 	z-index: 10;
 } /* The Wrapper for the logo, navigation and login*/
 
 
-/* ---------->>> Logo <<<-----------*/
+/* ---------->>> Logo (3.2) <<<-----------*/
 
 .logo-container {
 	width: 100%; /* -- SCALE -- */
@@ -157,7 +159,7 @@ header {
 	}
 
 
-/* ---------->>> Navigation <<<-----------*/ /* Trusted advice with only a few clicks */
+/* ---------->>> Navigation (3.3) <<<-----------*/ /* Trusted advice with only a few clicks */
 
 nav {
 	display: flex;
@@ -180,7 +182,7 @@ nav {
 	} /* The hover for the nav items*/
 
 
-/* ---------->>> Login <<<-----------*/
+/* ---------->>> Login (3.4) <<<-----------*/
 
 .login-container {
 	width: 100%; /* -- SCALE -- */
@@ -206,47 +208,51 @@ nav {
 
 .login-drop { /* FIX DETTE FOR MOBIL */
 	position: absolute;
-	top: 100%;
-	right: 0;
+	top: 0;
+	left: 100%;
 
-	width: 100%;
-	height: 0;
+	width: 0;
+	height: 100%;
 
+	overflow: hidden;
 	cursor: default;
-	transition: 0.2s background-color;
+	transition: 0.3s background-color;
 
 	z-index: -10;
 } /* The dropdown for the login container */
 
 	.login-jq .login-drop {
-		height: 500rem;
+		width: calc(100vw - 5rem);
 		background-color: var(--faded-black);
 	} /* The hover for the dropdown / .login-container:hover .login-drop */
 
 .login-box-container {
 	position: absolute;
-	top: 10rem;
+	top: 25%;
 	left: 50%;
-	transform: translateX(-50%);
+	transform: translate(-50%, -50%);
 
-	width: 30rem;
+	width: 20rem;
 	height: 0;
 	border-bottom-right-radius: 0.5rem;
 	border-bottom-left-radius: 0.5rem;
 
-	transition: 0.2s background-color, 0.2s border;
-} /* The box containing the actual login form */
+	transition: 0.2s background-color, 0.2s border, 0.3s top;
+
+	z-index: 10;
+} /* The container containing the login box */
 
 	.login-jq .login-box-container {
-		height: 35rem;
+		height: 25rem;
+		top: 40%;
 		background-color: var(--white);
 		border-top: 0.3rem solid var(--faded-blue);
 
-	} /* The hover for the login box / .login-container:hover .login-box-container*/
+	} /* The hover for the login box container / .login-container:hover .login-box-container*/
 
 .login-box {
 	position: relative;
-}
+} /* The box containing the login form */
 
 .login-quit {
 	position: absolute;
@@ -254,14 +260,73 @@ nav {
 	right: 1rem;
 	color: transparent;
 	cursor: pointer;
-}
+
+	z-index: 15;
+} /* The quit button for the login form */
 
 	.login-jq .login-quit {
 		color: var(--faded-black);
+	} /* The hover for the quit button */
+
+.login-title {
+	position: absolute;
+	top: 1rem;
+	left: 10%;
+	opacity: 0;
+}
+
+	.login-jq .login-title {
+		opacity: 1;
 	}
 
+.login-form {
+	flex-direction: column;
+	width: 80%;
+	
+	z-index: 11;
+	opacity: 0;
+} /* The form for logging in */
 
-/* ---------->>> Active <<<-----------*/
+	.login-jq .login-form {
+		opacity: 1;
+	} /* The hover for the login form (kinda) */
+
+.login-form [type = email], .login-form [type = password] {
+	height: 3rem;
+	padding: 0.5rem 1rem;
+	border-radius: 0.3rem;
+	outline-width: 0.1rem;
+	outline-color: var(--blue);
+
+	box-shadow: 0 0 0.2rem var(--faded-black);
+
+	color: var(--black);
+}
+
+.login-form [type = submit] {
+	position: absolute;
+	right: 0;
+	padding: 1rem 2rem;
+	border-radius: 0.3rem;
+
+	background-color: var(--faded-blue);
+	color: var(--white);
+	cursor: pointer;
+
+	transition: 0.2s background-color;
+}
+
+	.login-form [type = submit]:hover {
+		background-color: var(--blue);
+	}
+
+.login-links {
+	position: absolute;
+	top: 120%;
+}
+
+
+/* ---------->>> Active (3.5) <<<-----------*/
 
 .active {
 	position: relative;
@@ -301,82 +366,33 @@ nav {
 } /* The block of color that shows what is currently active */
 
 
-/* ------------------------*/ /* ---------->>> MAIN <<<-----------*/ /* ------------------------*/
+/* ------------------------*/ /* ---------->>> MAIN (4) <<<-----------*/ /* ------------------------*/
 
-/* ---------->>> General <<<-----------*/
+/* ---------->>> General (4.1) <<<-----------*/
 
 main {
 	padding-left: 5rem; /* -- SCALE -- */
 } /* The styling for the main section*/
 
 
-/* ---------->>> Hero <<<-----------*/
+/* ---------->>> Hero (4.2) <<<-----------*/
 
 
 
 
-/* ---------->>> Call to Action <<<-----------*/
+/* ---------->>> Call to Action (4.3) <<<-----------*/
 
 
 
 
-/* ---------->>> Parallax images <<<-----------*/
-
-.parallax {
-  perspective: 0.1rem;
-  height: 100vh;
-  overflow-x: hidden;
-  overflow-y: auto;
-  perspective-origin-x: 100%; /* Webkit fix */
-}
-
-.parallax-group {
-  position: relative;
-  height: 95vh;
-  transform-style: preserve-3d;
-}
-
-.parallax-layer {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  transform-origin-x: 100%; /* Webkit fix */
-}
-
-.parallax-layer-base {
-  transform: translateZ(0);
-}
-
-.parallax-layer-back {
-  transform: translateZ(-0.1rem) scale(2.01);
-}
-
-.parallax-layer-deep-back {
-  transform: translateZ(-0.2rem) scale(3.02);
-}
-
-.base-layer {
-	z-index: 2;
-}
-
-.back-layer {
-	z-index: 1;
-}
-
-.deep-back-layer {
-	z-index: 0;
-}
-
-/* ---------->>> Info Container <<<-----------*/
+/* ---------->>> Info wrapper (4.4) <<<-----------*/
 
 
 
 
-/* ------------------------*/ /* ---------->>> FOOTER <<<-----------*/ /* ------------------------*/
+/* ------------------------*/ /* ---------->>> FOOTER (5) <<<-----------*/ /* ------------------------*/
 
-/* ---------->>> General <<<-----------*/
+/* ---------->>> General (5.1) <<<-----------*/
 
 footer {
 	padding-left: 5rem; /* -- SCALE -- */
@@ -388,6 +404,9 @@ footer {
   transform-style: preserve-3d;
 }
 
+
+/* ---------->>> copyright (5.2) <<<-----------*/
+
 .copyright {
 	display: flex;
 	justify-content: space-between;
@@ -397,9 +416,9 @@ footer {
 }
 
 
-/* ------------------------*/ /* ---------->>> DEV RESOURCES <<<-----------*/ /* ------------------------*/
+/* ------------------------*/ /* ---------->>> DEV RESOURCES (6) <<<-----------*/ /* ------------------------*/
 
-/* ---------->>> Color glossary <<<-----------*/
+/* ---------->>> Color glossary (6.1) <<<-----------*/
 
 /*
 #202121 - black
@@ -408,7 +427,7 @@ footer {
 */
 
 
-/* ---------->>> Typography <<<-----------*/
+/* ---------->>> Typography (6.2) <<<-----------*/
 
 .nav-txt {
 	font-size: 1.4rem;
@@ -431,7 +450,7 @@ footer {
 } /* The format for small notations */ 
 
 
-/* ---------->>> Centering <<<-----------*/
+/* ---------->>> Centering (6.3) <<<-----------*/
 
 .center-abs {
 	position: absolute;
@@ -455,7 +474,7 @@ footer {
 } /* For centering text horizontaly */
 
 
-/* ---------->>> Sizing <<<-----------*/ 
+/* ---------->>> Sizing (6.4) <<<-----------*/ 
 .full-w {
 	width: 100%;
 } /* Sizes things to be 100% of the width of its container */
@@ -473,7 +492,7 @@ footer {
 } /* Sizes things to be 50% of the height of its container */
 
 
-/* ---------->>> Color <<<-----------*/
+/* ---------->>> Color (6.5) <<<-----------*/
 
 .black-txt {
 	color: var(--black);
@@ -500,7 +519,7 @@ footer {
 } /* class aplied for faded blue text */
 
 
-/* ---------->>> Background-color <<<-----------*/
+/* ---------->>> Background-color (6.6) <<<-----------*/
 
 .black-bcg {
 	background-color: var(--black);
@@ -515,7 +534,7 @@ footer {
 } /* class aplied for blue background */
 
 
-/* ---------->>> Display scaling <<<-----------*/
+/* ---------->>> Display scaling (6.7) <<<-----------*/
 
 .pc-show {
 	display: none;
@@ -526,45 +545,99 @@ footer {
 } /* Makes something dissapear on pc */
 
 
-/* ---------->>> Quick fixes <<<-----------*/
+/* ---------->>> Quick fixes (6.8) <<<-----------*/
 
 .img-fix {
 	display: block;
 } /* Fixes the gap created at the bottom of images */
 
 
-/* ---------->>> Z-index list <<<-----------*/
+/* ---------->>> Z-index list (6.9) <<<-----------*/
 
 /*
-0 - deep back layer
-1 - back layer
-2 - base layer
 
-10 - header layer
+General
+------------------------
+	 10 - header layer
+	  0 - main layer
+	  0 - footer layer
+
+Header
+------------------------
+	-10 - login box background
+	  0 - header
+	 10 - login box
+	 11 - login form
+	 15 - login quit
+Main
+------------------------
+	  0 - deep back layer
+	  1 - back layer
+	  2 - base layer
+
+Footer
+-----------------------
+
+
 */
 
+/* ---------->>> Margin (6.10) <<<-----------*/
 
-/* ------------------------*/ /* ---------->>> MEDIA QUERIES <<<-----------*/ /* ------------------------*/
+.small-marg-top {
+	margin-top: 1rem;
+} /* The class aplied to give a small margin on the top */
+
+.med-marg-top {
+	margin-top: 2.5rem;
+} /* The class aplied to give a medium margin on the top */
+
+.big-marg-top {
+	margin-top: 5rem;
+} /* The class aplied to give a large margin on the top */
+
+.small-marg-bot {
+	margin-bottom: 1rem;
+} /* The class aplied to give a small margin on the bottom */
+
+.med-marg-bot {
+	margin-bottom: 2.5rem;
+} /* The class aplied to give a medium margin on the bottom */
+
+.big-marg-bot {
+	margin-bottom: 5rem;
+} /* The class aplied to give a large margin on the bottom */
+
+
+/* ------------------------*/ /* ---------->>> MEDIA QUERIES (7) <<<-----------*/ /* ------------------------*/
 
 /* Mobile first, remember to change the breakpoint based on your design*/
 
-/* Small devices (Tablets, 600px and up) */
+/* Small devices (Tablets, 600px and up) (7.1) */
 @media (min-width: 600px) {
+
+	.login-box-container {
+		width: 25rem;
+	} /* The box containing the actual login form */
+
+		.login-jq .login-box-container {
+			height: 30rem;
+		} /* The hover for the login box / .login-container:hover .login-box-container*/
 
 }
 
-/* Medium devices (Tablet portrait, small desktops, 900px and up) */
+/* Medium devices (Tablet portrait, small desktops, 900px and up) (7.2) */
 @media (min-width: 900px) {
 
 	/* ---------->>> Header <<<-----------*/
 
 	header {
 		display: flex;
+		width: 100%;
 		flex-direction: row;
 		justify-content: space-between;
 		align-items: center;
-		width: calc(100vw - 1.7rem );
 		height: 5rem;
+		box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
 	} /* Scaling for the header */
 
 	.logo-container {
@@ -581,6 +654,31 @@ footer {
 		width: 10rem;
 		height: 100%;
 	} /* The styling for the login contaienr adjusted for pc */
+
+	.login-drop {
+		top: 100%;
+		left: 0;
+
+		width: 100%;
+		height: 0;
+	} /* The dropdown for the login container */
+
+		.login-jq .login-drop {
+			width: 100%;
+			height: 100vh;
+			background-color: var(--faded-black);
+		} /* The hover for the dropdown / .login-container:hover .login-drop */
+
+	.login-box-container {
+		left: 50%;
+		transform: translate(-50%, -50%);
+
+		width: 30rem;
+	} /* The box containing the actual login form */
+
+		.login-jq .login-box-container {
+			height: 35rem;
+		} /* The hover for the login box / .login-container:hover .login-box-container*/
 
 	.active::before {
 		top: 100%;
@@ -625,12 +723,72 @@ footer {
 
 }
 
-/* Large devices (Medium to large desktops, 1200px and up) */
+/* Large devices (Medium to large desktops, 1200px and up) (7.3) */
 @media (min-width: 1200px) {
+
+	/* ---------->>> Header <<<-----------*/
+
+	header {
+		width: calc(100vw - 1.7rem);
+	}
+
+
+	/* ---------->>> Parallax layers <<<-----------*/
+
+	@supports ((perspective: 1px) and (not (-webkit-overflow-scrolling: touch))) {
+
+		.parallax {
+			perspective: 0.1rem;
+			height: 100vh;
+			overflow-x: hidden;
+			overflow-y: auto;
+			perspective-origin-x: 100%; /* Webkit fix */
+		}
+
+		.parallax-group {
+			position: relative;
+			height: 100vh;
+			transform-style: preserve-3d;
+		} /* You must scale the pictures after the height you choose */
+
+		.parallax-layer {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			transform-origin-x: 100%; /* Webkit fix */
+		}
+
+		.parallax-layer-base {
+			transform: translateZ(0);
+		}
+
+		.parallax-layer-back {
+			transform: translateZ(-0.1rem) scale(2.01);
+		}
+
+		.parallax-layer-deep-back {
+			transform: translateZ(-0.2rem) scale(3.02);
+		}
+
+		.base-layer {
+			z-index: 2;
+		}
+
+		.back-layer {
+			z-index: 1;
+		}
+
+		.deep-back-layer {
+			z-index: 0;
+		}
+	}
+
 
 }
 
-/* Huge devices (Big monitors and tvs, 1800px and up) */
+/* Huge devices (Big monitors and tvs, 1800px and up) (7.4) */
 @media (min-width: 1800px) {
 
 }

@@ -1,3 +1,13 @@
+<!-- Required files to load for page to work -->
+<?Php
+/* Connects to database and retrieves time */
+require 'config/config.php';
+/* Retrieving php code from login_handler.php */
+require 'includes/form_handlers/login_handler.php';
+/* $loggedinuser will tell the rest of the site what user is connected */
+include 'info.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr" >
 <head>
@@ -15,68 +25,14 @@
 	<!-- JavaScript files -->
 	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="js/temp.js" async></script>
+	<script src="js/core.js" async></script>
 </head>
 
 <body>
-
-
 	<!-- HEADER -->
-	<header>
-
-		<!-- LOGO -->
-		<a href="index.html" class=" logo-container center-flex">
-			<h1 class="full-w full-h center-flex"><span class="blue-txt">WI</span></h1>
-		</a>
-
-		<!-- NAVIGATION -->
-		<nav class="full-h full-w">
-
-			<a href="index.html" class="nav-item full-w full-h center-flex active">
-				<i class="pc-hide fas fa-home fa-fw fa-2x"></i>
-				<span class="pc-show nav-txt">Home</span>
-			</a>
-
-			<a href="#" class="nav-item full-w full-h center-flex">
-				<i class="pc-hide fas fa-list fa-fw fa-2x"></i>
-				<span class="pc-show nav-txt">Lawyers</span>
-			</a>
-
-			<a href="#" class="nav-item full-w full-h center-flex">
-				<i class="pc-hide fas fa-info fa-fw fa-2x"></i>
-				<span class="pc-show nav-txt">About</span>
-			</a>
-
-			<a href="#" class="nav-item full-w full-h center-flex">
-				<i class="pc-hide fas fa-comment fa-fw fa-2x"></i>
-				<span class="pc-show nav-txt">Contact</span>
-			</a>
-
-		</nav>
-
-		<!-- LOGIN -->
-		<div href="#" class="login-container">
-			<div class="full-w full-h center-flex">
-
-				<span class="pc-show nav-txt">Login</span>
-				<i class="pc-hide fas fa-sign-in-alt fa-fw fa-2x"></i>
-
-				<div class="login-drop">
-					<div class="login-box-container">
-						<div class="login-box full-w full-h">
-							
-							<div class="login-quit">
-								<i class="fas fa-times fa-2x"></i>
-							</div>
-
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
-
-	</header>
+	<?php
+		include 'includes/structure/index_header.php';
+	?>
 
 	<!-- PARALLAX ENABLER -->
 	<div class="parallax">
@@ -87,12 +43,10 @@
 
 			<section class="back-layer parallax-group">
 
-				<div class="center-flex parallax-layer parallax-layer-base">
-					
-				</div>
+				<div class="center-flex parallax-layer parallax-layer-base"></div>
 
 				<div class="parallax-layer parallax-layer-back">
-					<img src="assets/img/Test.jpeg" alt="Test" class="full-w img-fix">
+					<img src="assets/img/Placeholder.png" alt="Test" class="full-w img-fix">
 				</div>
 
 			</section>
@@ -108,16 +62,13 @@
 
 			<section class="deep-back-layer parallax-group">
 
-				<div class="center-flex parallax-layer parallax-layer-base">
-					
-				</div>
+				<div class="center-flex parallax-layer parallax-layer-base"></div>
 
 				<div class="parallax-layer parallax-layer-deep-back">
-					<img src="assets/img/TestStor.jpeg" alt="Test" class="full-w img-fix">
+					<img src="assets/img/Placeholder.png" alt="Test" class="full-w img-fix">
 				</div>
 
 			</section>
-
 
 			<section class="base-layer parallax-group">
 
@@ -130,12 +81,10 @@
 
 			<section class="back-layer parallax-group">
 
-				<div class="center-flex parallax-layer parallax-layer-base">
-					
-				</div>
+				<div class="center-flex parallax-layer parallax-layer-base"></div>
 
 				<div class="parallax-layer parallax-layer-back">
-					<img src="assets/img/Test.jpeg" alt="Test" class="full-w img-fix">
+					<img src="assets/img/Placeholder.png" alt="Test" class="full-w img-fix">
 				</div>
 
 			</section>
@@ -167,4 +116,4 @@
 	</div>
 
 </body>
-</html>
+	</html>
