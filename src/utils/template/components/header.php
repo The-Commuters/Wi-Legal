@@ -2,19 +2,19 @@
 	<header>
 
 		<!-- LOGO -->
-		<a href="index.php" class=" logo-container center-flex">
+		<a href="#" class=" logo-container center-flex">
 			<h1 class="full-w full-h center-flex"><span class="blue-txt">WI</span></h1>
 		</a>
 
 		<!-- NAVIGATION -->
 		<nav class="full-h full-w">
 
-			<a href="index.php" class="nav-item full-w full-h center-flex active">
+			<a href="#" class="nav-item full-w full-h center-flex active">
 				<i class="pc-hide fas fa-home fa-fw fa-2x"></i>
 				<span class="pc-show nav-txt">Home</span>
 			</a>
 
-			<a href="userlist.php" class="nav-item full-w full-h center-flex">
+			<a href="#" class="nav-item full-w full-h center-flex">
 				<i class="pc-hide fas fa-list fa-fw fa-2x"></i>
 				<span class="pc-show nav-txt">Lawyers</span>
 			</a>
@@ -81,7 +81,7 @@
 
 								<!-- The links for creation of account and retrival of password -->
 								<div class="login-links">
-									<a href="register.php" class="img-fix small-marg-bot note-txt blue-txt">New User?</a>
+									<a href="#" class="img-fix small-marg-bot note-txt blue-txt">New User?</a>
 									<a href="#" class="note-txt blue-txt">Forgot password?</a>
 								</div>
 

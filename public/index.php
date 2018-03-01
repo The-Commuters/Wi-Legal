@@ -1,11 +1,11 @@
 <!-- Required files to load for page to work -->
 <?Php
 /* Connects to database and retrieves time */
-require 'config/config.php';
+require '../config/config.php';
 /* Retrieving php code from login_handler.php */
-require 'includes/form_handlers/login_handler.php';
+include '../src/model/form_handlers/login_handler.php';
 /* $loggedinuser will tell the rest of the site what user is connected */
-include 'info.php';
+include '../src/model/userinfo_handler/userinfo_handler.php';
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +31,7 @@ include 'info.php';
 <body>
 	<!-- HEADER -->
 	<?php
-		include 'includes/structure/index_header.php';
+		include '../src/utils/template/components/header.php';
 	?>
 
 	<!-- PARALLAX ENABLER -->
@@ -46,7 +46,7 @@ include 'info.php';
 				<div class="center-flex parallax-layer parallax-layer-base"></div>
 
 				<div class="parallax-layer parallax-layer-back">
-					<img src="img/placeholders/laceholder_large.png" alt="Test" class="full-w img-fix">
+					<img src="img/placeholders/placeholder_large.png" alt="Test" class="full-w img-fix">
 				</div>
 
 			</section>
@@ -65,7 +65,7 @@ include 'info.php';
 				<div class="center-flex parallax-layer parallax-layer-base"></div>
 
 				<div class="parallax-layer parallax-layer-deep-back">
-					<img src="img/placeholders/laceholder_large" alt="Test" class="full-w img-fix">
+					<img src="img/placeholders/placeholder_large.png" alt="Test" class="full-w img-fix">
 				</div>
 
 			</section>
@@ -84,7 +84,7 @@ include 'info.php';
 				<div class="center-flex parallax-layer parallax-layer-base"></div>
 
 				<div class="parallax-layer parallax-layer-back">
-					<img src="img/placeholders/laceholder_large" alt="Test" class="full-w img-fix">
+					<img src="img/placeholders/placeholder_large.png" alt="Test" class="full-w img-fix">
 				</div>
 
 			</section>

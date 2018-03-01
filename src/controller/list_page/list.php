@@ -1,12 +1,10 @@
 <?php  
 /*Config gives a connection to the database between the website*/
-require 'config/config.php';
+require '../../../config/config.php';
 /*Gets $user that you can use on the website to collect data from the database*/
-include 'info.php';
-/*Users have classes and methods that you can use on the website.*/
-include 'includes/classes/User.php';
+include '../../model/userinfo_handler/userinfo_handler.php';
 /*Userlist handler that sets up the list on this site.*/
-include 'includes/form_handlers/userlist_handler.php';
+include '../../model/form_handlers/userlist_handler.php';
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +27,7 @@ include 'includes/form_handlers/userlist_handler.php';
 				$profile_pic = $row["profile_picture"]; 
 				$city = $row["city"]; ?>
 
-				<a class="list-container" href="<?php echo $username; ?>">
+				<a class="list-container" href="<?php echo "../profile_page/" . $username; ?>">
 
 					<div class="list-image full-h center-flex" >
 						<div class="img-cutter">

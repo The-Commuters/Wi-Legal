@@ -2,10 +2,9 @@
 
 <?php  
 	//Connection to the database
-	require 'config/config.php';
-	include 'info.php';
-	include 'includes/form_handlers/profile_handler.php';
-	include 'includes/classes/User.php';
+	require '../../../config/config.php';
+	include '../../model/userinfo_handler/userinfo_handler.php';
+	include '../../model/form_handlers/profile_handler.php';
 ?>
 
 <html>

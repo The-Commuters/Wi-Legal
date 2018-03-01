@@ -331,8 +331,8 @@ if(isset($_POST['registerlawyer_button'])){
 
 
 		/*_________________________________Fileupload ID____________________________________________________________________*/
-		mkdir("uploads/newLSP/" . $username);
-		$targetdir = "uploads/newLSP/" . $username . "/";
+		mkdir("../../../src/utils/confirmation/lsp_confirmation/" . $username);
+		$targetdir = "../../../src/utils/confirmation/lsp_confirmation/" . $username . "/";
 		$target_file_id = $targetdir . basename($_FILES["fileToUpload"]["name"]);
 		$upload = 1;
 		$imageFileType = strtolower(pathinfo($target_file_id,PATHINFO_EXTENSION));
@@ -360,7 +360,7 @@ if(isset($_POST['registerlawyer_button'])){
 
 
 		/*_________________________________Fileupload Cert____________________________________________________________________*/
-		$targetdir = "uploads/newLSP/" . $username . "/";
+		$targetdir = "../../../src/utils/confirmation/lsp_confirmation/" . $username . "/";
 		$target_file_cert = $targetdir . basename($_FILES["fileToUpload2"]["name"]);
 		$upload = 1;
 		$imageFileType = strtolower(pathinfo($target_file_cert,PATHINFO_EXTENSION));
@@ -489,8 +489,8 @@ if(isset($_POST['registerfirm_button'])){
 
 
 		/*_________________________________Fileupload ID____________________________________________________________________*/
-		mkdir("uploads/newFIRM/" . $firmname);
-		$targetdir = "uploads/newFIRM/" . $firmname . "/";
+		mkdir("../../../src/utils/confirmation/firm_confirmation/" . $firmname);
+		$targetdir = "../../../src/utils/confirmation/firm_confirmation/" . $firmname . "/";
 		$target_file_id = $targetdir . basename($_FILES["fileToUpload"]["name"]);
 		$upload = 1;
 		$imageFileType = strtolower(pathinfo($target_file_id,PATHINFO_EXTENSION));
@@ -517,7 +517,7 @@ if(isset($_POST['registerfirm_button'])){
 		}
 
 		/*_________________________________Fileupload Cert____________________________________________________________________*/
-		$targetdir = "uploads/newFIRM/" . $firmname . "/";
+		$targetdir = "../../../src/utils/confirmation/firm_confirmation/" . $firmname . "/";
 		$target_file_cert = $targetdir . basename($_FILES["fileToUpload2"]["name"]);
 		$upload = 1;
 		$imageFileType = strtolower(pathinfo($target_file_cert,PATHINFO_EXTENSION));
