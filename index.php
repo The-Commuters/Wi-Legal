@@ -29,7 +29,7 @@ include 'info.php';
 </head>
 
 <body>
-
+	<!-- HEADER -->
 	<?php
 		include 'includes/structure/index_header.php';
 	?>

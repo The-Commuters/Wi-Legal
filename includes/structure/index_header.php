@@ -2,19 +2,19 @@
 	<header>
 
 		<!-- LOGO -->
-		<a href="index.html" class=" logo-container center-flex">
+		<a href="index.php" class=" logo-container center-flex">
 			<h1 class="full-w full-h center-flex"><span class="blue-txt">WI</span></h1>
 		</a>
 
 		<!-- NAVIGATION -->
 		<nav class="full-h full-w">
 
-			<a href="index.html" class="nav-item full-w full-h center-flex active">
+			<a href="index.php" class="nav-item full-w full-h center-flex active">
 				<i class="pc-hide fas fa-home fa-fw fa-2x"></i>
 				<span class="pc-show nav-txt">Home</span>
 			</a>
 
-			<a href="#" class="nav-item full-w full-h center-flex">
+			<a href="userlist.php" class="nav-item full-w full-h center-flex">
 				<i class="pc-hide fas fa-list fa-fw fa-2x"></i>
 				<span class="pc-show nav-txt">Lawyers</span>
 			</a>
@@ -54,7 +54,7 @@
 							<h2 class="login-title blue-txt">Login</h2>
 
 							<!-- LOGIN FORM.PHP -->
-							<form action="index.php" method="POST" class="login-form center-abs">
+							<form action="index.php" onsubmit="return submitform()" method="POST" class="login-form center-abs">
 
 								<!--Email input-box-->
 								<input class="small-marg-bot full-w" type="email" 
@@ -65,7 +65,8 @@
 								<br>
 
 								<!--password input-boks-->
-								<input class="med-marg-bot full-w" type="password" name="l_password" placeholder="Password" required>
+								<input class="med-marg-bot full-w" id="pass" type="password" 
+								name="l_password" placeholder="Password">
 
 								<br>
 
@@ -85,6 +86,17 @@
 								</div>
 
 							</form>
+							<script type="text/javascript">
+								function submitform()
+								{	
+									var element = document.getElementById('pass').value;
+									if (element == '') {
+										alert('You need to fill in the password!')
+										return false;
+									}
+									return true;								
+								}
+							</script>
 						</div>
 					</div>
 				</div>
@@ -95,4 +107,4 @@
 		<!-- LOGIN END.PHP -->
 		<?php } ?>
 
-	</header>
+		</header>
