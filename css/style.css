@@ -298,8 +298,6 @@ nav {
 	outline-width: 0.1rem;
 	outline-color: var(--blue);
 
-	box-shadow: 0 0 0.2rem var(--faded-black);
-
 	color: var(--black);
 }
 
@@ -373,6 +371,10 @@ nav {
 main {
 	padding-left: 5rem; /* -- SCALE -- */
 } /* The styling for the main section*/
+
+section {
+	padding: 2rem;
+}
 
 
 /* ---------->>> Hero (4.2) <<<-----------*/

@@ -25,7 +25,7 @@ include 'info.php';
 	<!-- JavaScript files -->
 	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="js/core.js" async></script>
+	<script src="js/temp.js" async></script>
 </head>
 
 <body>
