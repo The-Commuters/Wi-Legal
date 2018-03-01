@@ -177,6 +177,7 @@ if(isset($_POST['registerlawyer_button'])){
 	$lastname = ucfirst(strtolower($lastname)); 
 	$username = ucfirst(strtolower($username)); 
 	$email = ucfirst(strtolower($email)); 
+	$city = ucfirst(strtolower($city));
 
  /*The checkbox input part where the lawyer will pick their area of expertise*/
 	
@@ -238,6 +239,7 @@ if(isset($_POST['registerlawyer_button'])){
 	$_SESSION['r_email'] = $email; 
 	$_SESSION['r_phone_number'] = $phone_number;
 	$_SESSION['r_firm'] = $workplace;
+	$_SESSION['r_city'] = $city;
 
 	/*Tar å legger ned dagens dato på en variabel, vil bli lagret i databasen.*/
 	$date = date("Y-m-d"); 
@@ -310,9 +312,9 @@ if(isset($_POST['registerlawyer_button'])){
 	}
 	
 	/*Feilmelding: Hvis passordet ikke er mellom 5 og 30 characterer lang.*/
-	if(strlen($password > 30 || strlen($password) < 7)) {  
+	if(strlen($password > 30 || strlen($password) < 5)) {  
 
-		array_push($error_array, "Your password must be betwen 7 and 30 characters<br>");
+		array_push($error_array, "Your password must be betwen 5 and 30 characters<br>");
 	}
 
 
@@ -386,7 +388,7 @@ if(isset($_POST['registerlawyer_button'])){
 
 
 		/*Her blir all informasjonen lagret i databasen, denne linjen er viktig i det at den legger informasjonen inn i databasen, '1' på slutten er er brukertype Lsp.*/
-		$query = mysqli_query($con, "INSERT INTO lawyerusers VALUES ('', '$firstname', '$lastname', '$username', '$email', '$password', '$date', '$profile_pic', '$target_file_id', '$target_file_cert', '$phone_number' , '$workplace', 0, 1)");
+		$query = mysqli_query($con, "INSERT INTO lawyerusers VALUES ('', '$firstname', '$lastname', '$username', '$email', '$password', '$city', '$date', '$profile_pic', '$target_file_id', '$target_file_cert', '$phone_number' , '$workplace', 0, 1)");
 
 		/*Here the main area of expertise will be sendt to the mainfields database*/
 		$query = mysqli_query($con, "INSERT INTO mainfields VALUES ('$username', '$mainField','$cb1', '$cb2', '$cb3', '$cb4', '$cb5', '$cb6', '$cb7', '$cb8', '$cb9', '$cb10')");
@@ -401,6 +403,7 @@ if(isset($_POST['registerlawyer_button'])){
 		$_SESSION['r_phone_number'] = "";
 		$_SESSION['r_username'] = "";
 		$_SESSION['r_firm'] = "";
+		$_SESSION['r_city'] = "";
 	}
 
 }
