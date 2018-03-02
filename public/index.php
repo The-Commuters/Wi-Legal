@@ -1,11 +1,11 @@
 <!-- Required files to load for page to work -->
 <?Php
 /* Connects to database and retrieves time */
-require 'config/config.php';
+require '../config/config.php';
 /* Retrieving php code from login_handler.php */
-require 'includes/form_handlers/login_handler.php';
+include '../src/model/form_handlers/login_handler.php';
 /* $loggedinuser will tell the rest of the site what user is connected */
-include 'info.php';
+include '../src/model/userinfo_handler/userinfo_handler.php';
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +16,7 @@ include 'info.php';
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Wi Legal</title>
 	<meta name="description" content="Description of the page less than 150 characters">
-	<link rel="icon" type="image/png" href="favicon.png">
+	<link rel="icon" type="image/png" href="img/favicon/favicon.png">
 	<link rel="canonical" href="http://example.com/index.html">
 
 	<!-- CSS files -->
@@ -31,7 +31,7 @@ include 'info.php';
 <body>
 	<!-- HEADER -->
 	<?php
-		include 'includes/structure/index_header.php';
+		include '../src/utils/template/components/header.php';
 	?>
 
 	<!-- PARALLAX ENABLER -->
@@ -46,7 +46,7 @@ include 'info.php';
 				<div class="center-flex parallax-layer parallax-layer-base"></div>
 
 				<div class="parallax-layer parallax-layer-back">
-					<img src="assets/img/Placeholder.png" alt="Test" class="full-w img-fix">
+					<img src="img/placeholders/placeholder_large.png" alt="Test" class="full-w img-fix">
 				</div>
 
 			</section>
@@ -65,7 +65,7 @@ include 'info.php';
 				<div class="center-flex parallax-layer parallax-layer-base"></div>
 
 				<div class="parallax-layer parallax-layer-deep-back">
-					<img src="assets/img/Placeholder.png" alt="Test" class="full-w img-fix">
+					<img src="img/placeholders/placeholder_large.png" alt="Test" class="full-w img-fix">
 				</div>
 
 			</section>
@@ -84,7 +84,7 @@ include 'info.php';
 				<div class="center-flex parallax-layer parallax-layer-base"></div>
 
 				<div class="parallax-layer parallax-layer-back">
-					<img src="assets/img/Placeholder.png" alt="Test" class="full-w img-fix">
+					<img src="img/placeholders/placeholder_large.png" alt="Test" class="full-w img-fix">
 				</div>
 
 			</section>

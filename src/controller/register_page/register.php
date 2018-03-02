@@ -6,15 +6,15 @@ users and one who registers new users .-->
 <!-- Required files to load for page to work -->
 <?Php
 /* Connects to database and retrieves time */
-require 'config/config.php';
+require '../../../config/config.php';
 /* Retrieving php code from register_handler.php */
-require 'includes/form_handlers/register_handler.php';
+require '../../model/form_handlers/register_handler.php';
 ?>
 
 <Html>
 <Head>
 	<title> Welcome to WiLegal! </title>
-
+<link rel="stylesheet" type="text/css" href="../../../public/css/style.css">                
 </head>
 <body>
 	<p>Registrering for kunder</p>
