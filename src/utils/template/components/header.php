@@ -2,19 +2,19 @@
 	<header>
 
 		<!-- LOGO -->
-		<a href="#" class=" logo-container center-flex">
+		<a href="index.php" class=" logo-container center-flex">
 			<h1 class="full-w full-h center-flex"><span class="blue-txt">WI</span></h1>
 		</a>
 
 		<!-- NAVIGATION -->
 		<nav class="full-h full-w">
 
-			<a href="#" class="nav-item full-w full-h center-flex active">
+			<a href="index.php" class="nav-item full-w full-h center-flex active">
 				<i class="pc-hide fas fa-home fa-fw fa-2x"></i>
 				<span class="pc-show nav-txt">Home</span>
 			</a>
 
-			<a href="#" class="nav-item full-w full-h center-flex">
+			<a href="../src/controller/list_page/list.php" class="nav-item full-w full-h center-flex">
 				<i class="pc-hide fas fa-list fa-fw fa-2x"></i>
 				<span class="pc-show nav-txt">Lawyers</span>
 			</a>
@@ -32,7 +32,7 @@
 		</nav>
 
 		<!-- LOGOUT.PHP -->
-		<?php if (isset($user)) { ?>  <a href="logout.php">Logout</a>  <?php } else { ?>
+		<?php if (isset($user)) { ?>  <a href="../src/model/session_handler/logout_handler.php">Logout</a>  <?php } else { ?>
 
 		<!-- LOGIN -->
 		<div href="#" class="login-container">
@@ -66,7 +66,7 @@
 
 								<!--password input-boks-->
 								<input class="med-marg-bot full-w" id="pass" type="password" 
-								name="l_password" placeholder="Password">
+								name="l_password" placeholder="Password" required>
 
 								<br>
 
@@ -81,22 +81,11 @@
 
 								<!-- The links for creation of account and retrival of password -->
 								<div class="login-links">
-									<a href="#" class="img-fix small-marg-bot note-txt blue-txt">New User?</a>
+									<a href="../src/controller/register_page/register.php" class="img-fix small-marg-bot note-txt blue-txt">New User?</a>
 									<a href="#" class="note-txt blue-txt">Forgot password?</a>
 								</div>
 
 							</form>
-							<script type="text/javascript">
-								function submitform()
-								{	
-									var element = document.getElementById('pass').value;
-									if (element == '') {
-										alert('You need to fill in the password!')
-										return false;
-									}
-									return true;								
-								}
-							</script>
 						</div>
 					</div>
 				</div>

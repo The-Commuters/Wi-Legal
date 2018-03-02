@@ -20,9 +20,12 @@ Man skal komme hit etter at man trykker på brukernavnet til en advokat i lista<
 Og her kan man finne kontaktinformasjon og annen info om brukeren 
 <br>
 <?php
-$profile_pic = $other_user['id_confirm'];
-echo $other_user['username'] . "<br>" .
-"<img src='$profile_pic'>";
+$profile_pic = $other_user['username'];
+echo $profile_pic;
+
+$rand = rand(1, 14);
+$profile_pic = "../../../public/img/profile/default/" . $rand . ".png" ;
+
 ?>
 
 

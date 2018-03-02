@@ -11,9 +11,13 @@ include '../../model/form_handlers/userlist_handler.php';
 <html>
 <head>
 	<title>List of Lawyers</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css">                   <!-- Place this in style, merge it -->
+	<link rel="stylesheet" type="text/css" href="../../../public/css/style.css">                
+	<link rel="stylesheet" type="text/css" href="../../../public/css/stylelist.css">                
 </head>
 <body>
+
+		<!-- HEADER -->
+	<?php //include '../../utils/template/components/header.php'; ?>
 
 	<div>
 		<?php

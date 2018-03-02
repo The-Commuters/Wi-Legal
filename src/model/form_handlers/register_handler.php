@@ -327,7 +327,8 @@ if(isset($_POST['registerlawyer_button'])){
 
 
 		/*Setter opp et profilbilde til kontoen.*/
-		$profile_pic = "link til hvor profilbildet ligger";
+		$rand = rand(1, 12);
+		$profile_pic = "../../../public/img/profile/default/" . $rand . ".png" ;
 
 
 		/*_________________________________Fileupload ID____________________________________________________________________*/

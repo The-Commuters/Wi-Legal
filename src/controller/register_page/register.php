@@ -14,7 +14,7 @@ require '../../model/form_handlers/register_handler.php';
 <Html>
 <Head>
 	<title> Welcome to WiLegal! </title>
-
+<link rel="stylesheet" type="text/css" href="../../../public/css/style.css">                
 </head>
 <body>
 	<p>Registrering for kunder</p>

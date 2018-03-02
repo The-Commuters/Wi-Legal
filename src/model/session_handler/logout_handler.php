@@ -4,6 +4,6 @@ Logut buttons can be created by linking them to this page-->
 <?php 
 	session_start();
 	session_destroy();
-	header("Location: index.php");
+	header("Location: ../../../public/index.php");
 	exit;
 ?>
