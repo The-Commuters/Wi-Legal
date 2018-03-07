@@ -183,10 +183,10 @@ if(isset($_POST['registerlawyer_button'])){
 	
 	/*Sets up all the variables that is needed in the area of expertise part*/
 	/*Temporary, jquery 'chosen' makes this somewhat redundant, need to check later*/
-	$cb1 = 'No'; $cb2 = 'No'; $cb3 = 'No'; $cb4 = 'No'; $cb5 = 'No'; 
-	$cb6 = 'No'; $cb7 = 'No'; $cb8 = 'No'; $cb9 = 'No'; $cb10 = 'No';
+	$cb1; $cb2; $cb3; $cb4; $cb5; 
+	$cb6; $cb7; $cb8; $cb9; $cb10;
 	$mainField = 'None';
-	
+
 	$mainField = $_POST['r_mainField'];
 	
 	if(isset($_POST['r_ContractLaw'])) {
@@ -387,13 +387,47 @@ if(isset($_POST['registerlawyer_button'])){
 		}
 		/*____________________________________________________________________________________________________________________*/
 
-
 		/*Her blir all informasjonen lagret i databasen, denne linjen er viktig i det at den legger informasjonen inn i databasen, '1' på slutten er er brukertype Lsp.*/
 		$query = mysqli_query($con, "INSERT INTO lawyerusers VALUES ('', '$firstname', '$lastname', '$username', '$email', '$password', '$city', '$date', '$profile_pic', '$target_file_id', '$target_file_cert', '$phone_number' , '$workplace', 0, 1)");
 
-		/*Here the main area of expertise will be sendt to the mainfields database*/
-		$query = mysqli_query($con, "INSERT INTO mainfields VALUES ('$username', '$mainField','$cb1', '$cb2', '$cb3', '$cb4', '$cb5', '$cb6', '$cb7', '$cb8', '$cb9', '$cb10')");
+		/*Collects the row of the user that was just made and gets the lsp_id*/
+		$sqlMf = "SELECT * FROM lawyerusers WHERE username='$username'";
+		$queryMf = mysqli_query($con, $sqlMf);
+		$row = mysqli_fetch_assoc($queryMf);
+		$lsp_id = $row['lsp_id'];
 
+		/*Here the main area of expertise will be sendt to the mainfields database*/
+		if (isset($cb1)) {
+			$query = mysqli_query($con, "INSERT INTO mainfields VALUES ('$lsp_id', 0)");
+		}
+		if (isset($cb2)) {
+			$query = mysqli_query($con, "INSERT INTO mainfields VALUES ('$lsp_id', 1)");
+		}
+		if (isset($cb3)) {
+			$query = mysqli_query($con, "INSERT INTO mainfields VALUES ('$lsp_id', 2)");
+		}
+		if (isset($cb4)) {
+			$query = mysqli_query($con, "INSERT INTO mainfields VALUES ('$lsp_id', 3)");
+		}
+		if (isset($cb5)) {
+			$query = mysqli_query($con, "INSERT INTO mainfields VALUES ('$lsp_id', 4)");
+		}
+		if (isset($cb6)) {
+			$query = mysqli_query($con, "INSERT INTO mainfields VALUES ('$lsp_id', 5)");
+		}
+		if (isset($cb7)) {
+			$query = mysqli_query($con, "INSERT INTO mainfields VALUES ('$lsp_id', 6)");
+		}
+		if (isset($cb8)) {
+			$query = mysqli_query($con, "INSERT INTO mainfields VALUES ('$lsp_id', 7)");
+		}
+		if (isset($cb9)) {
+			$query = mysqli_query($con, "INSERT INTO mainfields VALUES ('$lsp_id', 8)");
+		}
+		if (isset($cb10)) {
+			$query = mysqli_query($con, "INSERT INTO mainfields VALUES ('$lsp_id', 9)");
+		}
+			
 		/*Her viser man en beskjed som sier at ma er registrert*/
 		array_push($error_array, "<span style='color: #14C800;'>You're all set! Go ahead and login!</span><br>"); 
 

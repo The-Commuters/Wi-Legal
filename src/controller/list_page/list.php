@@ -35,7 +35,7 @@ include '../../model/form_handlers/userlist_handler.php';
 
 					<div class="list-image full-h center-flex" >
 						<div class="img-cutter">
-							<img src="<?php echo $profile_pic; ?>" alt="profile pic" class="center-abs full-w">				<!-- profile image -->
+							<!--<img src="<?php echo $profile_pic; ?>" alt="profile pic" class="center-abs full-w">		-->		<!-- profile image -->
 						</div>
 					</div>
 
@@ -48,7 +48,7 @@ include '../../model/form_handlers/userlist_handler.php';
 						</div>
 
 						<?php 
-						$sqlMf = "SELECT * FROM mainfields WHERE username='$username'";
+						$sqlMf = "SELECT * FROM lawyerusers WHERE username='$username'";
 						$queryMf = mysqli_query($con, $sqlMf);
 						$row = mysqli_fetch_assoc($queryMf);
 						?>
@@ -59,7 +59,7 @@ include '../../model/form_handlers/userlist_handler.php';
 								if ($value !== 'No' && $value !== $username) {
 									?>
 									<div class="list-exp">
-										<?php echo $value; ?>  
+										<?php echo $row['lsp_id']; ?>  
 									</div>	
 									<?php }} ?>			
 								</div>
