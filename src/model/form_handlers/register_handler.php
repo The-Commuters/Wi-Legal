@@ -183,50 +183,50 @@ if(isset($_POST['registerlawyer_button'])){
 	
 	/*Sets up all the variables that is needed in the area of expertise part*/
 	/*Temporary, jquery 'chosen' makes this somewhat redundant, need to check later*/
-	$cb1 = 'No'; $cb2 = 'No'; $cb3 = 'No'; $cb4 = 'No'; $cb5 = 'No'; 
-	$cb6 = 'No'; $cb7 = 'No'; $cb8 = 'No'; $cb9 = 'No'; $cb10 = 'No';
+	$cb1 = '-'; $cb2 = '-'; $cb3 = '-'; $cb4 = '-'; $cb5 = '-'; 
+	$cb6 = '-'; $cb7 = '-'; $cb8 = '-'; $cb9 = '-'; $cb10 = '-';
 	$mainField = 'None';
-	
+
 	$mainField = $_POST['r_mainField'];
 	
 	if(isset($_POST['r_ContractLaw'])) {
-		$cb1 = $_POST['r_ContractLaw'];
+		$cb1 = 1;
 	}
 
 	if(isset($_POST['r_CompanyLaw'])) {
-		$cb2 = $_POST['r_CompanyLaw'];
+		$cb2 = 2;
 	}
 
 	if(isset($_POST['r_BankingandFinancialLaw'])) {
-		$cb3 = $_POST['r_BankingandFinancialLaw'];
+		$cb3 = 3;
 	}
 
 	if(isset($_POST['r_ConsumerProtectionLaw'])) {
-		$cb4 = $_POST['r_ConsumerProtectionLaw'];
+		$cb4 = 4;
 	}
 
 	if(isset($_POST['r_IntellectualPropertyLaw'])) {
-		$cb5 = $_POST['r_IntellectualPropertyLaw'];
+		$cb5 = 5;
 	}
 
 	if(isset($_POST['r_InvestementLaw'])) {
-		$cb6 = $_POST['r_InvestementLaw'];
+		$cb6 = 6;
 	}
 
 	if(isset($_POST['r_LandLaw'])) {
-		$cb7 = $_POST['r_LandLaw'];
+		$cb7 = 7;
 	}
 
 	if(isset($_POST['r_CivilLaw'])) {
-		$cb8 = $_POST['r_CivilLaw'];
+		$cb8 = 8;
 	}
 
 	if(isset($_POST['r_CriminalLaw'])) {
-		$cb9 = $_POST['r_CriminalLaw'];
+		$cb9 = 9;
 	}
 
 	if(isset($_POST['r_MarriageAndDivorceLaw'])) {
-		$cb10 = $_POST['r_MarriageAndDivorceLaw'];
+		$cb10 = 10;
 	}
 
  /*End checkbox input*/
@@ -328,12 +328,12 @@ if(isset($_POST['registerlawyer_button'])){
 
 		/*Setter opp et profilbilde til kontoen.*/
 		$rand = rand(1, 12);
-		$profile_pic = "../../../public/img/profile/default/" . $rand . ".png" ;
+		$profile_pic = "img/profile/default/" . $rand . ".png" ;
 
 
 		/*_________________________________Fileupload ID____________________________________________________________________*/
-		mkdir("../../../src/utils/confirmation/lsp_confirmation/" . $username);
-		$targetdir = "../../../src/utils/confirmation/lsp_confirmation/" . $username . "/";
+		mkdir("../src/utils/confirmation/lsp_confirmation/" . $username);
+		$targetdir = "../src/utils/confirmation/lsp_confirmation/" . $username . "/";
 		$target_file_id = $targetdir . basename($_FILES["fileToUpload"]["name"]);
 		$upload = 1;
 		$imageFileType = strtolower(pathinfo($target_file_id,PATHINFO_EXTENSION));
@@ -361,7 +361,7 @@ if(isset($_POST['registerlawyer_button'])){
 
 
 		/*_________________________________Fileupload Cert____________________________________________________________________*/
-		$targetdir = "../../../src/utils/confirmation/lsp_confirmation/" . $username . "/";
+		$targetdir = "../src/utils/confirmation/lsp_confirmation/" . $username . "/";
 		$target_file_cert = $targetdir . basename($_FILES["fileToUpload2"]["name"]);
 		$upload = 1;
 		$imageFileType = strtolower(pathinfo($target_file_cert,PATHINFO_EXTENSION));
@@ -387,13 +387,18 @@ if(isset($_POST['registerlawyer_button'])){
 		}
 		/*____________________________________________________________________________________________________________________*/
 
-
 		/*Her blir all informasjonen lagret i databasen, denne linjen er viktig i det at den legger informasjonen inn i databasen, '1' på slutten er er brukertype Lsp.*/
-		$query = mysqli_query($con, "INSERT INTO lawyerusers VALUES ('', '$firstname', '$lastname', '$username', '$email', '$password', '$city', '$date', '$profile_pic', '$target_file_id', '$target_file_cert', '$phone_number' , '$workplace', 0, 1)");
+		$query = mysqli_query($con, "INSERT INTO lawyerusers VALUES ('', '$firstname', '$lastname', '$username', '$email', '$password', '$city', '$date', '$profile_pic', '$target_file_id', '$target_file_cert', '$phone_number' , '$workplace', '$mainField', 0, 1)");
 
-		/*Here the main area of expertise will be sendt to the mainfields database*/
-		$query = mysqli_query($con, "INSERT INTO mainfields VALUES ('$username', '$mainField','$cb1', '$cb2', '$cb3', '$cb4', '$cb5', '$cb6', '$cb7', '$cb8', '$cb9', '$cb10')");
+		/*Collects the row of the user that was just made and gets the lsp_id*/
+		$sqlMf = "SELECT * FROM lawyerusers WHERE username='$username'";
+		$queryMf = mysqli_query($con, $sqlMf);
+		$row = mysqli_fetch_assoc($queryMf);
+		$lsp_id = $row['lsp_id'];
 
+		$query = mysqli_query($con, "INSERT INTO mainfields VALUES ('$lsp_id','$cb1', '$cb2', '$cb3', '$cb4', '$cb5', '$cb6', '$cb7', '$cb8', '$cb9', '$cb10')");
+
+			
 		/*Her viser man en beskjed som sier at ma er registrert*/
 		array_push($error_array, "<span style='color: #14C800;'>You're all set! Go ahead and login!</span><br>"); 
 
@@ -490,8 +495,8 @@ if(isset($_POST['registerfirm_button'])){
 
 
 		/*_________________________________Fileupload ID____________________________________________________________________*/
-		mkdir("../../../src/utils/confirmation/firm_confirmation/" . $firmname);
-		$targetdir = "../../../src/utils/confirmation/firm_confirmation/" . $firmname . "/";
+		mkdir("../src/utils/confirmation/firm_confirmation/" . $firmname);
+		$targetdir = "../src/utils/confirmation/firm_confirmation/" . $firmname . "/";
 		$target_file_id = $targetdir . basename($_FILES["fileToUpload"]["name"]);
 		$upload = 1;
 		$imageFileType = strtolower(pathinfo($target_file_id,PATHINFO_EXTENSION));
@@ -518,7 +523,7 @@ if(isset($_POST['registerfirm_button'])){
 		}
 
 		/*_________________________________Fileupload Cert____________________________________________________________________*/
-		$targetdir = "../../../src/utils/confirmation/firm_confirmation/" . $firmname . "/";
+		$targetdir = "../src/utils/confirmation/firm_confirmation/" . $firmname . "/";
 		$target_file_cert = $targetdir . basename($_FILES["fileToUpload2"]["name"]);
 		$upload = 1;
 		$imageFileType = strtolower(pathinfo($target_file_cert,PATHINFO_EXTENSION));

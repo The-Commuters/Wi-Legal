@@ -1,0 +1,371 @@
+/* ------------------------*/ /* ---------->>> TABLE OF CONTENT <<<-----------*/ /* ------------------------*/
+
+/*
+1. Import
+	1.1 - Font imports
+2. Global
+	2.1 - CSS reset
+	2.2 - Variables
+	2.3 - Font face
+	2.4 - Animation
+	2.5 - Titles
+3. Header
+4. Main
+5. Footer
+6. Dev Resources
+	6.1 - Color glossary
+	6.2 - Typography
+	6.3 - Centering
+	6.4 - Sizing
+	6.5 - Fixes
+7. Media Queries
+	7.1 - 600px and up
+	7.2 - 900px and up
+	7.3 - 1200px and up
+	7.4 - 1800px and up
+*/
+
+/* ------------------------*/ /* ---------->>> IMPORT <<<-----------*/ /* ------------------------*/
+
+/* ---------->>> Font imports <<<-----------*/
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700');
+
+/* ------------------------*/ /* ---------->>> GLOBAL <<<-----------*/ /* ------------------------*/
+
+/* ---------->>> My custom CSS reset <<<-----------*/
+
+html {
+  box-sizing: border-box; /* Makes padding be calculated with size on everything */
+  font-size: 62.5%; /* Sets REM and EM to be the same as 10px */
+}
+
+*, *:before, *:after {
+  box-sizing: inherit; /* Gives eveything a border box */
+}
+
+* {
+	margin: 0; /* Sets all margins to 0 */
+	padding: 0; /* Sets all padding to 0 */
+	border: 0; /* sets all borders to 0 */
+}
+
+a {
+	text-decoration-line: none; /* Removes the Underline from all links */
+}
+
+/* ---------->>> Variables <<<-----------*/
+
+:root { /* --->> GROUP <<--- */
+
+	/* --->> Colors <<--- */
+	--black: #202121; /* coal black */
+	--white: #F4F7F6; /* off white */
+	--blue: #005CFF; /*  vibrant blue */
+
+	--faded-black: rgba(32, 33, 33, 0.75); /* coal black with a 75% opacity */
+	--faded-white: rgba(244, 247, 246, 0.75); /* off white with a 75% opacity */
+	--faded-blue: rgba(0, 92, 255, 0.75); /* vibrant blue with a 75% opacity */
+
+	--very-faded-black: rgba(32, 33, 33, 0.50); /* coal black with a 50% opacity */
+
+	/* --->> Active <<--- */
+	--active-size: 0.75rem;
+
+} /* The place to put all the varaibles */
+
+/* ---------->>> Font face (Bulletproof) <<<-----------*/
+
+
+
+/* ---------->>> Animation <<<-----------*/
+
+@keyframes animation-name-here { /* Makes an animation variable for later use */
+
+} /* Describe what the animation does here */
+
+/* ---------->>> Titles <<<-----------*/
+
+
+
+/* ------------------------*/ /* ---------->>> HEADER <<<-----------*/ /* ------------------------*/
+
+
+
+/* ------------------------*/ /* ---------->>> MAIN <<<-----------*/ /* ------------------------*/
+
+main {
+	display: flex;
+	flex-direction: column;
+
+	align-items: center;
+	max-width: 80rem;
+	margin:0 auto;
+
+	background-color: var(--white);
+}
+
+
+/* >-----------------< */ /* >---< LIST >---< */ /* >-----------------< */
+
+.list-item {
+	display: flex;
+	flex-direction: column;
+	border-radius: 0.1rem;
+	margin: 0 2rem;
+
+	background-color: white;
+	width: 100%;
+
+}
+
+.list-item-avatar {
+	padding: 1.6rem;
+}
+
+.list-item-avatar > img {
+	width: 8rem;
+	border-radius: 50%;
+}
+
+.list-item-main {
+	padding: 1.6rem;
+}
+
+/* >---< TITLE ROW >---< */
+
+.title-row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.lsp-name {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 2.2rem;
+	font-weight: 500;
+	color: var(--faded-black);
+}
+
+.lsp-name:hover {
+	text-decoration-line: underline;
+	text-decoration-color: var(--blue);
+}
+
+.visit-button {
+	padding: 0.2rem 0.8rem 0.4rem;
+	position: relative;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1.8rem;
+	font-weight: 500;
+	color: var(--very-faded-black);
+	transition: 0.3s color;
+	z-index: 10;
+}
+
+.visit-button:hover {
+	color: var(--white);
+}
+
+.visit-button::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 0;
+	height: 100%;
+
+	background-color: var(--blue);
+
+	transition: 0.3s width ease;
+	z-index: -1;
+}
+
+.visit-button:hover::after {
+	width: 100%;
+}
+
+
+/* >---< INFO ROW >---< */
+
+.info-row {
+
+	/* FONT */
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1.2rem;
+	font-weight: 500;
+	color: var(--very-faded-black);
+}
+
+.info-row > span:first-child {
+	margin-right: 1rem;
+}
+
+
+/* >---< FIELD ROW >---< */
+
+.field-row {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.tag {
+	margin: 0 0.6rem 0.6rem 0;
+	padding: 0.3rem 1rem 0.5rem;
+	background-color: var(--very-faded-black);
+
+	border-radius: 10rem;
+
+	transition: 0.1s filter;
+	cursor: default;
+
+	/* FONT */
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1.2rem;
+	font-weight: 500;
+	color: var(--white);
+}
+
+.field-row > .tag:nth-child(1) {
+	background-color: var(--faded-black);
+}
+
+.active-tag {
+	background-color: var(--blue);
+}
+
+
+/* >---< BASIC >---< */
+
+.container {
+	padding: 0 1.6rem;
+}
+
+.wrapper {
+	padding: 0 0.8rem;
+}
+
+.card {
+	box-shadow: 0 0.2rem 0.4rem 0 rgba(0,0,0,0.2), 0 0.4rem 2rem 0 rgba(0,0,0,0.19);
+}
+
+.margin-bottom {
+	margin-bottom: 1.6rem;
+}
+
+.margin-top {
+	margin-top: 1.6rem;
+}
+
+.small-margin-bottom {
+	margin-bottom: 0.8rem;
+}
+
+.small-margin-top {
+	margin-top: 0.8rem;
+}
+
+
+
+
+
+/* ------------------------*/ /* ---------->>> FOOTER <<<-----------*/ /* ------------------------*/
+
+
+
+/* ------------------------*/ /* ---------->>> DEV RESOURCES <<<-----------*/ /* ------------------------*/
+
+/* ---------->>> Color glossary <<<-----------*/
+
+/*
+#
+#
+#
+#
+#
+*/
+
+/* ---------->>> Typography <<<-----------*/
+
+
+
+/* ---------->>> Centering <<<-----------*/
+
+.center-abs {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+} /* For perfect centering of objects inside relative containers */
+
+.center-marg {
+	margin: 0 auto;
+} /* For centering containers horizontaly */
+
+.center-flex {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+} /* For perfect centering of objects inside a flex container */
+
+.center-text {
+	text-align: center;
+} /* For centering text horizontaly */
+
+/* ---------->>> Sizing <<<-----------*/ 
+.full-w {
+	width: 100%;
+} /* Sizes things to be 100% of the width of its container */
+
+.full-h {
+	height: 100%;
+} /* Sizes things to be 100% of the height of its container */
+
+.half-w {
+	width: 50%;
+} /* Sizes things to be 50% of the width of its container */
+
+.half-h {
+	height: 50%;
+} /* Sizes things to be 50% of the height of its container */
+
+/* ---------->>> Fixes <<<-----------*/
+
+.img-fix {
+	display: block;
+} /* fixes the problem where theres a little space below imges, because they are default inline */ 
+
+.show-pc {
+	display: none;
+}
+
+/* ------------------------*/ /* ---------->>> MEDIA QUERIES <<<-----------*/ /* ------------------------*/
+
+/* Mobile first, remember to change the breakpoint based on your design*/
+
+/* Small devices (Tablets, 600px and up) */
+@media (min-width: 600px) {
+	.list-item {
+		flex-direction: row;
+	}
+
+	.show-pc {
+		display: block;
+	}
+}
+
+/* Medium devices (Tablet portrait, small desktops, 900px and up) */
+@media (min-width: 900px) {
+
+}
+
+/* Large devices (Medium to large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+}
+
+/* Huge devices (Big monitors and tvs, 1800px and up) */
+@media (min-width: 1800px) {
+
+}

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 23. Feb, 2018 12:32 PM
+-- Generation Time: 12. Mar, 2018 21:48 PM
 -- Server-versjon: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -37,7 +37,18 @@ CREATE TABLE `admins` (
   `password` varchar(255) NOT NULL,
   `signup_date` date NOT NULL,
   `profile_picture` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellstruktur for tabell `fieldnames`
+--
+
+CREATE TABLE `fieldnames` (
+  `field_number` tinyint(2) NOT NULL,
+  `field_name` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -55,7 +66,7 @@ CREATE TABLE `firms` (
   `buisness_cert` varchar(100) NOT NULL,
   `profile_picture` varchar(255) NOT NULL,
   `usertype` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -70,15 +81,17 @@ CREATE TABLE `lawyerusers` (
   `username` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `city` varchar(200) NOT NULL,
   `signup_date` date NOT NULL,
   `profile_picture` varchar(255) NOT NULL,
   `id_confirm` varchar(100) NOT NULL,
   `certification` varchar(100) NOT NULL,
   `phone_number` int(11) NOT NULL,
   `lsp_firm` varchar(100) NOT NULL,
+  `mainfield` varchar(25) NOT NULL,
   `payment` int(11) NOT NULL,
   `usertype` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -87,19 +100,18 @@ CREATE TABLE `lawyerusers` (
 --
 
 CREATE TABLE `mainfields` (
-  `username` varchar(100) NOT NULL,
-  `Main_Field` varchar(30) NOT NULL,
-  `contract_law` varchar(30) NOT NULL,
-  `company_law` varchar(30) NOT NULL,
-  `financial_law` varchar(30) NOT NULL,
-  `consumer_law` varchar(30) NOT NULL,
-  `intellectual_property_law` varchar(30) NOT NULL,
-  `investment_law` varchar(30) NOT NULL,
-  `land_law` varchar(30) NOT NULL,
-  `civil_law` varchar(30) NOT NULL,
-  `criminal_law` varchar(30) NOT NULL,
-  `marriage_divorce_law` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `lsp_id` varchar(100) NOT NULL,
+  `contractlaw` int(11) NOT NULL,
+  `companylaw` int(11) NOT NULL,
+  `financiallaw` int(11) NOT NULL,
+  `consumerlaw` int(11) NOT NULL,
+  `intellectuallaw` int(11) NOT NULL,
+  `investementlaw` int(11) NOT NULL,
+  `landlaw` int(11) NOT NULL,
+  `civillaw` int(11) NOT NULL,
+  `criminallaw` int(11) NOT NULL,
+  `divorcelaw` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -118,7 +130,7 @@ CREATE TABLE `users` (
   `profile_picture` varchar(255) NOT NULL,
   `phone_number` int(11) NOT NULL,
   `usertype` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Indexes for dumped tables
@@ -162,19 +174,19 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `firms`
 --
 ALTER TABLE `firms`
-  MODIFY `firm_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `firm_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `lawyerusers`
 --
 ALTER TABLE `lawyerusers`
-  MODIFY `lsp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `lsp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
