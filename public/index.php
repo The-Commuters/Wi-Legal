@@ -10,29 +10,13 @@ include '../src/model/userinfo_handler/userinfo_handler.php';
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr" >
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Wi Legal</title>
-	<meta name="description" content="Description of the page less than 150 characters">
-	<link rel="icon" type="image/png" href="img/favicon/favicon.png">
-	<link rel="canonical" href="http://example.com/index.html">
 
-	<!-- CSS files -->
-	<link rel="stylesheet" href="css/style.css">
-
-	<!-- JavaScript files -->
-	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="js/core.js" async></script>
-</head>
+	<!-- HEAD -->
+	<?php $page_title = 'Wilegal'; include '../src/utils/template/components/head.php'; ?>
 
 <body>
 	<!-- HEADER -->
-	<?php
-		include '../src/utils/template/components/header.php';
-	?>
+	<?php $current_page = 'index'; include '../src/utils/template/components/header.php';?>
 
 	<!-- PARALLAX ENABLER -->
 	<div class="parallax">
@@ -40,7 +24,6 @@ include '../src/model/userinfo_handler/userinfo_handler.php';
 		<main>
 
 			<!-- HERO IMAGE -->
-
 			<section class="back-layer parallax-group">
 
 				<div class="center-flex parallax-layer parallax-layer-base"></div>
@@ -102,16 +85,7 @@ include '../src/model/userinfo_handler/userinfo_handler.php';
 
 
 		<!-- FOOTER -->
-		<footer class="full-w">
-
-			<div class="parallax-footer">
-				<div class="copyright parallax-layer parallax-layer-base">
-					<!-- COPYRIGHT -->
-					<div class="note-txt black-txt"><a href="#" class="blue-txt">Copyright</a> of WI-Legal (legal shit)</div>
-				</div>
-			</div>
-
-		</footer>
+		<?php include '../src/utils/template/components/footer.php'; ?>
 
 	</div>
 

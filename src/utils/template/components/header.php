@@ -9,22 +9,26 @@
 		<!-- NAVIGATION -->
 		<nav class="full-h full-w">
 
-			<a href="index.php" class="nav-item full-w full-h center-flex active">
+			<a href="index.php" class="nav-item full-w full-h center-flex 
+			<?php if ($current_page == 'index') {echo active;} ?>">
 				<i class="pc-hide fas fa-home fa-fw fa-2x"></i>
 				<span class="pc-show nav-txt">Home</span>
 			</a>
 
-			<a href="../src/controller/list_page/list.php" class="nav-item full-w full-h center-flex">
+			<a href="list.php" class="nav-item full-w full-h center-flex 
+			<?php if ($page_current == 'list') {echo active;} ?>">
 				<i class="pc-hide fas fa-list fa-fw fa-2x"></i>
 				<span class="pc-show nav-txt">Lawyers</span>
 			</a>
 
-			<a href="#" class="nav-item full-w full-h center-flex">
+			<a href="about.php" class="nav-item full-w full-h center-flex 
+			<?php if ($current_page == 'about') {echo active;} ?>">
 				<i class="pc-hide fas fa-info fa-fw fa-2x"></i>
 				<span class="pc-show nav-txt">About</span>
 			</a>
 
-			<a href="#" class="nav-item full-w full-h center-flex">
+			<a href="contact.php" class="nav-item full-w full-h center-flex 
+			<?php if ($current_page == 'contact') {echo active;} ?>">
 				<i class="pc-hide fas fa-comment fa-fw fa-2x"></i>
 				<span class="pc-show nav-txt">Contact</span>
 			</a>
@@ -54,7 +58,7 @@
 							<h2 class="login-title blue-txt">Login</h2>
 
 							<!-- LOGIN FORM.PHP -->
-							<form action="index.php" onsubmit="return submitform()" method="POST" class="login-form center-abs">
+							<form action="index.php" method="POST" class="login-form center-abs">
 
 								<!--Email input-box-->
 								<input class="small-marg-bot full-w" type="email" 
@@ -81,7 +85,8 @@
 
 								<!-- The links for creation of account and retrival of password -->
 								<div class="login-links">
-									<a href="../src/controller/register_page/register.php" class="img-fix small-marg-bot note-txt blue-txt">New User?</a>
+									<a href="register.php" 
+									class="img-fix small-marg-bot note-txt blue-txt">New User?</a>
 									<a href="#" class="note-txt blue-txt">Forgot password?</a>
 								</div>
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 07. Mar, 2018 10:47 AM
+-- Generation Time: 12. Mar, 2018 21:48 PM
 -- Server-versjon: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -88,6 +88,7 @@ CREATE TABLE `lawyerusers` (
   `certification` varchar(100) NOT NULL,
   `phone_number` int(11) NOT NULL,
   `lsp_firm` varchar(100) NOT NULL,
+  `mainfield` varchar(25) NOT NULL,
   `payment` int(11) NOT NULL,
   `usertype` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -100,7 +101,16 @@ CREATE TABLE `lawyerusers` (
 
 CREATE TABLE `mainfields` (
   `lsp_id` varchar(100) NOT NULL,
-  `field_number` tinyint(3) NOT NULL
+  `contractlaw` int(11) NOT NULL,
+  `companylaw` int(11) NOT NULL,
+  `financiallaw` int(11) NOT NULL,
+  `consumerlaw` int(11) NOT NULL,
+  `intellectuallaw` int(11) NOT NULL,
+  `investementlaw` int(11) NOT NULL,
+  `landlaw` int(11) NOT NULL,
+  `civillaw` int(11) NOT NULL,
+  `criminallaw` int(11) NOT NULL,
+  `divorcelaw` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -164,19 +174,19 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `firms`
 --
 ALTER TABLE `firms`
-  MODIFY `firm_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `firm_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `lawyerusers`
 --
 ALTER TABLE `lawyerusers`
-  MODIFY `lsp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `lsp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
