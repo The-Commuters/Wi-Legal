@@ -46,7 +46,7 @@ include '../src/model/userinfo_handler/userinfo_handler.php';
 
 						<div class="title-row margin-bottom">
 							<a href="<?php echo $username; ?>" class="lsp-name"><?php echo $first_name . " " . $last_name  ?></a>
-							<a href="<?php echo $username; ?>" class="show-pc visit-button">Visit page</a>
+							<a href="<?php echo $username; ?>" class="pc-show visit-button">Visit page</a>
 						</div>
 
 						<div class="info-row margin-bottom">
