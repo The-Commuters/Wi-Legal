@@ -16,7 +16,7 @@
 			</a>
 
 			<a href="list.php" class="nav-item full-w full-h center-flex 
-			<?php if ($page_current == 'list') {echo active;} ?>">
+			<?php if ($current_page == 'list') {echo active;} ?>">
 				<i class="pc-hide fas fa-list fa-fw fa-2x"></i>
 				<span class="pc-show nav-txt">Lawyers</span>
 			</a>
@@ -37,8 +37,9 @@
 
 		<!-- LOGOUT.PHP -->
 		<?php if (isset($user)) { ?>
-		<a href="../src/model/session_handler/logout_handler.php" class="login-container">
-			<div class="full-w full-h center-flex">
+		<a href="userprofile.php" class="login-container">
+			<div class="full-w full-h center-flex
+			<?php if ($current_page == 'userprofile') {echo active;} ?>">
 				<span class="pc-show nav-txt">Profile</span>
 				<img src="<?php echo $profile_pic; ?>" class="pc-hide half-w" style="border-radius: 50%; margin: 0 16px 0 8px;">
 			</div>

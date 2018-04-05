@@ -3,6 +3,7 @@
 <?php  
 	//Connection to the database
 	require '../config/config.php';
+	/*Retrives the info of the user*/
 	include '../src/model/userinfo_handler/userinfo_handler.php';
 	include '../src/model/form_handlers/profile_handler.php';
 	/* Retrieving php code from login_handler.php */
@@ -11,38 +12,34 @@
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr" >
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Wi Legal</title>
-	<meta name="description" content="Description of the page less than 150 characters">
-	<link rel="icon" type="image/png" href="img/favicon/favicon.png">
-	<link rel="canonical" href="http://example.com/index.html">
+	<!-- HEAD -->
+	<?php $page_title = 'Wilegal'; include '../src/utils/template/components/head.php'; ?>
 
-	<!-- CSS files -->
-	<link rel="stylesheet" type="text/css" href="css/style.css">                
-	<link rel="stylesheet" type="text/css" href="css/stylelist.css">  
-
-	<!-- JavaScript files -->
-	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="js/core.js" async></script>              
-</head>
 <body>
-
 	<!-- HEADER -->
-	<?php $page_current = 'profile'; include '../src/utils/template/components/header.php'; ?>
+	<?php $current_page = 'profile'; include '../src/utils/template/components/header.php'; ?>
 
-Dette er profilsiden<br>
-Som du kan se er brukernavnet i søkeboksen ovenfor<br>
-Nå kan man legge ting til på denne siden for brukeren det gjelder<br>
-Man skal komme hit etter at man trykker på brukernavnet til en advokat i lista<br>
-Og her kan man finne kontaktinformasjon og annen info om brukeren 
-<br>
-<img src="<?php 
-$profile_pic = $other_user['profile_picture'];
-echo $profile_pic; ?>">
+	<?php 
+		/* Pulls here out all the information from the user, that will go to the profile page.*/
+		$first_name = $other_user["first_name"];
+		$last_name = $other_user["last_name"];
+		$username = $other_user["username"];
+		$lsp_id = $other_user["lsp_id"];
+		$profile_pic = $other_user["profile_picture"]; 
+		$city = $other_user["city"]; 
+		$firm = $other_user["lsp_firm"];
+		$mainfield = $other_user["mainfield"];		
+
+		/* Decides what kind of user that the logged in account is and collects the template/component for the profile-page*/
+		if ($other_user['usertype'] == 1) {
+			//if the klicked user is of usertype lawyers
+			include '../src/utils/template/components/profile_components/lawyers.php';
+		} elseif ($other_user['usertype'] == 2) {
+			//if the klicked user is of usertype firms
+			include '../src/utils/template/components/profile_components/firms.php';
+		}
+	?>
+
 
 </body>
 </html>

@@ -19,14 +19,14 @@ include '../src/model/userinfo_handler/userinfo_handler.php';
 <body>
 
 	<!-- HEADER -->
-	<?php $page_current = 'list'; include '../src/utils/template/components/header.php'; ?>
+	<?php $current_page = 'list'; include '../src/utils/template/components/header.php'; ?>
 
 	<main>
 		<?php
 		if (mysqli_num_rows($queryLu) > 0) {
-	  // output data of each row
+	  		// output data of each row
 			while($row = mysqli_fetch_assoc($queryLu)) {	
-	    //Gets the variables from the current user you want to show.
+	    		//Gets the variables from the current user you want to show.
 				$first_name = $row["first_name"];
 				$last_name = $row["last_name"];
 				$username = $row["username"];
