@@ -16,6 +16,7 @@ if (isset($_SESSION['username'])) {
 		$user_detals_query = mysqli_query($con, "SELECT * FROM firms WHERE username='$loggedInUser'");
 	}
 	$user = mysqli_fetch_array($user_detals_query);
+	$profile_pic = $user['profile_picture'];
 }
 else {
 

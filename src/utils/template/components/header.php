@@ -36,7 +36,14 @@
 		</nav>
 
 		<!-- LOGOUT.PHP -->
-		<?php if (isset($user)) { ?>  <a href="../src/model/session_handler/logout_handler.php">Logout</a>  <?php } else { ?>
+		<?php if (isset($user)) { ?>
+		<a href="../src/model/session_handler/logout_handler.php" class="login-container">
+			<div class="full-w full-h center-flex">
+				<span class="pc-show nav-txt">Profile</span>
+				<img src="<?php echo $profile_pic; ?>" class="pc-hide half-w" style="border-radius: 50%; margin: 0 16px 0 8px;">
+			</div>
+		</a>
+		<?php } else { ?>
 
 		<!-- LOGIN -->
 		<div href="#" class="login-container">
