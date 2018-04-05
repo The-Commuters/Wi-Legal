@@ -83,11 +83,9 @@ a {
 	--white: #F4F7F6; /* off white */
 	--blue: #005CFF; /*  vibrant blue */
 
-	--faded-black: rgba(32, 33, 33, 0.75); /* coal black with a 75% opacity */
-	--faded-white: rgba(244, 247, 246, 0.75); /* off white with a 75% opacity */
-	--faded-blue: rgba(0, 92, 255, 0.75); /* vibrant blue with a 75% opacity */
-
-	--very-faded-black: rgba(32, 33, 33, 0.50); /* coal black with a 50% opacity */
+	--faded-black: rgba(32, 33, 33, 0.75); /* coal black with a 50% opacity */
+	--faded-white: rgba(244, 247, 246, 0.75); /* off white with a 50% opacity */
+	--faded-blue: rgba(0, 92, 255, 0.75); /* vibrant blue with a 50% opacity */
 
 	/* --->> Active <<--- */
 	--active-size: 0.75rem;
@@ -143,7 +141,7 @@ header {
 	background-color: var(--white);
 	box-shadow: 1px 0px 2px rgba(0, 0, 0, 0.2);
 
-	transition: 0.5s;
+	// transition: 0.5s;
 
 	z-index: 10;
 } /* The Wrapper for the logo, navigation and login*/
@@ -157,7 +155,7 @@ header {
 } /* The container for the logo */
 
 	.logo-container hover {
-		
+
 	}
 
 
@@ -376,6 +374,44 @@ main {
 	padding-left: 5rem; /* -- SCALE -- */
 } /* The styling for the main section*/
 
+/* ---------->>> Contakt uss <<<-----------*/
+.contaktForm {
+	display: flex;
+	flex-direction: column;
+
+}
+
+.contaktLabel {
+	margin: 0.5rem;
+	align-self: center;
+}
+
+.contaktInput {
+	align-self: center;
+	width: 50%;
+}
+
+.contaktMessage {
+	align-self: center;
+	width: 60%;
+	height: 30%;
+}
+
+.contaktButton {
+	align-self: center;
+	width: flex;
+	padding: 0.5rem;
+	margin: 1rem;
+}
+
+.contaktDirect{
+	margin: 1.5rem;
+	}
+
+.contaktText{
+margin: 0.5rem
+
+	}
 
 /* ---------->>> Hero (4.2) <<<-----------*/
 
@@ -388,137 +424,8 @@ main {
 
 
 /* ---------->>> Info wrapper (4.4) <<<-----------*/
-¨
 
 
-/* ---------->>> Layer list (4.x) <<<-----------*/
-
-.list-item {
-	display: flex;
-	flex-direction: column;
-	border-radius: 0.1rem;
-	margin: 0 2rem;
-
-	background-color: white;
-	width: 100%;
-
-}
-
-.list-item-avatar {
-	padding: 1.6rem;
-}
-
-.list-item-avatar > img {
-	width: 8rem;
-	border-radius: 50%;
-}
-
-.list-item-main {
-	padding: 1.6rem;
-}
-
-/* >---< TITLE ROW >---< */
-
-.title-row {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-
-.lsp-name {
-	font-family: 'Open Sans', sans-serif;
-	font-size: 2.2rem;
-	font-weight: 500;
-	color: var(--faded-black);
-}
-
-.lsp-name:hover {
-	text-decoration-line: underline;
-	text-decoration-color: var(--blue);
-}
-
-.visit-button {
-	padding: 0.2rem 0.8rem 0.4rem;
-	position: relative;
-	font-family: 'Open Sans', sans-serif;
-	font-size: 1.8rem;
-	font-weight: 500;
-	color: var(--very-faded-black);
-	transition: 0.3s color;
-	z-index: 10;
-}
-
-.visit-button:hover {
-	color: var(--white);
-}
-
-.visit-button::after {
-	content: "";
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 0;
-	height: 100%;
-
-	background-color: var(--blue);
-
-	transition: 0.3s width ease;
-	z-index: -1;
-}
-
-.visit-button:hover::after {
-	width: 100%;
-}
-
-
-/* >---< INFO ROW >---< */
-
-.info-row {
-
-	/* FONT */
-	font-family: 'Open Sans', sans-serif;
-	font-size: 1.2rem;
-	font-weight: 500;
-	color: var(--very-faded-black);
-}
-
-.info-row > span:first-child {
-	margin-right: 1rem;
-}
-
-
-/* >---< FIELD ROW >---< */
-
-.field-row {
-	display: flex;
-	align-items: center;
-	flex-wrap: wrap;
-}
-
-.tag {
-	margin: 0 0.6rem 0.6rem 0;
-	padding: 0.3rem 1rem 0.5rem;
-	background-color: var(--very-faded-black);
-
-	border-radius: 10rem;
-
-	transition: 0.1s filter;
-	cursor: default;
-
-	/* FONT */
-	font-family: 'Open Sans', sans-serif;
-	font-size: 1.2rem;
-	font-weight: 500;
-	color: var(--white);
-}
-
-.field-row > .tag:nth-child(1) {
-	background-color: var(--faded-black);
-}
-
-.active-tag {
-	background-color: var(--blue);
-}
 
 
 /* ------------------------*/ /* ---------->>> FOOTER (5) <<<-----------*/ /* ------------------------*/
@@ -564,7 +471,7 @@ footer {
 	font-size: 1.4rem;
 	font-family: "proxima-nova", arial, sans-serif;
 	font-style: normal;
-	font-synthesis: antialiased;
+	font-smoothing: antialiased;
 } /* Text format for navigation */
 
 .bread-txt {
@@ -738,34 +645,6 @@ Footer
 	margin-bottom: 5rem;
 } /* The class aplied to give a large margin on the bottom */
 
-.container {
-	padding: 0 1.6rem;
-} /* ONLY FOR USE IN THE LIST, DO NOT USE THIS ANYWHERE ELSE */
-
-.wrapper {
-	padding: 0 0.8rem;
-} /* ONLY FOR USE IN THE LIST, DO NOT USE THIS ANYWHERE ELSE */
-
-.card {
-	box-shadow: 0 0.2rem 0.4rem 0 rgba(0,0,0,0.2), 0 0.4rem 2rem 0 rgba(0,0,0,0.19);
-} /* ONLY FOR USE IN THE LIST, DO NOT USE THIS ANYWHERE ELSE */
-
-.margin-bottom {
-	margin-bottom: 1.6rem;
-} /* ONLY FOR USE IN THE LIST, DO NOT USE THIS ANYWHERE ELSE */
-
-.margin-top {
-	margin-top: 1.6rem;
-} /* ONLY FOR USE IN THE LIST, DO NOT USE THIS ANYWHERE ELSE */
-
-.small-margin-bottom {
-	margin-bottom: 0.8rem;
-} /* ONLY FOR USE IN THE LIST, DO NOT USE THIS ANYWHERE ELSE */
-
-.small-margin-top {
-	margin-top: 0.8rem;
-} /* ONLY FOR USE IN THE LIST, DO NOT USE THIS ANYWHERE ELSE */
-
 
 /* ------------------------*/ /* ---------->>> MEDIA QUERIES (7) <<<-----------*/ /* ------------------------*/
 
@@ -782,14 +661,25 @@ Footer
 			height: 30rem;
 		} /* The hover for the login box / .login-container:hover .login-box-container*/
 	
-	.list-item {
-		flex-direction: row;
-	}
+	/* ---------->>> Contact us <<<-----------*/
+	.contaktText {
+		margin-left: 0.5rem;
+		font-size: 1.5rem;
+		}
 
-	.pc-show {
-		display: block;
-	}
+	.contact-base{
+		align-self: center; 
+		width: 80%;
+		}
 
+	.contaktMessage{
+		max-width: 40%;
+		max-height: 15%;
+		}	
+	
+	.contaktDirect{
+		margin: 1.00rem;
+		}
 }
 
 /* Medium devices (Tablet portrait, small desktops, 900px and up) (7.2) */
@@ -870,6 +760,15 @@ Footer
 		padding: 0;
 	} /* scaling for the main section */
 
+	/* ---------->>> Contact us <<<-----------*/
+	.contaktText {
+	margin-left: 0.5rem;
+	font-size: 2.5rem;
+	}
+
+	.contact-base{
+	width: 60%;
+	}
 
 	/* ---------->>> Footer <<<-----------*/
 
@@ -891,7 +790,6 @@ Footer
 }
 
 /* Large devices (Medium to large desktops, 1200px and up) (7.3) */
-
 @media (min-width: 1200px) {
 
 	/* ---------->>> Header <<<-----------*/
@@ -910,7 +808,7 @@ Footer
 			height: 100vh;
 			overflow-x: hidden;
 			overflow-y: auto;
-			-ms-perspective-origin-x: 100%; /* Webkit fix */
+			perspective-origin-x: 100%; /* Webkit fix */
 		}
 
 		.parallax-group {
@@ -925,7 +823,7 @@ Footer
 			right: 0;
 			bottom: 0;
 			left: 0;
-			-ms-transform-origin-x: 100%; /* Webkit fix */
+			transform-origin-x: 100%; /* Webkit fix */
 		}
 
 		.parallax-layer-base {
@@ -952,11 +850,42 @@ Footer
 			z-index: 0;
 		}
 	}
+		
+	/* ---------->>> Contact us <<<-----------*/
+	.contaktText {
+	margin-left: 0.5rem;
+	font-size: 3.5rem;
+	}
 
+	.contact-base{
+	align-self: center;
+	width: 60%;
+	}
+
+	.contaktMessage{
+	width: 40%;
+	align-self: center;
+	}
+	
+	.contaktLabel{
+	 font-size: 20px;
+	}
 
 }
 
 /* Huge devices (Big monitors and tvs, 1800px and up) (7.4) */
 @media (min-width: 1800px) {
+
+	/* ---------->>> Contact us <<<-----------*/
+
+	.contaktText {
+	margin-left: 0.5rem;
+	font-size: 2.5rem;
+	}
+
+ 	.contact-base{
+	width: 20%;
+
+}
 
 }

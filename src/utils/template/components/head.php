@@ -7,7 +7,11 @@
 	<link rel="canonical" href="http://example.com/index.html">
 
 	<!-- CSS files -->
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<?php if ($page_title == 'Lawyers') { ?>              
+		<link rel="stylesheet" type="text/css" href="css/listestyle.css">               
+	<?php } ?>
+	<link rel="stylesheet" type="text/css" href="css/style.css">  
+
 	<!-- JavaScript files -->
 	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

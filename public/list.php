@@ -36,17 +36,17 @@ include '../src/model/userinfo_handler/userinfo_handler.php';
 				$firm = $row["lsp_firm"];
 				$mainfield = $row["mainfield"];
 				?>
-				<div class="list-item card margin-bottom">
+				<div class="list-item card margin-bottom full-w">
 
 					<a href="<?php echo $username; ?>" class="list-item-avatar center-flex">
 						<img src="<?php echo $profile_pic; ?>" alt="#">
 					</a>
 
-					<div class="list-item-main">
+					<div class="list-item-main full-w">
 
 						<div class="title-row margin-bottom">
 							<a href="<?php echo $username; ?>" class="lsp-name"><?php echo $first_name . " " . $last_name  ?></a>
-							<a href="<?php echo $username; ?>" class="pc-show visit-button">Visit page</a>
+							<a href="<?php echo $username; ?>" class="show-pc visit-button">Visit page</a>
 						</div>
 
 						<div class="info-row margin-bottom">
