@@ -2,7 +2,7 @@
 	<header>
 
 		<!-- LOGO -->
-		<a href="index.php" class=" logo-container center-flex">
+		<a href="list.php" class=" logo-container center-flex">
 			<h1 class="full-w full-h center-flex"><span class="blue-txt">WI</span></h1>
 		</a>
 
