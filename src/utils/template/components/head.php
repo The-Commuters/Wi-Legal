@@ -7,9 +7,6 @@
 	<link rel="canonical" href="http://example.com/index.html">
 
 	<!-- CSS files -->
-	<?php if ($page_title == 'Lawyers') { ?>              
-		<link rel="stylesheet" type="text/css" href="css/listestyle.css">               
-	<?php } ?>
 	<link rel="stylesheet" type="text/css" href="css/style.css">  
 
 	<!-- JavaScript files -->

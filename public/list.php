@@ -21,70 +21,108 @@ include '../src/model/userinfo_handler/userinfo_handler.php';
 	<!-- HEADER -->
 	<?php $current_page = 'list'; include '../src/utils/template/components/header.php'; ?>
 
-	<main>
-		<?php
-		if (mysqli_num_rows($queryLu) > 0) {
-	  		// output data of each row
-			while($row = mysqli_fetch_assoc($queryLu)) {	
-	    		//Gets the variables from the current user you want to show.
-				$first_name = $row["first_name"];
-				$last_name = $row["last_name"];
-				$username = $row["username"];
-				$lsp_id = $row["lsp_id"];
-				$profile_pic = $row["profile_picture"]; 
-				$city = $row["city"]; 
-				$firm = $row["lsp_firm"];
-				$mainfield = $row["mainfield"];
-				?>
-				<div class="list-item card margin-bottom full-w">
+	<main class="small-marg-bot">
 
-					<a href="<?php echo $username; ?>" class="list-item-avatar center-flex">
-						<img src="<?php echo $profile_pic; ?>" alt="#">
-					</a>
+		<div class="">
+			<div class="hero med-marg-bot">
+				<img src="img/placeholders/placeholder_large_blurry.jpg" alt="Test" class="full-w pc-show">
+				<div class="cta center-abs pc-show">
+					<p class="big-txt white-txt med-marg-bot">Get trusted advices after clicks</p>
+					<a href="#list" class="cta-button center-text card bread-txt">Find a lawyer</a>
+				</div>
+			</div>
 
-					<div class="list-item-main full-w">
+			<div class="lawyer-listing container center-marg">
 
-						<div class="title-row margin-bottom">
-							<a href="<?php echo $username; ?>" class="lsp-name"><?php echo $first_name . " " . $last_name  ?></a>
-							<a href="<?php echo $username; ?>" class="show-pc visit-button">Visit page</a>
-						</div>
-
-						<div class="info-row margin-bottom">
-							<span>
-								<?php 	if ($firm != NULL) { echo '<i class="far fa-building"></i>' . " " . $firm;} 
-								else { echo '<i class="fas fa-street-view"></i>' . " " . "Freelance"; } ?>
-							</span> 
-							<span><i class="fas fa-map-marker"></i> <?php echo $city ?></span> 
-						</div>
-
-						<?php 
-						$sqlMf = "SELECT * FROM mainfields WHERE lsp_id='$lsp_id'";
-						$queryMf = mysqli_query($con, $sqlMf);
-						$row = mysqli_fetch_row($queryMf);
-						?>
-
-						<div class="field-row small-margin-bottom">
-							<?php
-							echo '<span class="tag inactive-tag">' . $mainfield . '</span>';
-							for ($var = 1 ; $var <= 9; $var++) { 
-								if (in_array($var, $row)) {
-									$sqlMf = "SELECT field_name FROM fieldnames WHERE field_number='$var'";
-									$queryMf = mysqli_query($con, $sqlMf);
-									$name = mysqli_fetch_assoc($queryMf);
-									$fieldName = $name["field_name"];
-									if ($fieldName != $mainfield) {
-										echo '<span class="tag inactive-tag">' . $fieldName . '</span>'; 
-									}
-								}
-							}?>	 
-							<!-- <span class="tag active-tag">Criminal Law</span> -->
-						</div>
-
+				<div id="list"></div>
+			
+			<div class="search container med-marg-bot">
+				<form action="#" class="full-w full-h card">
+					<div class="search-input full-w small-marg-bot">
+						<input type="text" name="search" class="bread-txt faded-black-txt" placeholder="Search by name">
+						<a href="#" type="submit" class="faded-black-txt"><i class="fas fa-search fa-2x"></i></a>
 					</div>
+
+					<!-- Kan bare kjøre en for loop her -->
+					<div class="search-options">
+						<div class="full-w faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Marriage lawyer</span></div>
+						<div class="full-w faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Marriage lawyer</span></div>
+						<div class="full-w faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Marriage lawyer</span></div>
+						<div class="full-w faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Marriage lawyer</span></div>
+					</div>
+
+				</form>
+			</div>
+
+			<div class="list container">
+			<?php
+			if (mysqli_num_rows($queryLu) > 0) {
+	  			// output data of each row
+				while($row = mysqli_fetch_assoc($queryLu)) {	
+	    			//Gets the variables from the current user you want to show.
+					$first_name = $row["first_name"];
+					$last_name = $row["last_name"];
+					$username = $row["username"];
+					$lsp_id = $row["lsp_id"];
+					$profile_pic = $row["profile_picture"]; 
+					$city = $row["city"]; 
+					$firm = $row["lsp_firm"];
+					$mainfield = $row["mainfield"];
+					?>
+					<div class="list-item card margin-bottom full-w">
+
+						<a href="<?php echo $username; ?>" class="list-item-avatar center-flex">
+							<img src="<?php echo $profile_pic; ?>" alt="#">
+						</a>
+
+						<div class="list-item-main full-w">
+
+							<div class="title-row margin-bottom">
+								<a href="<?php echo $username; ?>" class="lsp-name"><?php echo $first_name . " " . $last_name  ?></a>
+								<a href="<?php echo $username; ?>" class="pc-show visit-button">Visit page</a>
+							</div>
+
+							<div class="info-row margin-bottom">
+								<span>
+									<?php 	if ($firm != NULL) { echo '<i class="far fa-building"></i>' . " " . $firm;} 
+									else { echo '<i class="fas fa-street-view"></i>' . " " . "Freelance"; } ?>
+								</span> 
+								<span><i class="fas fa-map-marker"></i> <?php echo $city ?></span> 
+							</div>
+
+							<?php 
+							$sqlMf = "SELECT * FROM mainfields WHERE lsp_id='$lsp_id'";
+							$queryMf = mysqli_query($con, $sqlMf);
+							$row = mysqli_fetch_row($queryMf);
+							?>
+
+							<div class="field-row small-margin-bottom">
+								<?php
+								echo '<span class="tag inactive-tag">' . $mainfield . '</span>';
+								for ($var = 1 ; $var <= 9; $var++) { 
+									if (in_array($var, $row)) {
+										$sqlMf = "SELECT field_name FROM fieldnames WHERE field_number='$var'";
+										$queryMf = mysqli_query($con, $sqlMf);
+										$name = mysqli_fetch_assoc($queryMf);
+										$fieldName = $name["field_name"];
+										if ($fieldName != $mainfield) {
+										echo '<span class="tag inactive-tag">' . $fieldName . '</span>'; 
+										}
+									}
+								}?>	 
+								<!-- <span class="tag active-tag">Criminal Law</span> -->
+							</div>
+
+						</div>
 
 				</div>
 			<?php }
-		} ?>
+			} ?>
+			</div>
+
+			</div>
+
+		</div>
 	</main>
 
 </body>
