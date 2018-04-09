@@ -11,10 +11,7 @@ include '../src/model/userinfo_handler/userinfo_handler.php';
 <html lang="en" dir="ltr">
 
 <!-- HEAD -->
-<?php $page_title = 'Wilegal'; include '../src/utils/template/components/head.php'; ?>
-
-<!-- Remove after listestyle is integrated -->
-<link rel="stylesheet" type="text/css" href="css/listestyle.css">   
+<?php $page_title = 'Wilegal'; include '../src/utils/template/components/head.php'; ?>  
 
 <body>
 	<!-- HEADER -->

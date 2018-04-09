@@ -9,12 +9,6 @@
 		<!-- NAVIGATION -->
 		<nav class="full-h full-w">
 
-			<a href="index.php" class="nav-item full-w full-h center-flex 
-			<?php if ($current_page == 'index') {echo active;} ?>">
-				<i class="pc-hide fas fa-home fa-fw fa-2x"></i>
-				<span class="pc-show nav-txt">Home</span>
-			</a>
-
 			<a href="list.php" class="nav-item full-w full-h center-flex 
 			<?php if ($current_page == 'list') {echo active;} ?>">
 				<i class="pc-hide fas fa-list fa-fw fa-2x"></i>
@@ -66,7 +60,7 @@
 							<h2 class="login-title blue-txt">Login</h2>
 
 							<!-- LOGIN FORM.PHP -->
-							<form action="index.php" method="POST" class="login-form center-abs">
+							<form action="list.php" method="POST" class="login-form center-abs">
 
 								<!--Email input-box-->
 								<input class="small-marg-bot full-w" type="email" 

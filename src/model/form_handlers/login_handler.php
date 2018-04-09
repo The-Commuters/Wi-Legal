@@ -55,7 +55,7 @@ if(isset($_POST['login_button'])) {
 		$_SESSION['usertype'] = $usertype;
 
 		/*Dette er siden man blir sendt til etter at man logger inn*/
-		header("Location: index.php"); 
+		header("Location: list.php"); 
 		exit();
 	}
 	else { 

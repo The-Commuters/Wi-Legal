@@ -18,9 +18,6 @@ include '../src/model/form_handlers/message_handler.php';
 <!-- HEAD -->
 <?php $page_title = 'Wilegal'; include '../src/utils/template/components/head.php'; ?>
 
-<!-- Remove after listestyle is integrated -->
-<link rel="stylesheet" type="text/css" href="css/listestyle.css">  
-
 <body>
 	<!-- HEADER -->
 	<?php $current_page = 'profile'; include '../src/utils/template/components/header.php'; ?>
