@@ -10,40 +10,43 @@ include '../src/model/userinfo_handler/userinfo_handler.php';
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
-	<!-- HEAD -->
-	<?php $page_title = 'Wilegal'; include '../src/utils/template/components/head.php'; ?>
+<!-- HEAD -->
+<?php $page_title = 'Wilegal'; include '../src/utils/template/components/head.php'; ?>
+
+<!-- Remove after listestyle is integrated -->
+<link rel="stylesheet" type="text/css" href="css/listestyle.css">   
 
 <body>
 	<!-- HEADER -->
-	<?php $current_page = 'userprofile'; include '../src/utils/template/components/header.php';?>
+	<?php $current_page = 'userprofile'; include '../src/utils/template/components/header.php'; ?>
 
 	<?php 
-		/* Pulls here out all the information from the user, that will go to the profile page.*/
-		$usertype = $user['usertype'];
-		$first_name = $user["first_name"];
-		$last_name = $user["last_name"];
-		$username = $user["username"];
-		$profile_pic = $user["profile_picture"]; 
+	/* Pulls here out all the information from the user, that will go to the profile page.*/
+	$usertype = $user['usertype'];
+	$first_name = $user["first_name"];
+	$last_name = $user["last_name"];
+	$username = $user["username"];
+	$profile_pic = $user["profile_picture"]; 
 
-		/* Decides here what kind of user that the logged in account is and collects the template/component for the profile-page*/
-		if ($user['usertype'] == 0) {
+	/* Decides here what kind of user that the logged in account is and collects the template/component for the profile-page*/
+	if ($user['usertype'] == 0) {
 			//if the klicked user is of usertype users
-			include '../src/utils/template/components/userprofile_components/users.php';
-		} elseif ($user['usertype'] == 1) {
-			/* Pulls the iformation that only lawyers have in the database.z */
-			$lsp_id = $user["lsp_id"];
-			$city = $user["city"];
-			$firm = $user["lsp_firm"];
-		    $mainfield = $user["mainfield"];
+		include '../src/utils/template/components/userprofile_components/users.php';
+	} elseif ($user['usertype'] == 1) {
+			//Pulls the iformation that only lawyers have in the database.
+		$lsp_id = $user["lsp_id"];
+		$city = $user["city"];
+		$firm = $user["lsp_firm"];
+		$mainfield = $user["mainfield"];
 			//if the klicked user is of usertype lawyers
-			include '../src/utils/template/components/userprofile_components/lawyers.php';
-		} elseif ($user['usertype'] == 2) {
+		include '../src/utils/template/components/userprofile_components/lawyers.php';
+	} elseif ($user['usertype'] == 2) {
 			//if the klicked user is of usertype firms
-			include '../src/utils/template/components/userprofile_components/firms.php';
-		} elseif ($user['usertype'] == 3) {
+		include '../src/utils/template/components/userprofile_components/firms.php';
+	} elseif ($user['usertype'] == 3) {
 			//if the klicked user is of usertype admins
-			include '../src/utils/template/components/userprofile_components/admins.php';
-		}
+		include '../src/utils/template/components/userprofile_components/admins.php';
+	}
 	?>
 </body>
 </html>

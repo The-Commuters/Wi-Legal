@@ -133,7 +133,8 @@ if(isset($_POST['register_button'])){
 
 
 		/*Setter opp et profilbilde til kontoen.*/
-		$profile_pic = "link til hvor profilbildet ligger";
+		$rand = rand(1, 12);
+		$profile_pic = "img/profile/default/" . $rand . ".png" ;
 
 		/*Her blir all informasjonen lagret i databasen, denne linjen er viktig i det at den legger informasjonen inn i databasen '1' på slutten er er brukertype.*/
 		$query = mysqli_query($con, "INSERT INTO users VALUES ('', '$firstname', '$lastname', '$username', '$email', '$password', '$date', '$profile_pic', '$phone_number' , 0)");

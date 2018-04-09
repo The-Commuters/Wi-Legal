@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 12. Mar, 2018 21:48 PM
+-- Generation Time: 09. Apr, 2018 17:43 PM
 -- Server-versjon: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -116,6 +116,21 @@ CREATE TABLE `mainfields` (
 -- --------------------------------------------------------
 
 --
+-- Tabellstruktur for tabell `messages`
+--
+
+CREATE TABLE `messages` (
+  `message_id` int(11) NOT NULL,
+  `title` varchar(200) NOT NULL,
+  `text` text NOT NULL,
+  `sender_id` int(11) NOT NULL,
+  `reciver_id` int(11) NOT NULL,
+  `sent_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Tabellstruktur for tabell `users`
 --
 
@@ -155,6 +170,12 @@ ALTER TABLE `lawyerusers`
   ADD PRIMARY KEY (`lsp_id`);
 
 --
+-- Indexes for table `messages`
+--
+ALTER TABLE `messages`
+  ADD PRIMARY KEY (`message_id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -183,10 +204,16 @@ ALTER TABLE `lawyerusers`
   MODIFY `lsp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
