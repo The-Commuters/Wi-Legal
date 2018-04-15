@@ -5,6 +5,7 @@ require '../config/config.php';
 include '../src/model/form_handlers/login_handler.php';
 /* $loggedinuser will tell the rest of the site what user is connected */
 include '../src/model/userinfo_handler/userinfo_handler.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -27,21 +28,32 @@ include '../src/model/userinfo_handler/userinfo_handler.php';
 
 	/* Decides here what kind of user that the logged in account is and collects the template/component for the profile-page*/
 	if ($user['usertype'] == 0) {
-			//if the klicked user is of usertype users
+		/* if the clicked user is of usertype users */
 		include '../src/utils/template/components/userprofile_components/users.php';
 	} elseif ($user['usertype'] == 1) {
-			//Pulls the iformation that only lawyers have in the database.
+		/* Pulls the information that only lawyers have in the database. */
 		$lsp_id = $user["lsp_id"];
 		$city = $user["city"];
 		$firm = $user["lsp_firm"];
 		$mainfield = $user["mainfield"];
-			//if the klicked user is of usertype lawyers
+
+		/* If the lawyer wants to change hos bio, it will be done here. */
+		include '../src/model/form_handlers/bio_handler.php';
+
+		/* Getting the latest bio that the user have made.*/
+		$query = mysqli_query($con, "SELECT bio FROM userbio WHERE lsp_id = '$lsp_id' ORDER BY bio_id DESC");
+		$bioarray = mysqli_fetch_array($query);
+		/* $bio will be shown as a placeholder in the lawyers own profile */
+		$bio = $bioarray[0];
+
+
+		/* if the clicked user is of usertype lawyers. */
 		include '../src/utils/template/components/userprofile_components/lawyers.php';
 	} elseif ($user['usertype'] == 2) {
-			//if the klicked user is of usertype firms
+		/* if the clicked user is of usertype firms */
 		include '../src/utils/template/components/userprofile_components/firms.php';
 	} elseif ($user['usertype'] == 3) {
-			//if the klicked user is of usertype admins
+		/* if the clicked user is of usertype admins */
 		include '../src/utils/template/components/userprofile_components/admins.php';
 	}
 	?>

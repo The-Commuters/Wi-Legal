@@ -81,7 +81,6 @@
 								<!--If there is an error message in $ error_array about the password, type it here-->
 								<?php if(in_array("Email or password was incorrect<br>", $error_array)) {
 								echo  "Email or password was incorrect<br>";} ?>
-								<!-- FIX SÅNN AT DEN IKKE RELOADER UTEN RIKTIG PASSORD OG BRUKERNAVN -->
 
 								<br>
 

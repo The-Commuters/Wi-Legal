@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 09. Apr, 2018 17:43 PM
+-- Generation Time: 15. Apr, 2018 22:32 PM
 -- Server-versjon: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -89,7 +89,7 @@ CREATE TABLE `lawyerusers` (
   `phone_number` int(11) NOT NULL,
   `lsp_firm` varchar(100) NOT NULL,
   `mainfield` varchar(25) NOT NULL,
-  `payment` int(11) NOT NULL,
+  `bio` text NOT NULL,
   `usertype` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -126,6 +126,19 @@ CREATE TABLE `messages` (
   `sender_id` int(11) NOT NULL,
   `reciver_id` int(11) NOT NULL,
   `sent_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellstruktur for tabell `userbio`
+--
+
+CREATE TABLE `userbio` (
+  `bio_id` int(11) NOT NULL,
+  `lsp_id` int(11) NOT NULL,
+  `bio` text NOT NULL,
+  `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -176,6 +189,12 @@ ALTER TABLE `messages`
   ADD PRIMARY KEY (`message_id`);
 
 --
+-- Indexes for table `userbio`
+--
+ALTER TABLE `userbio`
+  ADD PRIMARY KEY (`bio_id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -207,13 +226,19 @@ ALTER TABLE `lawyerusers`
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT for table `userbio`
+--
+ALTER TABLE `userbio`
+  MODIFY `bio_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
