@@ -27,7 +27,7 @@ include '../src/model/userinfo_handler/userinfo_handler.php';
 			<div class="hero med-marg-bot">
 				<img src="img/placeholders/placeholder_large_blurry.jpg" alt="Test" class="full-w pc-show">
 				<div class="cta center-abs pc-show">
-					<p class="big-txt white-txt med-marg-bot">Get trusted advices after clicks</p>
+					<p class="big-txt white-txt med-marg-bot">Get trusted advices after clicks <i class="fas fa-mouse-pointer blue-txt"></i></p> 
 					<a href="#list" class="cta-button center-text card bread-txt">Find a lawyer</a>
 				</div>
 			</div>
@@ -41,7 +41,7 @@ include '../src/model/userinfo_handler/userinfo_handler.php';
 					<div class="search-input full-w small-marg-bot">
 						
 						<input type="text" name="search" class="bread-txt faded-black-txt" placeholder="Search by name">
-						<input type="submit" name="search_button" class="faded-black-txt">
+						<button type="submit" name="search_button" class="faded-black-txt"><i class="fas fa-search fa-lg"></i></button>
 						<!--<i class="fas fa-search fa-2x"></i>-->
 						
 					</div>
