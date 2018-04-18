@@ -18,6 +18,9 @@ require '../src/model/form_handlers/register_handler.php';
 	<?php $page_title = '';include "../src/utils/template/components/head.php";?>  
 
 <body>
+	<!-- HEADER -->
+	<?php $current_page = 'register'; include '../src/utils/template/components/header.php'; ?>
+	<main>
 	<p>Registrering for kunder</p>
 	<!--The form for registering a new user-->
 	<form action="register.php" method="POST">
@@ -281,5 +284,6 @@ require '../src/model/form_handlers/register_handler.php';
 					echo "You're all set! Go ahead and login!<br>"; ?>
 
 				</form>
+				</main>
 			</body>
 			</html>

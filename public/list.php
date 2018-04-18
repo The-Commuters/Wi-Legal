@@ -1,9 +1,9 @@
 <?php  
-/*Config gives a connection to the database between the website*/
+/* Config gives a connection to the database between the website*/
 require '../config/config.php';
-/*Gets $user that you can use on the website to collect data from the database*/
+/* Gets $user that you can use on the website to collect data from the database*/
 include '../src/model/userinfo_handler/userinfo_handler.php';
-/*Userlist handler that sets up the list on this site.*/
+/* Userlist handler that sets up the list on this site.*/
 include '../src/model/form_handlers/userlist_handler.php';
 /* Retrieving php code from login_handler.php */
 include '../src/model/form_handlers/login_handler.php';
@@ -27,7 +27,7 @@ include '../src/model/userinfo_handler/userinfo_handler.php';
 			<div class="hero med-marg-bot">
 				<img src="img/placeholders/placeholder_large_blurry.jpg" alt="Test" class="full-w pc-show">
 				<div class="cta center-abs pc-show">
-					<p class="big-txt white-txt med-marg-bot">Get trusted advices after clicks</p>
+					<p class="big-txt white-txt med-marg-bot">Get trusted advices after clicks <i class="fas fa-mouse-pointer blue-txt"></i></p> 
 					<a href="#list" class="cta-button center-text card bread-txt">Find a lawyer</a>
 				</div>
 			</div>
@@ -37,18 +37,27 @@ include '../src/model/userinfo_handler/userinfo_handler.php';
 				<div id="list"></div>
 			
 			<div class="search container med-marg-bot">
-				<form action="#" class="full-w full-h card">
+				<form action="list.php" class="full-w full-h card" method="POST">
 					<div class="search-input full-w small-marg-bot">
+						
 						<input type="text" name="search" class="bread-txt faded-black-txt" placeholder="Search by name">
-						<a href="#" type="submit" class="faded-black-txt"><i class="fas fa-search fa-2x"></i></a>
+						<button type="submit" name="search_button" class="faded-black-txt"><i class="fas fa-search fa-lg"></i></button>
+						<!--<i class="fas fa-search fa-2x"></i>-->
+						
 					</div>
 
 					<!-- Kan bare kjøre en for loop her -->
 					<div class="search-options">
-						<div class="full-w faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Marriage lawyer</span></div>
-						<div class="full-w faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Marriage lawyer</span></div>
-						<div class="full-w faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Marriage lawyer</span></div>
-						<div class="full-w faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Marriage lawyer</span></div>
+						<div class="full-w faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Contract Law</span></div>
+						<div class="full-w faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Company Law</span></div>
+						<div class="full-w faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Financial Law</span></div>
+						<div class="full-w faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Consumer Law</span></div>
+						<div class="full-w faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Intellectual Law</span></div>
+						<div class="full-w faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Investement Law</span></div>
+						<div class="full-w faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Land Law</span></div>
+						<div class="full-w faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Civil Law</span></div>
+						<div class="full-w faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Criminal Law</span></div>
+						<div class="full-w faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Divorce Law</span></div>
 					</div>
 
 				</form>

@@ -84,11 +84,11 @@ a {
 	/* --->> Colors <<--- */
 	--black: #202121; /* coal black */
 	--white: #F4F7F6; /* off white */
-	--blue: #005CFF; /*  vibrant blue */
+	--blue: #00c5f2; /*  vibrant blue */
 
 	--faded-black: rgba(32, 33, 33, 0.75); /* coal black with a 75% opacity */
 	--faded-white: rgba(244, 247, 246, 0.75); /* off white with a 75% opacity */
-	--faded-blue: rgba(0, 92, 255, 0.75); /* vibrant blue with a 75% opacity */
+	--faded-blue: rgba(0, 195, 239, 0.75); /* vibrant blue with a 75% opacity */
 
 	--very-faded-black: rgba(32, 33, 33, 0.50); /* coal black with a 50% opacity */
 
@@ -106,9 +106,19 @@ a {
 
 } /* Describe what the animation does here */
 
-@keyframes animation-name-here { /* Makes an animation variable for later use */
+@keyframes pull-right { /* Makes an animation variable for later use */
+	0%   {transform: translateX(1000rem)}
+	70%  {transform: translateX(-2rem)}
+	90%  {transform: translateX(1rem)}
+	100% {transform: translateX(0)}
+} /* Pulls an element from the right to where it's suposed to be */
 
-} /* Describe what the animation does here */
+@keyframes pull-left { /* Makes an animation variable for later use */
+	0%   {transform: translateX(-1000rem)}
+	70%  {transform: translateX(2rem)}
+	90%  {transform: translateX(-1rem)}
+	100% {transform: translateX(0)}
+} /* Pulls an element from the left to where it's suposed to be */
 
 
 /* ---------->>> Titles (2.4) <<<-----------*/
@@ -396,8 +406,13 @@ main {
 
 /* ---------->>> Call to Action (4.3) <<<-----------*/
 
+.cta > p {
+	animation: pull-right 1s;
+}
+
 .cta-button {
 	display: block;
+	width: 25rem;
 	padding: 2rem 3rem;
 	border-radius: 0.3rem;
 
@@ -406,6 +421,7 @@ main {
 	cursor: pointer;
 
 	transition: 0.2s background-color;
+	animation: pull-left 2s;
 }
 
 .cta-button:hover {
@@ -439,8 +455,10 @@ main {
 	width: 95%;
 }
 
-.search-input > a {
+.search-input > button {
 	padding: 0 0.6rem;
+	background-color: transparent;
+	cursor: pointer;
 }
 
 .search-options > div {
@@ -462,7 +480,6 @@ main {
 	transform: translateX(-50%);
 	width: 1rem;
 	height: 1rem;
-	background-color: red;
 }
 
 .list {
@@ -484,6 +501,7 @@ main {
 
 .list-item-avatar {
 	padding: 1.6rem;
+	overflow: hidden;
 }
 
 .list-item-avatar > img {

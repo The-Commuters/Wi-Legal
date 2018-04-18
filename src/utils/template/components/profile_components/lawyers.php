@@ -51,6 +51,16 @@ of profile if the user that have been clicked on is a lawyer -->
 
 	</div>
 
+	<!-- Personal Bio -->
+	<div class="list-item card margin-bottom full-w">
+		<?php 
+
+		echo $bio;
+
+		?>
+	</div>
+
+	<!--Message BOX, Only visible for users-->
 	<div class="list-item card margin-bottom full-w">
 		<?php 
 		if (isset($user)) {
@@ -60,11 +70,11 @@ of profile if the user that have been clicked on is a lawyer -->
 				<!--The form for registering a new user-->
 				<form action="<?php echo $username; ?>" method="POST">
 
-					<!--firstname input-box-->
+					<!--Ttle input-box-->
 					<input type="text" name="m_title" placeholder="Title" required>
 					<br>
 
-					<!--lastname input-box-->
+					<!--Message input-box-->
 					<input type="text" name="m_message" placeholder="Message" required>
 					<br>
 

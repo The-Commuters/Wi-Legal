@@ -50,6 +50,19 @@
 
 	</div>
 
+		<!-- Personal BIO -->
+	<div class="list-item card margin-bottom full-w">
+		<form action="userprofile.php" method="POST">
+
+			<!--bio input-box-->
+			<input type="text" name="m_bio" placeholder="<?php echo $bio; ?>" required>
+			<br>
+			<!--bio-button-->
+			<input type="submit" name="bio_button" value="Update Bio">
+			<br>
+		</form>
+	</div>
+
 	<div class="list-item card margin-bottom full-w">
 		<a href="../src/model/session_handler/logout_handler.php">Logout</a>
 		<br>
