@@ -115,22 +115,27 @@ a {
 
 @keyframes pull-left { /* Makes an animation variable for later use */
 	0%   {transform: translateX(-1000rem)}
-	70%  {transform: translateX(2rem)}
-	90%  {transform: translateX(-1rem)}
+	50%  {transform: translateX(2rem)}
+	75%  {transform: translateX(-1rem)}
 	100% {transform: translateX(0)}
+} /* Pulls an element from the left to where it's suposed to be */
+
+@keyframes register-animation { /* Makes an animation variable for later use */
+	0%   {}
+	100% {}
 } /* Pulls an element from the left to where it's suposed to be */
 
 
 /* ---------->>> Titles (2.4) <<<-----------*/
 
 h1 {
-	font-family: sans-serif;
+	font-family: "proxima-nova", arial, sans-serif;
 	font-size: 2.6rem;
 	font-weight: 600;
 } /* Personalized h1 title */
 
 h2 {
-	font-family: sans-serif;
+	font-family: "proxima-nova", arial, sans-serif;
 	font-size: 2.4rem;
 	font-weight: 500;
 	padding-bottom: 2rem;
@@ -445,6 +450,7 @@ main {
 .search-input {
 	display: flex;
 	justify-content: space-between;
+	width: 100%;
 	align-items: center;
 	border: 0.1rem solid var(--faded-black);
 }
@@ -613,6 +619,49 @@ main {
 }
 
 
+/* ---------->>> Register (4.6) <<<-----------*/
+
+.register {
+	width: 80rem;
+}
+
+.register-tab {
+	position: relative;
+	padding: 2rem;
+	background-color: var(--blue);
+
+
+	border-radius: 0.5rem 0.5rem 0 0;
+	cursor: pointer;
+}
+
+.register-title {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	user-select: none;
+}
+
+.register-title > h2 {
+	padding: 0;
+}
+
+.register-title > svg {
+	transform: rotate(-90deg);
+	transition: 0.4s;
+}
+
+.rotate-triangle > .register-title > svg {
+	transform: rotate(90deg);
+}
+
+.register-form {
+	display: none;
+	background-color: white;
+
+	animation: register-animation 2s;
+}
+
 
 /* ------------------------*/ /* ---------->>> FOOTER (5) <<<-----------*/ /* ------------------------*/
 
@@ -778,6 +827,10 @@ footer {
 .pc-hide {
 	display: inline-block;
 } /* Makes something dissapear on pc */
+
+.toggle {
+	display: block;
+}
 
 
 /* ---------->>> Quick fixes (6.8) <<<-----------*/
@@ -985,6 +1038,10 @@ Footer
 
 	.search {
 		width: auto;
+	}
+
+	.search-input {
+		width: 25rem;
 	}
 
 	.list-item {

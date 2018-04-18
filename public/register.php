@@ -20,8 +20,11 @@ require '../src/model/form_handlers/register_handler.php';
 <body>
 	<!-- HEADER -->
 	<?php $current_page = 'register'; include '../src/utils/template/components/header.php'; ?>
-	<main>
+	<main class="register center-marg small-marg-bot small-marg-top">
+	<div class="register-tab">
 	<p>Registrering for kunder</p>
+
+	<div>
 	<!--The form for registering a new user-->
 	<form action="register.php" method="POST">
 
@@ -85,7 +88,10 @@ require '../src/model/form_handlers/register_handler.php';
 			echo "You're all set! Go ahead and login!<br>"; ?>
 
 		</form>
+		</div>
+	</div> <!-- End of bruker registrering -->
 
+	<div class="register-tab">
 		<p>Registrering for advokater</p>
 		<!--The form for registering a new LSP user-->
 		<form action="register.php" method="POST" enctype="multipart/form-data">
@@ -229,7 +235,9 @@ require '../src/model/form_handlers/register_handler.php';
 				echo "<span style='color: #14C800;'>You're all set! Go ahead and login!</span><br><br>"; ?>
 
 			</form>
+		</div>
 
+		<div class="register-tab">
 			<p>Registrering for Firmaer</p>
 			<!--The form for registering a new user-->
 			<form action="register.php" method="POST" enctype="multipart/form-data">
@@ -284,6 +292,7 @@ require '../src/model/form_handlers/register_handler.php';
 					echo "You're all set! Go ahead and login!<br>"; ?>
 
 				</form>
+		</div>
 				</main>
 			</body>
 			</html>

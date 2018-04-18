@@ -38,7 +38,7 @@ include '../src/model/userinfo_handler/userinfo_handler.php';
 			
 			<div class="search container med-marg-bot">
 				<form action="list.php" class="full-w full-h card" method="POST">
-					<div class="search-input full-w small-marg-bot">
+					<div class="search-input small-marg-bot">
 						
 						<input type="text" name="search" class="bread-txt faded-black-txt" placeholder="Search by name">
 						<button type="submit" name="search_button" class="faded-black-txt"><i class="fas fa-search fa-lg"></i></button>
@@ -48,16 +48,16 @@ include '../src/model/userinfo_handler/userinfo_handler.php';
 
 					<!-- Kan bare kjøre en for loop her -->
 					<div class="search-options">
-						<div class="full-w faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Contract Law</span></div>
-						<div class="full-w faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Company Law</span></div>
-						<div class="full-w faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Financial Law</span></div>
-						<div class="full-w faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Consumer Law</span></div>
-						<div class="full-w faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Intellectual Law</span></div>
-						<div class="full-w faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Investement Law</span></div>
-						<div class="full-w faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Land Law</span></div>
-						<div class="full-w faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Civil Law</span></div>
-						<div class="full-w faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Criminal Law</span></div>
-						<div class="full-w faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Divorce Law</span></div>
+						<div class="faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Contract Law</span></div>
+						<div class="faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Company Law</span></div>
+						<div class="faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Financial Law</span></div>
+						<div class="faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Consumer Law</span></div>
+						<div class="faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Intellectual Law</span></div>
+						<div class="faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Investement Law</span></div>
+						<div class="faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Land Law</span></div>
+						<div class="faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Civil Law</span></div>
+						<div class="faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Criminal Law</span></div>
+						<div class="faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Divorce Law</span></div>
 					</div>
 
 				</form>
