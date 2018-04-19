@@ -132,5 +132,9 @@ include '../src/model/form_handlers/login_handler.php';
 		</div>
 	</main>
 
+	<!-- FOOTER -->
+    <?php include '../src/utils/template/components/footer.php';?>
+    
+
 </body>
 </html>

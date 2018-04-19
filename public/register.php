@@ -20,8 +20,12 @@ require '../src/model/form_handlers/register_handler.php';
 <body>
     <!-- HEADER -->
     <?php $current_page = 'register'; include '../src/utils/template/components/header.php'; ?>
+    <main>
 
         <div class="register center-marg med-marg-top">
+
+            <!-- Register title -->
+            <h1 class="blue-txt">What type of account do you wish to register?</h1>
 
             <!-- User register -->
             <div class="med-marg-bot card">
@@ -42,7 +46,7 @@ require '../src/model/form_handlers/register_handler.php';
                             <div class="input-container half-w">
                                 <div>First name *</div>
                                 <!-- First name input -->
-                                <input class="bread-txt full-w" type="text" name="r_firstname" placeholder="First Name" value="<?php 
+                                <input class="bread-txt full-w" type="text" name="r_firstname" value="<?php 
                                 if(isset($_SESSION['r_firstname'])) {
                                     echo $_SESSION['r_firstname'];
                                 } ?>" required>
@@ -54,7 +58,7 @@ require '../src/model/form_handlers/register_handler.php';
                             <div class="input-container half-w">
                                 <div>Last name *</div>
                                 <!-- Last name input -->
-                                <input class="bread-txt full-w" type="text" name="r_lastname" placeholder="Last Name" value="<?php 
+                                <input class="bread-txt full-w" type="text" name="r_lastname" value="<?php 
                                 if(isset($_SESSION['r_lastname'])) {
                                     echo $_SESSION['r_lastname'];
                                 } 
@@ -71,7 +75,7 @@ require '../src/model/form_handlers/register_handler.php';
                             <div class="input-container full-w">
                                 <div>Email *</div>
                                 <!-- Email input -->
-                                <input class="bread-txt full-w" type="email" name="r_email" placeholder="Email" value="<?php 
+                                <input class="bread-txt full-w" type="email" name="r_email" value="<?php 
                                 if(isset($_SESSION['r_email'])) {
                                     echo $_SESSION['r_email'];
                                 } 
@@ -88,14 +92,14 @@ require '../src/model/form_handlers/register_handler.php';
                             <div class="input-container half-w">
                                 <div>Password *</div>
                                 <!-- Password input -->
-                                <input class="bread-txt full-w" type="password" name="r_password" placeholder="Password" required>
+                                <input class="bread-txt full-w" type="password" name="r_password" required>
                                 <!-- Put PHP kode her -->
                             </div>
                             
                             <div class="input-container half-w">
                                 <div>Password confirmation *</div>
                                 <!-- Password confirmation -->
-                                <input class="bread-txt full-w" type="password" name="r_password_check" placeholder="Confirm Password" required>
+                                <input class="bread-txt full-w" type="password" name="r_password_check" required>
                                 <!-- Put PHP kode her -->
                                         <?php if(in_array("Your passwords do not match<br>", $error_array)) echo "Your passwords do not match<br>"; 
                                         else if(in_array("Your password can only contain english characters or numbers<br>", 
@@ -111,7 +115,7 @@ require '../src/model/form_handlers/register_handler.php';
                             <div class="input-container half-w">
                                 <div>Phone-number *</div>
                                 <!-- Phone-number input -->
-                                <input class="bread-txt full-w" type="tel" name="r_phone_number" placeholder="Phone Number" required>
+                                <input class="bread-txt full-w" type="tel" name="r_phone_number" required>
                                 <!-- Put PHP kode her -->
                             </div>
 
@@ -146,7 +150,7 @@ require '../src/model/form_handlers/register_handler.php';
                             <div class="input-container half-w">
                                 <div>First name *</div>
                                 <!-- First name input -->
-                                <input class="bread-txt full-w" type="text" name="r_firstname" placeholder="First Name" value="<?php 
+                                <input class="bread-txt full-w" type="text" name="r_firstname" value="<?php 
                                 if(isset($_SESSION['r_firstname'])) {
                                     echo $_SESSION['r_firstname'];
                                 } 
@@ -159,7 +163,7 @@ require '../src/model/form_handlers/register_handler.php';
                             <div class="input-container half-w">
                                 <div>Last name *</div>
                                 <!-- Last name input -->
-                                <input class="bread-txt full-w" type="text" name="r_lastname" placeholder="Last Name" value="<?php 
+                                <input class="bread-txt full-w" type="text" name="r_lastname" value="<?php 
                                 if(isset($_SESSION['r_lastname'])) {
                                     echo $_SESSION['r_lastname'];
                                 } 
@@ -176,7 +180,7 @@ require '../src/model/form_handlers/register_handler.php';
                             <div class="input-container full-w">
                                 <div>Email *</div>
                                 <!-- Email input -->
-                                <input class="bread-txt full-w" type="email" name="r_email" placeholder="Email" value="<?php 
+                                <input class="bread-txt full-w" type="email" name="r_email" value="<?php 
                                 if(isset($_SESSION['r_email'])) {
                                     echo $_SESSION['r_email'];
                                 } 
@@ -193,14 +197,14 @@ require '../src/model/form_handlers/register_handler.php';
                             <div class="input-container half-w">
                                 <div>Password *</div>
                                 <!-- Password input -->
-                                <input class="bread-txt full-w" type="password" name="r_password" placeholder="Password" required>
+                                <input class="bread-txt full-w" type="password" name="r_password" required>
                                 <!-- Put PHP kode her -->
                             </div>
                             
                             <div class="input-container half-w">
                                 <div>Password confirmation *</div>
                                 <!-- Password confirmation -->
-                                <input class="bread-txt full-w" type="password" name="r_password_check" placeholder="Confirm Password" required>
+                                <input class="bread-txt full-w" type="password" name="r_password_check" required>
                                 <!-- Put PHP kode her -->
                                 <?php if(in_array("Your passwords do not match<br>", $error_array)) echo "Your passwords do not match<br>"; 
                                 else if(in_array("Your password can only contain english characters or numbers<br>", 
@@ -216,7 +220,7 @@ require '../src/model/form_handlers/register_handler.php';
                             <div class="input-container half-w">
                                 <div>Username *</div>
                                 <!-- Username input -->
-                                <input class="bread-txt full-w" type="text" name="r_username" placeholder="User name" value="<?php 
+                                <input class="bread-txt full-w" type="text" name="r_username" value="<?php 
                                 if(isset($_SESSION['r_username'])) {
                                     echo $_SESSION['r_username'];
                                 } 
@@ -231,7 +235,7 @@ require '../src/model/form_handlers/register_handler.php';
                             <div class="input-container half-w">
                                 <div>Phone-number *</div>
                                 <!-- Phone-number input -->
-                                <input class="bread-txt full-w" type="tel" name="r_phone_number" placeholder="Phone Number" value="<?php 
+                                <input class="bread-txt full-w" type="tel" name="r_phone_number" value="<?php 
                                 if(isset($_SESSION['r_phone_number'])) {
                                     echo $_SESSION['r_phone_number'];
                                 } 
@@ -246,7 +250,7 @@ require '../src/model/form_handlers/register_handler.php';
                             <div class="input-container half-w">
                                 <div>City of employment *</div>
                                 <!-- City of employment input -->
-                                <input class="bread-txt full-w" type="text" name="r_city" placeholder="City of employment" value="<?php 
+                                <input class="bread-txt full-w" type="text" name="r_city" value="<?php 
                                 if(isset($_SESSION['r_city'])) {
                                     echo $_SESSION['r_city'];
                                 } 
@@ -257,7 +261,7 @@ require '../src/model/form_handlers/register_handler.php';
                             <div class="input-container half-w">
                                 <div>Firm</div>
                                 <!-- Firm input -->
-                                <input class="bread-txt full-w" type="text" name="r_firm" placeholder="Firm(Optional)" value="<?php 
+                                <input class="bread-txt full-w" type="text" name="r_firm" value="<?php 
                                 if(isset($_SESSION['r_firm'])) {
                                     echo $_SESSION['r_firm'];
                                 } 
@@ -374,7 +378,7 @@ require '../src/model/form_handlers/register_handler.php';
                             <div class="input-container full-w">
                                 <div>Firm name *</div>
                                 <!-- Firm name input -->
-                                <input class="bread-txt full-w" type="text" name="r_firmname" placeholder="Firm Name" required>
+                                <input class="bread-txt full-w" type="text" name="r_firmname" required>
                                 <!-- Put PHP kode her -->
                             </div>
 
@@ -385,7 +389,7 @@ require '../src/model/form_handlers/register_handler.php';
                             <div class="input-container full-w">
                                 <div>Email *</div>
                                 <!-- Email input -->
-                                <input class="bread-txt full-w" type="email" name="r_email" placeholder="Email" required>
+                                <input class="bread-txt full-w" type="email" name="r_email" required>
                                 <!-- Put PHP kode her -->
                             </div>
 
@@ -396,14 +400,14 @@ require '../src/model/form_handlers/register_handler.php';
                             <div class="input-container half-w">
                                 <div>Password *</div>
                                 <!-- Password input -->
-                                <input class="bread-txt full-w" type="password" name="r_password" placeholder="Password" required>
+                                <input class="bread-txt full-w" type="password" name="r_password" required>
                                 <!-- Put PHP kode her -->
                             </div>
                             
                             <div class="input-container half-w">
                                 <div>Password confirmation *</div>
                                 <!-- Password confirmation -->
-                                <input class="bread-txt full-w" type="password" name="r_password_check" placeholder="Confirm Password" required>
+                                <input class="bread-txt full-w" type="password" name="r_password_check" required>
                                 <!-- Put PHP kode her -->
                                 <?php if(in_array("Your passwords do not match<br>", $error_array)) echo "Your passwords do not match<br>"; 
                                 else if(in_array("Your password can only contain english characters or numbers<br>", 
@@ -459,6 +463,11 @@ require '../src/model/form_handlers/register_handler.php';
             </div>
 
         </div> <!-- End of register -->
+
     </main>
+
+    <!-- FOOTER -->
+    <?php include '../src/utils/template/components/footer.php';?>
+
 </body>
 </html>

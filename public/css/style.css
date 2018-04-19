@@ -126,6 +126,7 @@ h1 {
 	font-family: "proxima-nova", arial, sans-serif;
 	font-size: 2.6rem;
 	font-weight: 600;
+	padding-bottom: 2rem;
 } /* Personalized h1 title */
 
 h2 {
@@ -139,6 +140,13 @@ h2 {
 /* ------------------------*/ /* ---------->>> HEADER (3) <<<-----------*/ /* ------------------------*/
 
 /* ---------->>> General (3.1) <<<-----------*/
+
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	min-height: 100vh;
+}
 
 header {
 	position: fixed;
@@ -166,12 +174,18 @@ header {
 .logo-container {
 	width: 100%; /* -- SCALE -- */
 	height: 5rem; /* -- SCALE -- */
+	cursor: pointer;
 } /* The container for the logo */
 
-	.logo-container hover {
+.logo-container > h1 {
+	padding-bottom: 0;
+	transition: transform 1s; 
+	user-select: none;
+}
 
+	.logo-container:hover > h1 {
+		transform: rotate(360deg);
 	}
-
 
 /* ---------->>> Navigation (3.3) <<<-----------*/ /* Trusted advice with only a few clicks */
 
@@ -737,6 +751,7 @@ main {
 	border: 0.1rem solid var(--black);
 	border-radius: 0.3rem;
 	outline: var(--blue);
+	background-color: var(--white);
 }
 
 .tag-list {
@@ -749,6 +764,7 @@ main {
 	padding: 0 0.6rem;
 	border: 0.1rem solid var(--black);
 	border-radius: 0.3rem;
+	background-color: var(--white);
 }
 
 .tag-item > input {
