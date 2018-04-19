@@ -120,12 +120,6 @@ a {
 	100% {transform: translateX(0)}
 } /* Pulls an element from the left to where it's suposed to be */
 
-@keyframes register-animation { /* Makes an animation variable for later use */
-	0%   {}
-	100% {}
-} /* Pulls an element from the left to where it's suposed to be */
-
-
 /* ---------->>> Titles (2.4) <<<-----------*/
 
 h1 {
@@ -430,7 +424,7 @@ main {
 }
 
 .cta-button:hover {
-	background-color: var(--blue);
+	background-color: var(--faded-blue);
 }
 
 
@@ -658,10 +652,83 @@ main {
 .register-form {
 	display: none;
 	background-color: white;
-
-	animation: register-animation 2s;
+	padding: 0 1.6rem 2rem;
 }
 
+.input-wrapper-split {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+}
+
+.input-wrapper-full {
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	width: 100%;
+}
+
+.input-container {
+	padding: 1rem 2rem;
+}
+
+.input-container > input[type = text] {
+	padding: 0.4rem 0.8rem;
+	border: 0.1rem solid var(--black);
+	border-radius: 0.3rem;
+
+	background-color: var(--white);
+
+	outline: var(--blue);
+}
+
+.input-container > input[type = submit] {
+	display: block;
+	width: 10rem;
+	padding: 0.6rem 1.4rem;
+	border-radius: 0.3rem;
+
+	background-color: var(--blue);
+	color: var(--white);
+	cursor: pointer;
+
+	transition: 0.2s background-color;
+}
+
+.input-container > input[type = submit]:hover {
+	background-color: var(--faded-blue);
+}
+
+.input-container > input[type = file] {
+	outline: var(--blue);
+}
+
+.input-container > select {
+	padding: 0.4rem 0.8rem;
+	border: 0.1rem solid var(--black);
+	border-radius: 0.3rem;
+	outline: var(--blue);
+}
+
+.tag-list {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.tag-item {
+	margin: 0 1.6rem 1.4rem 0;
+	padding: 0 0.6rem;
+	border: 0.1rem solid var(--black);
+	border-radius: 0.3rem;
+}
+
+.tag-item > input {
+	margin-right: 0.4rem;
+}
+
+.tag-item > span {
+	user-select: none;
+}
 
 /* ------------------------*/ /* ---------->>> FOOTER (5) <<<-----------*/ /* ------------------------*/
 
