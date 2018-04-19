@@ -14,285 +14,451 @@ require '../src/model/form_handlers/register_handler.php';
 <!DOCTYPE html>
 <html lang="en" dir="ltr" >
 
-	<!-- HEAD -->
-	<?php $page_title = '';include "../src/utils/template/components/head.php";?>  
+    <!-- HEAD -->
+    <?php $page_title = '';include "../src/utils/template/components/head.php";?>  
 
 <body>
-	<!-- HEADER -->
-	<?php $current_page = 'register'; include '../src/utils/template/components/header.php'; ?>
-	<main class="register center-marg small-marg-bot small-marg-top">
-	<div class="register-tab">
-	<p>Registrering for kunder</p>
+    <!-- HEADER -->
+    <?php $current_page = 'register'; include '../src/utils/template/components/header.php'; ?>
 
-	<div>
-	<!--The form for registering a new user-->
-	<form action="register.php" method="POST">
+        <div class="register center-marg med-marg-top">
 
-		<!--firstname input-box-->
-		<input type="text" name="r_firstname" placeholder="First Name" value="<?php 
-		if(isset($_SESSION['r_firstname'])) {
-			echo $_SESSION['r_firstname'];
-		} 
-		?>" required>
-		<br>
-		<!--If there is an error message in $ error_array about the first name, print it here-->
-		<?php if(in_array("Your first name must be between 2 and 25 characters<br>", $error_array)) 
-		echo "Your first name must be between 2 and 25 characters<br>"; ?>
-		
-		<!--lastname input-box-->
-		<input type="text" name="r_lastname" placeholder="Last Name" value="<?php 
-		if(isset($_SESSION['r_lastname'])) {
-			echo $_SESSION['r_lastname'];
-		} 
-		?>" required>
-		<br>
-		<!--If there is an error message in $ error_array about the Last Name, print it here-->
-		<?php if(in_array("Your last name must be between 2 and 25 characters<br>", $error_array)) 
-		echo "Your last name must be between 2 and 25 characters<br>"; ?>
-
-		<!--Email input-box-->
-		<input type="email" name="r_email" placeholder="Email" value="<?php 
-		if(isset($_SESSION['r_email'])) {
-			echo $_SESSION['r_email'];
-		} 
-		?>" required>
-		<br>
-		<!--If there is an error message in $ error_array about the email, print it here, but just one of them.-->
-		<?php if(in_array("Email already in use<br>", $error_array)) echo "Email already in use<br>"; 
-		else if(in_array("Invalid email format<br>", $error_array)) echo "Invalid email format<br>"; ?>
-
-		<!--password input-box-->
-		<input type="password" name="r_password" placeholder="Password" required>
-		<br>
-
-		<!--password check input-box-->
-		<input type="password" name="r_password_check" placeholder="Confirm Password" required>
-		<br>
-		<!--If there is an error message in $ error_array about the password, print it here, but just one of them.-->
-		<?php if(in_array("Your passwords do not match<br>", $error_array)) echo "Your passwords do not match<br>"; 
-		else if(in_array("Your password can only contain english characters or numbers<br>", 
-			$error_array)) echo "Your password can only contain english characters or numbers<br>";
-			else if(in_array("Your password must be betwen 5 and 30 characters<br>", $error_array)) 
-				echo "Your password must be betwen 5 and 30 characters<br>"; ?>
-
-			<!--The input for the phone number-->
-			<input type="tel" name="r_phone_number" placeholder="Phone Number" required>
-			<br>
-
-			<!--Register-button, starts register_handler.php-->
-			<input type="submit" name="register_button" value="Register">
-			<br>
-
-			<!--Message that tells you that your user are ready to use.-->
-			<?php if(in_array("You're all set! Go ahead and login!<br>", $error_array)) 
-			echo "You're all set! Go ahead and login!<br>"; ?>
-
-		</form>
-		</div>
-	</div> <!-- End of bruker registrering -->
-
-	<div class="register-tab">
-		<p>Registrering for advokater</p>
-		<!--The form for registering a new LSP user-->
-		<form action="register.php" method="POST" enctype="multipart/form-data">
-
-			<!--firstname-->
-			<input type="text" name="r_firstname" placeholder="First Name" value="<?php 
-			if(isset($_SESSION['r_firstname'])) {
-				echo $_SESSION['r_firstname'];
-			} 
-			?>" required>
-			<br>
-			<?php if(in_array("Your first name must be between 2 and 25 characters<br>", $error_array)) 
-			echo "Your first name must be between 2 and 25 characters<br>"; ?>
-
-			<!--lastname-->		
-			<input type="text" name="r_lastname" placeholder="Last Name" value="<?php 
-			if(isset($_SESSION['r_lastname'])) {
-				echo $_SESSION['r_lastname'];
-			} 
-			?>" required>
-			<br>
-			<?php if(in_array("Your last name must be between 2 and 25 characters<br>", $error_array)) 
-			echo "Your last name must be between 2 and 25 characters<br>"; ?>
-
-			<!--Username that the user want-->
-			<input type="text" name="r_username" placeholder="User name" value="<?php 
-			if(isset($_SESSION['r_username'])) {
-				echo $_SESSION['r_username'];
-			} 
-			?>" required>
-			<br>
-			<?php if(in_array("This must be between 3 and 25 characters<br>", $error_array)) 
-			echo "This must be between 3 and 25 characters<br>";
-			elseif (in_array("The username is already taken.<br>", $error_array)) 
-				echo "The username is already taken.<br>";?>
-
-			<!--email that the user owns-->
-			<input type="email" name="r_email" placeholder="Email" value="<?php 
-			if(isset($_SESSION['r_email'])) {
-				echo $_SESSION['r_email'];
-			} 
-			?>" required>
-			<br>
-			<?php if(in_array("Email already in use<br>", $error_array)) echo "Email already in use<br>"; 
-			else if(in_array("Invalid email format<br>", $error_array)) echo "Invalid email format<br>"; ?>
-
-			<!--check of the password-->
-			<input type="password" name="r_password" placeholder="Password" required>
-			<br>
-
-			<!--password that the user want-->
-			<input type="password" name="r_password_check" placeholder="Confirm Password" required>
-			<br>
-			<?php if(in_array("Your passwords do not match<br>", $error_array)) echo "Your passwords do not match<br>"; 
-			else if(in_array("Your password can only contain english characters or numbers<br>", 
-				$error_array)) echo "Your password can only contain english characters or numbers<br>";
-			else if(in_array("Your password must be betwen 5 and 30 characters<br>", $error_array)) 
-					echo "Your password must be betwen 5 and 30 characters<br>"; ?>
-
-			<!--The input for the phone number-->
-			<input type="tel" name="r_phone_number" placeholder="Phone Number" value="<?php 
-			if(isset($_SESSION['r_phone_number'])) {
-				echo $_SESSION['r_phone_number'];
-			} 
-			?>" required>
-			<br>
-
-			<!--The input for the firm they are working for, optional(no required)-->
-			<input type="text" name="r_firm" placeholder="Firm(Optional)" value="<?php 
-			if(isset($_SESSION['r_firm'])) {
-				echo $_SESSION['r_firm'];
-			} 
-			?>">
-			<br>
-
-			<input type="text" name="r_city" placeholder="City of employment" value="<?php 
-			if(isset($_SESSION['r_city'])) {
-				echo $_SESSION['r_city'];
-			} 
-			?>">
-			<br>
-
-				<!--Id upload/Passport/Drivers lisence-->
-				Upload your ID here:<br>
-				<input type="file" name="fileToUpload">
-				<?php if(in_array("Your file is not an image<br>", $error_array)) echo "Your file is not an image<br>"; 
-				else if(in_array("Your file is to big<br>", $error_array)) echo "Your file is to big<br>";
-				else if(in_array("Sorry, only JPG, JPEG, PNG & GIF files are allowed.", $error_array)) 
-					echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-				?>
-				<br>
-
-				<!--Lawyer certification/proof of being a LSP-->
-				Upload your Certification here:<br>
-				<input type="file" name="fileToUpload2">
-				<?php if(in_array("Your file is not an image<br>", $error_array)) echo "Your file is not an image<br>"; 
-				else if(in_array("Your file is to big<br>", $error_array)) echo "Your file is to big<br>";
-				else if(in_array("Sorry, only JPG, JPEG, PNG & GIF files are allowed.", $error_array)) 
-					echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-				?><br>
-
-				<!--Choose the main area of expertise in law.-->
-				<!--Temporary, jquery 'chosen' singular list-->
-				Choose your main field in law:<br>
-				<select name="r_mainField" required>
-					<option value="none">Choose One</option>
-					<option value="Contract Law">Contract Law</option>
-					<option value="Company Law">Company Law</option>
-					<option value="Banking and Financial Law">Banking and Financial Law</option>
-					<option value="Consumer Protection Law">Consumer Protection Law</option>
-					<option value="Intellectual Property Law">Intellectual Property Law</option>
-					<option value="Investement Law">Investement Law</option>
-					<option value="Land Law">Land Law</option>
-					<option value="Civil Law">Civil Law</option>
-					<option value="Criminal Law">Criminal Law</option>
-					<option value="Marriage and Divorce Law">Marriage and Divorce Law</option>
-				</select>
-				<br>
+            <!-- User register -->
+            <div class="med-marg-bot card">
+                <div id="user" class="register-tab full-w">
+                    <div class="register-title center-marg container white-txt">
+                        <h2>User</h2>
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+            
+                <div id="user-register" class="register-form full-w bread-txt faded-black-txt">
 
 
-				<!--List of other areas in law that you ar competent in.-->
-				<!--Temporary, jquery 'chosen' multiple list-->
-				Choose what other fields that you are competent in:<br>
-				<input type="checkbox" name="r_ContractLaw" value="Contract Law">Contract Law<br>
-				<input type="checkbox" name="r_CompanyLaw" value="Company Law">Company Law<br>
-				<input type="checkbox" name="r_BankingandFinancialLaw" value="Banking and Financial Law">Banking and Financial Law<br>
-				<input type="checkbox" name="r_ConsumerProtectionLaw" value="Consumer Protection Law">Consumer Protection Law<br>
-				<input type="checkbox" name="r_IntellectualPropertyLaw" value="Intellectual Property Law">Intellectual Property Law<br>
-				<input type="checkbox" name="r_InvestementLaw" value="Investement Law">Investement Law<br>
-				<input type="checkbox" name="r_LandLaw" value="Land Law">Land Law<br>
-				<input type="checkbox" name="r_CivilLaw" value="Civil Law">Civil Law<br>
-				<input type="checkbox" name="r_CriminalLaw" value="Criminal Law">Criminal Law<br>
-				<input type="checkbox" name="r_MarriageAndDivorceLaw" value="Marriage and Divorce Law">Marriage and Divorce Law<br>
+                    <form action="register.php" method="POST">
 
+                        <div class="input-wrapper-split"> <!-- Name -->
 
-				<br>
-				<input type="submit" name="registerlawyer_button" value="Register">
-				<br>
+                            <div class="input-container half-w">
+                                <div>First name *</div>
+                                <!-- First name input -->
+                                <input class="bread-txt full-w" type="text" name="r_firstname" placeholder="First Name" value="<?php 
+                                if(isset($_SESSION['r_firstname'])) {
+                                    echo $_SESSION['r_firstname'];
+                                } ?>" required>
+                                <!-- Put PHP kode her -->
+                                <?php if(in_array("Your first name must be between 2 and 25 characters<br>", $error_array)) 
+                                 echo "Your first name must be between 2 and 25 characters<br>"; ?>
+                            </div>
+                            
+                            <div class="input-container half-w">
+                                <div>Last name *</div>
+                                <!-- Last name input -->
+                                <input class="bread-txt full-w" type="text" name="r_lastname" placeholder="Last Name" value="<?php 
+                                if(isset($_SESSION['r_lastname'])) {
+                                    echo $_SESSION['r_lastname'];
+                                } 
+                                ?>" required>
+                                <!-- Put PHP kode her -->
+                                <?php if(in_array("Your last name must be between 2 and 25 characters<br>", $error_array)) 
+                                 echo "Your last name must be between 2 and 25 characters<br>"; ?>
+                            </div>
 
-				<?php if(in_array("<span style='color: #14C800;'>You're all set! Go ahead and login!</span><br>", $error_array)) 
-				echo "<span style='color: #14C800;'>You're all set! Go ahead and login!</span><br><br>"; ?>
+                        </div>
 
-			</form>
-		</div>
+                        <div class="input-wrapper-full full-w"> <!-- Email -->
 
-		<div class="register-tab">
-			<p>Registrering for Firmaer</p>
-			<!--The form for registering a new user-->
-			<form action="register.php" method="POST" enctype="multipart/form-data">
+                            <div class="input-container full-w">
+                                <div>Email *</div>
+                                <!-- Email input -->
+                                <input class="bread-txt full-w" type="email" name="r_email" placeholder="Email" value="<?php 
+                                if(isset($_SESSION['r_email'])) {
+                                    echo $_SESSION['r_email'];
+                                } 
+                                ?>" required>
+                                <!-- Put PHP kode her -->
+                                    <?php if(in_array("Email already in use<br>", $error_array)) echo "Email already in use<br>"; 
+                                    else if(in_array("Invalid email format<br>", $error_array)) echo "Invalid email format<br>"; ?>
+                            </div>
 
-				<!--firmname input-box-->
-				<input type="text" name="r_firmname" placeholder="Firm Name" required>
-				<br>
+                        </div>
 
-				<!--Email input-box-->
-				<input type="email" name="r_email" placeholder="Email" required>
-				<br>
+                        <div class="input-wrapper-split"> <!-- Password -->
 
-				<!--password input-box-->
-				<input type="password" name="r_password" placeholder="Password" required>
-				<br>
+                            <div class="input-container half-w">
+                                <div>Password *</div>
+                                <!-- Password input -->
+                                <input class="bread-txt full-w" type="password" name="r_password" placeholder="Password" required>
+                                <!-- Put PHP kode her -->
+                            </div>
+                            
+                            <div class="input-container half-w">
+                                <div>Password confirmation *</div>
+                                <!-- Password confirmation -->
+                                <input class="bread-txt full-w" type="password" name="r_password_check" placeholder="Confirm Password" required>
+                                <!-- Put PHP kode her -->
+                                        <?php if(in_array("Your passwords do not match<br>", $error_array)) echo "Your passwords do not match<br>"; 
+                                        else if(in_array("Your password can only contain english characters or numbers<br>", 
+                                            $error_array)) echo "Your password can only contain english characters or numbers<br>";
+                                        else if(in_array("Your password must be betwen 5 and 30 characters<br>", $error_array)) 
+                                            echo "Your password must be betwen 5 and 30 characters<br>"; ?>
+                            </div>
 
-				<!--password check input-box-->
-				<input type="password" name="r_password_check" placeholder="Confirm Password" required>
-				<br>
-				<!--If there is an error message in $ error_array about the password, print it here, but just one of them.-->
-				<?php if(in_array("Your passwords do not match<br>", $error_array)) echo "Your passwords do not match<br>"; 
-				else if(in_array("Your password can only contain english characters or numbers<br>", 
-					$error_array)) echo "Your password can only contain english characters or numbers<br>";
-					else if(in_array("Your password must be betwen 5 and 30 characters<br>", $error_array)) 
-						echo "Your password must be betwen 5 and 30 characters<br>"; ?>
+                        </div>
 
-					Upload Proof of existence? here:<br>
-					<input type="file" name="fileToUpload" id="fileToUpload">
-					<?php if(in_array("Your file is not an image<br>", $error_array)) echo "Your file is not an image<br>"; 
-					else if(in_array("Your file is to big<br>", $error_array)) echo "Your file is to big<br>";
-					else if(in_array("Sorry, only JPG, JPEG, PNG & GIF files are allowed.", $error_array)) 
-						echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-					?>
-					<br>
+                        <div class="input-wrapper-split"> <!-- Phone-number & submit -->
 
-					<!--Lawyer certification/proof of being a LSP-->
-					Upload Buisness certificate here:<br>
-					<input type="file" name="fileToUpload2" id="fileToUpload2">
-					<br>
-					<?php if(in_array("Your file is not an image<br>", $error_array)) echo "Your file is not an image<br>"; 
-					else if(in_array("Your file is to big<br>", $error_array)) echo "Your file is to big<br>";
-					else if(in_array("Sorry, only JPG, JPEG, PNG & GIF files are allowed.", $error_array)) 
-						echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-					?>
+                            <div class="input-container half-w">
+                                <div>Phone-number *</div>
+                                <!-- Phone-number input -->
+                                <input class="bread-txt full-w" type="tel" name="r_phone_number" placeholder="Phone Number" required>
+                                <!-- Put PHP kode her -->
+                            </div>
 
-					<!--Register-button, starts register_handler.php-->
-					<input type="submit" name="registerfirm_button" value="Register">
-					<br>
+                            <div class="input-container">
+                                <!-- Submit -->
+                                <input class="center-txt bread-txt" type="submit" name="register_button" value="Register">
+                                <!-- Put PHP kode her -->
+                                <?php if(in_array("You're all set! Go ahead and login!<br>", $error_array)) 
+                                echo "You're all set! Go ahead and login!<br>"; ?>
+                            </div>
 
-					<!--Message that tells you that your user are ready to use.-->
-					<?php if(in_array("You're all set! Go ahead and login!<br>", $error_array)) 
-					echo "You're all set! Go ahead and login!<br>"; ?>
+                        </div>
 
-				</form>
-		</div>
-				</main>
-			</body>
-			</html>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Lawyer register -->
+            <div class="med-marg-bot card">
+                <div id="lawyer" class="register-tab full-w white-txt">
+                    <div class="register-title center-marg container">
+                        <h2>Lawyer</h2>
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+            
+                <div id="lawyer-register" class="register-form full-w bread-txt faded-black-txt">
+                    <form action="register.php" method="POST" enctype="multipart/form-data">
+
+                        <div class="input-wrapper-split"> <!-- Name -->
+
+                            <div class="input-container half-w">
+                                <div>First name *</div>
+                                <!-- First name input -->
+                                <input class="bread-txt full-w" type="text" name="r_firstname" placeholder="First Name" value="<?php 
+                                if(isset($_SESSION['r_firstname'])) {
+                                    echo $_SESSION['r_firstname'];
+                                } 
+                                ?>" required>
+                                <!-- Put PHP kode her -->
+                                <?php if(in_array("Your first name must be between 2 and 25 characters<br>", $error_array)) 
+                                echo "Your first name must be between 2 and 25 characters<br>"; ?>
+                            </div>
+                            
+                            <div class="input-container half-w">
+                                <div>Last name *</div>
+                                <!-- Last name input -->
+                                <input class="bread-txt full-w" type="text" name="r_lastname" placeholder="Last Name" value="<?php 
+                                if(isset($_SESSION['r_lastname'])) {
+                                    echo $_SESSION['r_lastname'];
+                                } 
+                                ?>" required>
+                                <!-- Put PHP kode her -->
+                                <?php if(in_array("Your last name must be between 2 and 25 characters<br>", $error_array)) 
+                                echo "Your last name must be between 2 and 25 characters<br>"; ?>
+                            </div>
+
+                        </div>
+
+                        <div class="input-wrapper-full full-w"> <!-- Email -->
+
+                            <div class="input-container full-w">
+                                <div>Email *</div>
+                                <!-- Email input -->
+                                <input class="bread-txt full-w" type="email" name="r_email" placeholder="Email" value="<?php 
+                                if(isset($_SESSION['r_email'])) {
+                                    echo $_SESSION['r_email'];
+                                } 
+                                ?>" required>
+                                <!-- Put PHP kode her -->
+                                <?php if(in_array("Email already in use<br>", $error_array)) echo "Email already in use<br>"; 
+                                else if(in_array("Invalid email format<br>", $error_array)) echo "Invalid email format<br>"; ?>
+                            </div>
+
+                        </div>
+
+                        <div class="input-wrapper-split"> <!-- Password -->
+
+                            <div class="input-container half-w">
+                                <div>Password *</div>
+                                <!-- Password input -->
+                                <input class="bread-txt full-w" type="password" name="r_password" placeholder="Password" required>
+                                <!-- Put PHP kode her -->
+                            </div>
+                            
+                            <div class="input-container half-w">
+                                <div>Password confirmation *</div>
+                                <!-- Password confirmation -->
+                                <input class="bread-txt full-w" type="password" name="r_password_check" placeholder="Confirm Password" required>
+                                <!-- Put PHP kode her -->
+                                <?php if(in_array("Your passwords do not match<br>", $error_array)) echo "Your passwords do not match<br>"; 
+                                else if(in_array("Your password can only contain english characters or numbers<br>", 
+                                    $error_array)) echo "Your password can only contain english characters or numbers<br>";
+                                else if(in_array("Your password must be betwen 5 and 30 characters<br>", $error_array)) 
+                                    echo "Your password must be betwen 5 and 30 characters<br>"; ?>
+                            </div>
+
+                        </div>
+
+                        <div class="input-wrapper-split"> <!-- Username & Phone-number -->
+
+                            <div class="input-container half-w">
+                                <div>Username *</div>
+                                <!-- Username input -->
+                                <input class="bread-txt full-w" type="text" name="r_username" placeholder="User name" value="<?php 
+                                if(isset($_SESSION['r_username'])) {
+                                    echo $_SESSION['r_username'];
+                                } 
+                                ?>" required>
+                                <!-- Put PHP kode her -->
+                                <?php if(in_array("This must be between 3 and 25 characters<br>", $error_array)) 
+                                echo "This must be between 3 and 25 characters<br>";
+                                elseif (in_array("The username is already taken.<br>", $error_array)) 
+                                    echo "The username is already taken.<br>";?>
+                            </div>
+
+                            <div class="input-container half-w">
+                                <div>Phone-number *</div>
+                                <!-- Phone-number input -->
+                                <input class="bread-txt full-w" type="tel" name="r_phone_number" placeholder="Phone Number" value="<?php 
+                                if(isset($_SESSION['r_phone_number'])) {
+                                    echo $_SESSION['r_phone_number'];
+                                } 
+                                ?>" required>
+                                <!-- Put PHP kode her -->
+                            </div>
+
+                        </div>
+
+                        <div class="input-wrapper-split"> <!-- COE & Firm -->
+
+                            <div class="input-container half-w">
+                                <div>City of employment *</div>
+                                <!-- City of employment input -->
+                                <input class="bread-txt full-w" type="text" name="r_city" placeholder="City of employment" value="<?php 
+                                if(isset($_SESSION['r_city'])) {
+                                    echo $_SESSION['r_city'];
+                                } 
+                                ?>">
+                                <!-- Put PHP kode her -->
+                            </div>
+
+                            <div class="input-container half-w">
+                                <div>Firm</div>
+                                <!-- Firm input -->
+                                <input class="bread-txt full-w" type="text" name="r_firm" placeholder="Firm(Optional)" value="<?php 
+                                if(isset($_SESSION['r_firm'])) {
+                                    echo $_SESSION['r_firm'];
+                                } 
+                                ?>">
+                                <!-- Put PHP kode her -->
+                            </div>
+
+                        </div>
+
+                        <div class="input-wrapper-split"> <!-- Identification -->
+
+                            <div class="input-container half-w">
+                                <div>Valid ID *</div>
+                                <!-- Valid ID input -->
+                                <input class="bread-txt" type="file" name="fileToUpload" required>
+                                <!-- Put PHP kode her -->
+                                <?php if(in_array("Your file is not an image<br>", $error_array)) echo "Your file is not an image<br>"; 
+                                else if(in_array("Your file is to big<br>", $error_array)) echo "Your file is to big<br>";
+                                else if(in_array("Sorry, only JPG, JPEG, PNG & GIF files are allowed.", $error_array)) 
+                                    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+                                ?>
+                            </div>
+
+                            <div class="input-container half-w">
+                                <div>Valid lsp certification *</div>
+                                <!-- Valid lsp certification input -->
+                                <input class="bread-txt" type="file" name="fileToUpload2" required>
+                                <!-- Put PHP kode her -->
+                                <?php if(in_array("Your file is not an image<br>", $error_array)) echo "Your file is not an image<br>"; 
+                                else if(in_array("Your file is to big<br>", $error_array)) echo "Your file is to big<br>";
+                                else if(in_array("Sorry, only JPG, JPEG, PNG & GIF files are allowed.", $error_array)) 
+                                    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+                                ?>
+                            </div>
+
+                        </div>
+
+                        <div class="input-wrapper-full full-w"> <!-- Main field -->
+
+                            <div class="input-container full-w">
+                                <div>Main field *</div>
+                                <!-- Main field input -->
+                                <select name="r_mainField" class="bread-txt full-w" required>
+					                <option value="none">Choose one</option>
+					                <option value="Contract Law">Contract Law</option>
+					                <option value="Company Law">Company Law</option>
+					                <option value="Banking and Financial Law">Banking and Financial Law</option>
+					                <option value="Consumer Protection Law">Consumer Protection Law</option>
+					                <option value="Intellectual Property Law">Intellectual Property Law</option>
+					                <option value="Investement Law">Investement Law</option>
+					                <option value="Land Law">Land Law</option>
+					                <option value="Civil Law">Civil Law</option>
+					                <option value="Criminal Law">Criminal Law</option>
+					                <option value="Marriage and Divorce Law">Marriage and Divorce Law</option>
+                                </select>
+                                <!-- Put PHP kode her -->
+                            </div>
+
+                        </div>
+
+                        <div class="input-wrapper-full"> <!-- Sub fields -->
+
+                            <div class="input-container full-w">
+                                <div>Sub fields</div>
+                                <!-- Sub fields input -->
+                                <div class="full-w bread-txt tag-list">
+                                    <div class="tag-item"><input type="checkbox" name="r_ContractLaw" value="Contract Law"><span>Contract Law</span></div>
+                                    <div class="tag-item"><input type="checkbox" name="r_CompanyLaw" value="Company Law"><span>Company Law</span></div>
+                                    <div class="tag-item"><input type="checkbox" name="r_BankingandFinancialLaw" value="Banking and Financial Law"><span>Banking and Financial Law</span></div>
+                                    <div class="tag-item"><input type="checkbox" name="r_ConsumerProtectionLaw" value="Consumer Protection Law"><span>Consumer Protection Law</span></div>
+                                    <div class="tag-item"><input type="checkbox" name="r_IntellectualPropertyLaw" value="Intellectual Property Law"><span>Intellectual Property Law</span></div>
+                                    <div class="tag-item"><input type="checkbox" name="r_InvestementLaw" value="Investement Law"><span>Investement Law</span></div>
+                                    <div class="tag-item"><input type="checkbox" name="r_LandLaw" value="Land Law"><span>Land Law</span></div>
+                                    <div class="tag-item"><input type="checkbox" name="r_CivilLaw" value="Civil Law"><span>Civil Law</span></div>
+                                    <div class="tag-item"><input type="checkbox" name="r_CriminalLaw" value="Criminal Law"><span>Criminal Law</span></div>
+                                    <div class="tag-item"><input type="checkbox" name="r_MarriageAndDivorceLaw" value="Marriage and Divorce Law"><span>Marriage and Divorce Law</span></div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="input-wrapper-split"> <!-- Submit -->
+
+                            <div></div>
+
+                            <div class="input-container">
+                                <!-- Submit -->
+                                <input class="center-txt bread-txt" type="submit" name="registerlawyer_button" value="Register">
+                                <!-- Put PHP kode her -->
+                                <?php if(in_array("<span style='color: #14C800;'>You're all set! Go ahead and login!</span><br>", $error_array)) 
+                                echo "<span style='color: #14C800;'>You're all set! Go ahead and login!</span><br><br>"; ?>
+                            </div>
+                            
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+            <!-- firm register -->
+            <div class="med-marg-bot card">
+                <div id="firm" class="register-tab full-w white-txt">
+                    <div class="register-title center-marg container">
+                        <h2>Firm</h2>
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+            
+                <div id="firm-register" class="register-form full-w bread-txt faded-black-txt">
+                    <form action="register.php" method="POST" enctype="multipart/form-data">
+
+                        <div class="input-wrapper-full full-w"> <!-- Email -->
+
+                            <div class="input-container full-w">
+                                <div>Firm name *</div>
+                                <!-- Firm name input -->
+                                <input class="bread-txt full-w" type="text" name="r_firmname" placeholder="Firm Name" required>
+                                <!-- Put PHP kode her -->
+                            </div>
+
+                        </div>
+
+                        <div class="input-wrapper-full full-w"> <!-- Email -->
+
+                            <div class="input-container full-w">
+                                <div>Email *</div>
+                                <!-- Email input -->
+                                <input class="bread-txt full-w" type="email" name="r_email" placeholder="Email" required>
+                                <!-- Put PHP kode her -->
+                            </div>
+
+                        </div>
+
+                        <div class="input-wrapper-split"> <!-- Password -->
+
+                            <div class="input-container half-w">
+                                <div>Password *</div>
+                                <!-- Password input -->
+                                <input class="bread-txt full-w" type="password" name="r_password" placeholder="Password" required>
+                                <!-- Put PHP kode her -->
+                            </div>
+                            
+                            <div class="input-container half-w">
+                                <div>Password confirmation *</div>
+                                <!-- Password confirmation -->
+                                <input class="bread-txt full-w" type="password" name="r_password_check" placeholder="Confirm Password" required>
+                                <!-- Put PHP kode her -->
+                                <?php if(in_array("Your passwords do not match<br>", $error_array)) echo "Your passwords do not match<br>"; 
+                                else if(in_array("Your password can only contain english characters or numbers<br>", 
+                                    $error_array)) echo "Your password can only contain english characters or numbers<br>";
+                                else if(in_array("Your password must be betwen 5 and 30 characters<br>", $error_array)) 
+                                        echo "Your password must be betwen 5 and 30 characters<br>"; ?>
+                            </div>
+
+                        </div>
+
+                        <div class="input-wrapper-split"> <!-- Identification -->
+
+                            <div class="input-container half-w">
+                                <div>Valid proof of existence *</div>
+                                <!-- Valid proof of existance -->
+                                <input class="bread-txt" type="file" required>
+                                <!-- Put PHP kode her -->
+                                <?php if(in_array("Your file is not an image<br>", $error_array)) echo "Your file is not an image<br>"; 
+                                else if(in_array("Your file is to big<br>", $error_array)) echo "Your file is to big<br>";
+                                else if(in_array("Sorry, only JPG, JPEG, PNG & GIF files are allowed.", $error_array)) 
+                                    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+                                ?>
+                            </div>
+
+                            <div class="input-container half-w">
+                                <div>Valid business certification *</div>
+                                <!-- Valid business certification -->
+                                <input class="bread-txt" type="file" name="fileToUpload2" id="fileToUpload2">
+                                <!-- Put PHP kode her -->
+                                <?php if(in_array("Your file is not an image<br>", $error_array)) echo "Your file is not an image<br>"; 
+                                else if(in_array("Your file is to big<br>", $error_array)) echo "Your file is to big<br>";
+                                else if(in_array("Sorry, only JPG, JPEG, PNG & GIF files are allowed.", $error_array)) 
+                                    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+                                ?>
+                            </div>
+
+                        </div>
+
+                        <div class="input-wrapper-split"> <!-- Submit -->
+
+                            <div></div>
+
+                            <div class="input-container">
+                                <!-- Submit -->
+                                <input class="center-txt bread-txt" type="submit" name="registerfirm_button" value="Register">
+                                <!-- Put PHP kode her -->
+                            </div>
+                            
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        </div> <!-- End of register -->
+    </main>
+</body>
+</html>

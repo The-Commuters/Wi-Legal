@@ -682,6 +682,35 @@ main {
 	outline: var(--blue);
 }
 
+.input-container > input[type = password] {
+	padding: 0.4rem 0.8rem;
+	border: 0.1rem solid var(--black);
+	border-radius: 0.3rem;
+
+	background-color: var(--white);
+
+	outline: var(--blue);
+}
+
+.input-container > input[type = email] {
+	padding: 0.4rem 0.8rem;
+	border: 0.1rem solid var(--black);
+	border-radius: 0.3rem;
+
+	background-color: var(--white);
+
+	outline: var(--blue);
+}
+
+.input-container > input[type = tel] {
+	padding: 0.4rem 0.8rem;
+	border: 0.1rem solid var(--black);
+	border-radius: 0.3rem;
+
+	background-color: var(--white);
+
+	outline: var(--blue);
+}
 .input-container > input[type = submit] {
 	display: block;
 	width: 10rem;
@@ -708,7 +737,6 @@ main {
 	border: 0.1rem solid var(--black);
 	border-radius: 0.3rem;
 	outline: var(--blue);
-	background-color: var(--white);
 }
 
 .tag-list {
@@ -721,7 +749,6 @@ main {
 	padding: 0 0.6rem;
 	border: 0.1rem solid var(--black);
 	border-radius: 0.3rem;
-	background-color: var(--white);
 }
 
 .tag-item > input {

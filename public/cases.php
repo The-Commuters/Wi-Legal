@@ -1,4 +1,6 @@
 <?Php
+/*Page where lawyers can read their messages that users have sent them*/
+
 /* Connects to database and retrieves time */
 require '../config/config.php';
 /* Retrieving php code from login_handler.php */
@@ -61,7 +63,10 @@ include '../src/model/userinfo_handler/userinfo_handler.php';
 						<?php echo $phone_number; ?><br>
 						<?php echo $email; ?>
 						<form action="cases.php" method="POST">
-							<input type="submit" id="<?php echo $message_id; ?>" name="slett" value="Delete">
+							<input type="submit" onclick="<?php 
+							$sql = "SELECT first_name, last_name, email, phone_number FROM users WHERE id = '$sender_id'";
+							$querylu = mysqli_query($con, $sql);
+							?>" id="<?php echo $message_id; ?>"  name="slett" value="Delete">
 						</form>
 
 					</div>
