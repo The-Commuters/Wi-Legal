@@ -708,6 +708,7 @@ main {
 	border: 0.1rem solid var(--black);
 	border-radius: 0.3rem;
 	outline: var(--blue);
+	background-color: var(--white);
 }
 
 .tag-list {
@@ -720,6 +721,7 @@ main {
 	padding: 0 0.6rem;
 	border: 0.1rem solid var(--black);
 	border-radius: 0.3rem;
+	background-color: var(--white);
 }
 
 .tag-item > input {
