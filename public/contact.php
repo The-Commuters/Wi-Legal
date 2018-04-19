@@ -19,50 +19,51 @@ include '../src/model/userinfo_handler/userinfo_handler.php';
 	<!-- HEADER -->
 	<?php $current_page = 'contact'; include '../src/utils/template/components/header.php';?>
 
-	<!-- PARALLAX ENABLER -->
-	<div class="parallax">
+	<main>
+		<!-- PARALLAX ENABLER -->
+		<div class="parallax">
 
-		<main>
+			<main>
 
-			<section class="contaktText">
-			<h3>
-				Company <a href="#">facebook</a> page. 
-			</h3>
-			</section>
-		
+				<section class="contaktText">
+					<h3>
+						Company <a href="#">facebook</a> page. 
+					</h3>
+				</section>
+				
 
-		
-		<section class="contaktText">
-		<h3>Send us a <a href="mailto: test@noveare.com">mail.</a></h3>
-		</section>
+				
+				<section class="contaktText">
+					<h3>Send us a <a href="mailto: test@noveare.com">mail.</a></h3>
+				</section>
 
-		<h3 class="contaktDirect">Or send us a direct message!</h3>
-		<form class="contaktForm">
-			<div class="contact-base">		
-				<div class="contaktForm">
-					<label class="contaktLabel">Name</label>
-					<input class="contaktInput" type="text" name="
-					contactName">
-				</div>
-				<div class="contaktForm">	
-					<label class="contaktLabel">Email</label>
-					<input class="contaktInput" type="email" name="contaktMail">
-				</div>
-			</div>
-			<div class="contaktForm">
-			<label class="contaktLabel">Describe your subject</label>
-			<textarea class="contaktMessage"></textarea>
-			<input class="contaktButton" type="submit" name="contaktDone">
-			</div>
-		</form>
+				<h3 class="contaktDirect">Or send us a direct message!</h3>
+				<form class="contaktForm">
+					<div class="contact-base">		
+						<div class="contaktForm">
+							<label class="contaktLabel">Name</label>
+							<input class="contaktInput" type="text" name="
+							contactName">
+						</div>
+						<div class="contaktForm">	
+							<label class="contaktLabel">Email</label>
+							<input class="contaktInput" type="email" name="contaktMail">
+						</div>
+					</div>
+					<div class="contaktForm">
+						<label class="contaktLabel">Describe your subject</label>
+						<textarea class="contaktMessage"></textarea>
+						<input class="contaktButton" type="submit" name="contaktDone">
+					</div>
+				</form>
 
-		</main>
+			</main>
 
 
-		<!-- FOOTER -->
-		<?php include '../src/utils/template/components/footer.php'; ?>
+			<!-- FOOTER -->
+			<?php include '../src/utils/template/components/footer.php'; ?>
 
-	</div>
-
+		</div>
+	</main>
 </body>
 	</html>

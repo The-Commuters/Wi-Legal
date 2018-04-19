@@ -11,28 +11,25 @@ include '../src/model/userinfo_handler/userinfo_handler.php';
 <!DOCTYPE html>
 <html lang="en" dir="ltr" >
 
-	<!-- HEAD -->
-	<?php $page_title = 'Wilegal'; include '../src/utils/template/components/head.php'; ?>
+<!-- HEAD -->
+<?php $page_title = 'Wilegal'; include '../src/utils/template/components/head.php'; ?>
 
 <body>
 	<!-- HEADER -->
 	<?php $current_page = 'about'; include '../src/utils/template/components/header.php';?>
 
-	<!-- PARALLAX ENABLER -->
-	<div class="parallax">
+	<main>
 
-		<main>
-
-			<section class="contaktText">
+		<section class="contaktText">
 			<h3>
 				Company <a href="#">facebook</a> page. 
 			</h3>
-			</section>
+		</section>
 		
 
 		
 		<section class="contaktText">
-		<h3>Send us a <a href="mailto: test@noveare.com">mail.</a></h3>
+			<h3>Send us a <a href="mailto: test@noveare.com">mail.</a></h3>
 		</section>
 
 		<h3 class="contaktDirect">Or send us a direct message!</h3>
@@ -49,19 +46,18 @@ include '../src/model/userinfo_handler/userinfo_handler.php';
 				</div>
 			</div>
 			<div class="contaktForm">
-			<label class="contaktLabel">Describe your subject</label>
-			<textarea class="contaktMessage"></textarea>
-			<input class="contaktButton" type="submit" name="contaktDone">
+				<label class="contaktLabel">Describe your subject</label>
+				<textarea class="contaktMessage"></textarea>
+				<input class="contaktButton" type="submit" name="contaktDone">
 			</div>
 		</form>
 
-		</main>
+	</main>
 
 
-		<!-- FOOTER -->
-		<?php include '../src/utils/template/components/footer.php';?>
+	<!-- FOOTER -->
+	<?php include '../src/utils/template/components/footer.php';?>
 
-	</div>
 
 </body>
-	</html>
+</html>

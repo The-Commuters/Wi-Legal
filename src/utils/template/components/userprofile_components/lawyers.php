@@ -1,5 +1,5 @@
 <!-- Profile page for logged in lawyers, can be found profile.php if user -->
-<br><br><br><br><br>
+
 
 <main>
 
@@ -67,6 +67,11 @@
 		<a href="../src/model/session_handler/logout_handler.php">Logout</a>
 		<br>
 		<a href="cases.php">Messages</a>
+	</div>
+
+	<div class="list-item card margin-bottom full-w">
+		<h4>Rating:</h4>
+		Her skal ratingen stå 4/5
 	</div>
 </div>
 </main>

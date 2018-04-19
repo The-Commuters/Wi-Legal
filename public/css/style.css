@@ -60,6 +60,10 @@ html {
 
 body {
 	background-color: var(--white); /* Makes the background of the page white */
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	min-height: calc(100vh - 5rem);
 }
 
 *, *:before, *:after {
@@ -140,13 +144,6 @@ h2 {
 /* ------------------------*/ /* ---------->>> HEADER (3) <<<-----------*/ /* ------------------------*/
 
 /* ---------->>> General (3.1) <<<-----------*/
-
-body {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	min-height: 100vh;
-}
 
 header {
 	position: fixed;

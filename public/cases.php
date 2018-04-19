@@ -27,8 +27,6 @@ include '../src/model/userinfo_handler/userinfo_handler.php';
 	$query = mysqli_query($con, $sql);
 	?>
 
-	<br><br><br>
-
 	<main>
 		<!-- The message box starts here -->
 		<div class="list-item-main full-w">
@@ -75,5 +73,9 @@ include '../src/model/userinfo_handler/userinfo_handler.php';
 			</div>
 
 		</main>
+
+		<!-- FOOTER -->
+		<?php include '../src/utils/template/components/footer.php'; ?>
+
 	</body>
 	</html>

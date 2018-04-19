@@ -57,5 +57,9 @@ include '../src/model/userinfo_handler/userinfo_handler.php';
 		include '../src/utils/template/components/userprofile_components/admins.php';
 	}
 	?>
+
+
+	<!-- FOOTER -->
+	<?php include '../src/utils/template/components/footer.php'; ?>
 </body>
 </html>
