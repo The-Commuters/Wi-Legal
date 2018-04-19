@@ -2,7 +2,7 @@
 
 $(function(){
 
-	// DROPDOWN FUNCTION
+	// LOGIN DROPDOWN FUNCTION
 
 	// Displays and hides the login box onclick anywhere
 	$(".login-container").click(function(){
@@ -19,11 +19,32 @@ $(function(){
 		e.stopPropagation();
 	});
 
-	// END OF DROPDOWN FUNCTION
+	// END OF LOGIN DROPDOWN FUNCTION
 
 
 
-	// ... FUNCTION
+	// REGISTER DROPDOWN FUNCTION
+
+	$("#user").click(function(){
+		$("#user-register").toggleClass("toggle")
+		$("#user").toggleClass("rotate-triangle")
+	});
+
+	$("#lawyer").click(function(){
+		$("#lawyer-register").toggleClass("toggle")
+		$("#lawyer").toggleClass("rotate-triangle")
+	});
+
+	$("#firm").click(function(){
+		$("#firm-register").toggleClass("toggle")
+		$("#firm").toggleClass("rotate-triangle")
+	});
+
+	// END OF REGISTER DROPDOWN FUNCTION
+
+
+
+	// REGISTER ... FUNCTION
 
 	// END OF ... FUNCTION
 

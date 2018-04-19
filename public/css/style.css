@@ -115,22 +115,22 @@ a {
 
 @keyframes pull-left { /* Makes an animation variable for later use */
 	0%   {transform: translateX(-1000rem)}
-	70%  {transform: translateX(2rem)}
-	90%  {transform: translateX(-1rem)}
+	50%  {transform: translateX(2rem)}
+	75%  {transform: translateX(-1rem)}
 	100% {transform: translateX(0)}
 } /* Pulls an element from the left to where it's suposed to be */
-
 
 /* ---------->>> Titles (2.4) <<<-----------*/
 
 h1 {
-	font-family: sans-serif;
+	font-family: "proxima-nova", arial, sans-serif;
 	font-size: 2.6rem;
 	font-weight: 600;
+	padding-bottom: 2rem;
 } /* Personalized h1 title */
 
 h2 {
-	font-family: sans-serif;
+	font-family: "proxima-nova", arial, sans-serif;
 	font-size: 2.4rem;
 	font-weight: 500;
 	padding-bottom: 2rem;
@@ -140,6 +140,13 @@ h2 {
 /* ------------------------*/ /* ---------->>> HEADER (3) <<<-----------*/ /* ------------------------*/
 
 /* ---------->>> General (3.1) <<<-----------*/
+
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	min-height: 100vh;
+}
 
 header {
 	position: fixed;
@@ -167,12 +174,18 @@ header {
 .logo-container {
 	width: 100%; /* -- SCALE -- */
 	height: 5rem; /* -- SCALE -- */
+	cursor: pointer;
 } /* The container for the logo */
 
-	.logo-container hover {
+.logo-container > h1 {
+	padding-bottom: 0;
+	transition: transform 1s; 
+	user-select: none;
+}
 
+	.logo-container:hover > h1 {
+		transform: rotate(360deg);
 	}
-
 
 /* ---------->>> Navigation (3.3) <<<-----------*/ /* Trusted advice with only a few clicks */
 
@@ -425,7 +438,7 @@ main {
 }
 
 .cta-button:hover {
-	background-color: var(--blue);
+	background-color: var(--faded-blue);
 }
 
 
@@ -445,6 +458,7 @@ main {
 .search-input {
 	display: flex;
 	justify-content: space-between;
+	width: 100%;
 	align-items: center;
 	border: 0.1rem solid var(--faded-black);
 }
@@ -613,6 +627,153 @@ main {
 }
 
 
+/* ---------->>> Register (4.6) <<<-----------*/
+
+.register {
+	width: 80rem;
+}
+
+.register-tab {
+	position: relative;
+	padding: 2rem;
+	background-color: var(--blue);
+
+
+	border-radius: 0.5rem 0.5rem 0 0;
+	cursor: pointer;
+}
+
+.register-title {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	user-select: none;
+}
+
+.register-title > h2 {
+	padding: 0;
+}
+
+.register-title > svg {
+	transform: rotate(-90deg);
+	transition: 0.4s;
+}
+
+.rotate-triangle > .register-title > svg {
+	transform: rotate(90deg);
+}
+
+.register-form {
+	display: none;
+	background-color: white;
+	padding: 0 1.6rem 2rem;
+}
+
+.input-wrapper-split {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+}
+
+.input-wrapper-full {
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	width: 100%;
+}
+
+.input-container {
+	padding: 1rem 2rem;
+}
+
+.input-container > input[type = text] {
+	padding: 0.4rem 0.8rem;
+	border: 0.1rem solid var(--black);
+	border-radius: 0.3rem;
+
+	background-color: var(--white);
+
+	outline: var(--blue);
+}
+
+.input-container > input[type = password] {
+	padding: 0.4rem 0.8rem;
+	border: 0.1rem solid var(--black);
+	border-radius: 0.3rem;
+
+	background-color: var(--white);
+
+	outline: var(--blue);
+}
+
+.input-container > input[type = email] {
+	padding: 0.4rem 0.8rem;
+	border: 0.1rem solid var(--black);
+	border-radius: 0.3rem;
+
+	background-color: var(--white);
+
+	outline: var(--blue);
+}
+
+.input-container > input[type = tel] {
+	padding: 0.4rem 0.8rem;
+	border: 0.1rem solid var(--black);
+	border-radius: 0.3rem;
+
+	background-color: var(--white);
+
+	outline: var(--blue);
+}
+.input-container > input[type = submit] {
+	display: block;
+	width: 10rem;
+	padding: 0.6rem 1.4rem;
+	border-radius: 0.3rem;
+
+	background-color: var(--blue);
+	color: var(--white);
+	cursor: pointer;
+
+	transition: 0.2s background-color;
+}
+
+.input-container > input[type = submit]:hover {
+	background-color: var(--faded-blue);
+}
+
+.input-container > input[type = file] {
+	outline: var(--blue);
+}
+
+.input-container > select {
+	padding: 0.4rem 0.8rem;
+	border: 0.1rem solid var(--black);
+	border-radius: 0.3rem;
+	outline: var(--blue);
+	background-color: var(--white);
+}
+
+.tag-list {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.tag-item {
+	margin: 0 1.6rem 1.4rem 0;
+	padding: 0 0.6rem;
+	border: 0.1rem solid var(--black);
+	border-radius: 0.3rem;
+	background-color: var(--white);
+}
+
+.tag-item > input {
+	margin-right: 0.4rem;
+}
+
+.tag-item > span {
+	user-select: none;
+}
 
 /* ------------------------*/ /* ---------->>> FOOTER (5) <<<-----------*/ /* ------------------------*/
 
@@ -778,6 +939,10 @@ footer {
 .pc-hide {
 	display: inline-block;
 } /* Makes something dissapear on pc */
+
+.toggle {
+	display: block;
+}
 
 
 /* ---------->>> Quick fixes (6.8) <<<-----------*/
@@ -985,6 +1150,10 @@ Footer
 
 	.search {
 		width: auto;
+	}
+
+	.search-input {
+		width: 25rem;
 	}
 
 	.list-item {

@@ -59,7 +59,7 @@ include '../src/model/userinfo_handler/userinfo_handler.php';
 
 
 		<!-- FOOTER -->
-		<?php include '../src/utils/template/components/footer.php'; ?>
+		<?php include '../src/utils/template/components/footer.php';?>
 
 	</div>
 

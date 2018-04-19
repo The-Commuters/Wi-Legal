@@ -7,8 +7,7 @@ include '../src/model/userinfo_handler/userinfo_handler.php';
 include '../src/model/form_handlers/userlist_handler.php';
 /* Retrieving php code from login_handler.php */
 include '../src/model/form_handlers/login_handler.php';
-/* $loggedinuser will tell the rest of the site what user is connected */
-include '../src/model/userinfo_handler/userinfo_handler.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -48,16 +47,16 @@ include '../src/model/userinfo_handler/userinfo_handler.php';
 
 					<!-- Kan bare kjøre en for loop her -->
 					<div class="search-options">
-						<div class="full-w faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Contract Law</span></div>
-						<div class="full-w faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Company Law</span></div>
-						<div class="full-w faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Financial Law</span></div>
-						<div class="full-w faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Consumer Law</span></div>
-						<div class="full-w faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Intellectual Law</span></div>
-						<div class="full-w faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Investement Law</span></div>
-						<div class="full-w faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Land Law</span></div>
-						<div class="full-w faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Civil Law</span></div>
-						<div class="full-w faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Criminal Law</span></div>
-						<div class="full-w faded-black-txt small-marg-bot"><input type="checkbox"><span class="nav-txt">Divorce Law</span></div>
+						<div class="full-w faded-black-txt small-marg-bot"><input type="radio" name="field" value="Contract Law"><span class="nav-txt">Contract Law</span></div>
+						<div class="full-w faded-black-txt small-marg-bot"><input type="radio" name="field" value="Company Law"><span class="nav-txt">Company Law</span></div>
+						<div class="full-w faded-black-txt small-marg-bot"><input type="radio" name="field" value="Financial Law"><span class="nav-txt">Financial Law</span></div>
+						<div class="full-w faded-black-txt small-marg-bot"><input type="radio" name="field" value="Consumer Law"><span class="nav-txt">Consumer Law</span></div>
+						<div class="full-w faded-black-txt small-marg-bot"><input type="radio" name="field" value="Intellectual Law"><span class="nav-txt">Intellectual Law</span></div>
+						<div class="full-w faded-black-txt small-marg-bot"><input type="radio" name="field" value="Investement Law"><span class="nav-txt">Investement Law</span></div>
+						<div class="full-w faded-black-txt small-marg-bot"><input type="radio" name="field" value="Land Law"><span class="nav-txt">Land Law</span></div>
+						<div class="full-w faded-black-txt small-marg-bot"><input type="radio" name="field" value="Civil Law"><span class="nav-txt">Civil Law</span></div>
+						<div class="full-w faded-black-txt small-marg-bot"><input type="radio" name="field" value="Criminal Law"><span class="nav-txt">Criminal Law</span></div>
+						<div class="full-w faded-black-txt small-marg-bot"><input type="radio" name="field" value="Divorce Law"><span class="nav-txt">Divorce Law</span></div>
 					</div>
 
 				</form>
@@ -102,24 +101,23 @@ include '../src/model/userinfo_handler/userinfo_handler.php';
 							<?php 
 							$sqlMf = "SELECT * FROM mainfields WHERE lsp_id='$lsp_id'";
 							$queryMf = mysqli_query($con, $sqlMf);
-							$row = mysqli_fetch_row($queryMf);
+							$rowMf = mysqli_fetch_row($queryMf);
 							?>
 
 							<div class="field-row small-margin-bottom">
 								<?php
 								echo '<span class="tag inactive-tag">' . $mainfield . '</span>';
-								for ($var = 1 ; $var <= 9; $var++) { 
-									if (in_array($var, $row)) {
-										$sqlMf = "SELECT field_name FROM fieldnames WHERE field_number='$var'";
-										$queryMf = mysqli_query($con, $sqlMf);
-										$name = mysqli_fetch_assoc($queryMf);
+								for ($var = 1 ; $var <= 10; $var++) { 
+									if (in_array($var, $rowMf)) {
+										$sql = "SELECT field_name FROM fieldnames WHERE field_number='$var'";
+										$queryFn = mysqli_query($con, $sql);
+										$name = mysqli_fetch_assoc($queryFn);
 										$fieldName = $name["field_name"];
 										if ($fieldName != $mainfield) {
-										echo '<span class="tag inactive-tag">' . $fieldName . '</span>'; 
+											echo '<span class="tag inactive-tag">' . $fieldName . '</span>'; 
 										}
 									}
 								}?>	 
-								<!-- <span class="tag active-tag">Criminal Law</span> -->
 							</div>
 
 						</div>
@@ -133,6 +131,10 @@ include '../src/model/userinfo_handler/userinfo_handler.php';
 
 		</div>
 	</main>
+
+	<!-- FOOTER -->
+    <?php include '../src/utils/template/components/footer.php';?>
+    
 
 </body>
 </html>
