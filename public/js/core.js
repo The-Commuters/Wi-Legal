@@ -42,9 +42,9 @@ $(function(){
 
 	// END OF REGISTER DROPDOWN FUNCTION
 
+	
 
-
-	// REGISTER ... FUNCTION
+	// ... FUNCTION
 
 	// END OF ... FUNCTION
 

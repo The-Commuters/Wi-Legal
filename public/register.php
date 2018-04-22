@@ -20,7 +20,7 @@ require '../src/model/form_handlers/register_handler.php';
 <body>
     <!-- HEADER -->
     <?php $current_page = 'register'; include '../src/utils/template/components/header.php'; ?>
-    <main>
+    <main class="marg-container">
 
         <div class="register center-marg med-marg-top">
 
@@ -28,7 +28,7 @@ require '../src/model/form_handlers/register_handler.php';
             <h1 class="blue-txt">What type of account do you wish to register?</h1>
 
             <!-- User register -->
-            <div class="med-marg-bot card">
+            <div class="med-marg-bot card fade-right-2s">
                 <div id="user" class="register-tab full-w">
                     <div class="register-title center-marg container white-txt">
                         <h2>User</h2>
@@ -43,7 +43,7 @@ require '../src/model/form_handlers/register_handler.php';
 
                         <div class="input-wrapper-split"> <!-- Name -->
 
-                            <div class="input-container half-w">
+                            <div class="input-container">
                                 <div>First name *</div>
                                 <!-- First name input -->
                                 <input class="bread-txt full-w" type="text" name="r_firstname" value="<?php 
@@ -55,7 +55,7 @@ require '../src/model/form_handlers/register_handler.php';
                                  echo "Your first name must be between 2 and 25 characters<br>"; ?>
                             </div>
                             
-                            <div class="input-container half-w">
+                            <div class="input-container ">
                                 <div>Last name *</div>
                                 <!-- Last name input -->
                                 <input class="bread-txt full-w" type="text" name="r_lastname" value="<?php 
@@ -89,14 +89,14 @@ require '../src/model/form_handlers/register_handler.php';
 
                         <div class="input-wrapper-split"> <!-- Password -->
 
-                            <div class="input-container half-w">
+                            <div class="input-container ">
                                 <div>Password *</div>
                                 <!-- Password input -->
                                 <input class="bread-txt full-w" type="password" name="r_password" required>
                                 <!-- Put PHP kode her -->
                             </div>
                             
-                            <div class="input-container half-w">
+                            <div class="input-container ">
                                 <div>Password confirmation *</div>
                                 <!-- Password confirmation -->
                                 <input class="bread-txt full-w" type="password" name="r_password_check" required>
@@ -112,7 +112,7 @@ require '../src/model/form_handlers/register_handler.php';
 
                         <div class="input-wrapper-split"> <!-- Phone-number & submit -->
 
-                            <div class="input-container half-w">
+                            <div class="input-container ">
                                 <div>Phone-number *</div>
                                 <!-- Phone-number input -->
                                 <input class="bread-txt full-w" type="tel" name="r_phone_number" required>
@@ -134,7 +134,7 @@ require '../src/model/form_handlers/register_handler.php';
             </div>
 
             <!-- Lawyer register -->
-            <div class="med-marg-bot card">
+            <div class="med-marg-bot card fade-right-3s">
                 <div id="lawyer" class="register-tab full-w white-txt">
                     <div class="register-title center-marg container">
                         <h2>Lawyer</h2>
@@ -147,7 +147,7 @@ require '../src/model/form_handlers/register_handler.php';
 
                         <div class="input-wrapper-split"> <!-- Name -->
 
-                            <div class="input-container half-w">
+                            <div class="input-container ">
                                 <div>First name *</div>
                                 <!-- First name input -->
                                 <input class="bread-txt full-w" type="text" name="r_firstname" value="<?php 
@@ -160,7 +160,7 @@ require '../src/model/form_handlers/register_handler.php';
                                 echo "Your first name must be between 2 and 25 characters<br>"; ?>
                             </div>
                             
-                            <div class="input-container half-w">
+                            <div class="input-container ">
                                 <div>Last name *</div>
                                 <!-- Last name input -->
                                 <input class="bread-txt full-w" type="text" name="r_lastname" value="<?php 
@@ -194,14 +194,14 @@ require '../src/model/form_handlers/register_handler.php';
 
                         <div class="input-wrapper-split"> <!-- Password -->
 
-                            <div class="input-container half-w">
+                            <div class="input-container ">
                                 <div>Password *</div>
                                 <!-- Password input -->
                                 <input class="bread-txt full-w" type="password" name="r_password" required>
                                 <!-- Put PHP kode her -->
                             </div>
                             
-                            <div class="input-container half-w">
+                            <div class="input-container ">
                                 <div>Password confirmation *</div>
                                 <!-- Password confirmation -->
                                 <input class="bread-txt full-w" type="password" name="r_password_check" required>
@@ -217,7 +217,7 @@ require '../src/model/form_handlers/register_handler.php';
 
                         <div class="input-wrapper-split"> <!-- Username & Phone-number -->
 
-                            <div class="input-container half-w">
+                            <div class="input-container ">
                                 <div>Username *</div>
                                 <!-- Username input -->
                                 <input class="bread-txt full-w" type="text" name="r_username" value="<?php 
@@ -232,7 +232,7 @@ require '../src/model/form_handlers/register_handler.php';
                                     echo "The username is already taken.<br>";?>
                             </div>
 
-                            <div class="input-container half-w">
+                            <div class="input-container ">
                                 <div>Phone-number *</div>
                                 <!-- Phone-number input -->
                                 <input class="bread-txt full-w" type="tel" name="r_phone_number" value="<?php 
@@ -247,7 +247,7 @@ require '../src/model/form_handlers/register_handler.php';
 
                         <div class="input-wrapper-split"> <!-- COE & Firm -->
 
-                            <div class="input-container half-w">
+                            <div class="input-container ">
                                 <div>City of employment *</div>
                                 <!-- City of employment input -->
                                 <input class="bread-txt full-w" type="text" name="r_city" value="<?php 
@@ -258,7 +258,7 @@ require '../src/model/form_handlers/register_handler.php';
                                 <!-- Put PHP kode her -->
                             </div>
 
-                            <div class="input-container half-w">
+                            <div class="input-container ">
                                 <div>Firm</div>
                                 <!-- Firm input -->
                                 <input class="bread-txt full-w" type="text" name="r_firm" value="<?php 
@@ -273,7 +273,7 @@ require '../src/model/form_handlers/register_handler.php';
 
                         <div class="input-wrapper-split"> <!-- Identification -->
 
-                            <div class="input-container half-w">
+                            <div class="input-container ">
                                 <div>Valid ID *</div>
                                 <!-- Valid ID input -->
                                 <input class="bread-txt" type="file" name="fileToUpload" required>
@@ -285,7 +285,7 @@ require '../src/model/form_handlers/register_handler.php';
                                 ?>
                             </div>
 
-                            <div class="input-container half-w">
+                            <div class="input-container ">
                                 <div>Valid lsp certification *</div>
                                 <!-- Valid lsp certification input -->
                                 <input class="bread-txt" type="file" name="fileToUpload2" required>
@@ -362,7 +362,7 @@ require '../src/model/form_handlers/register_handler.php';
             </div>
 
             <!-- firm register -->
-            <div class="med-marg-bot card">
+            <div class="med-marg-bot card fade-right-4s">
                 <div id="firm" class="register-tab full-w white-txt">
                     <div class="register-title center-marg container">
                         <h2>Firm</h2>
@@ -397,14 +397,14 @@ require '../src/model/form_handlers/register_handler.php';
 
                         <div class="input-wrapper-split"> <!-- Password -->
 
-                            <div class="input-container half-w">
+                            <div class="input-container ">
                                 <div>Password *</div>
                                 <!-- Password input -->
                                 <input class="bread-txt full-w" type="password" name="r_password" required>
                                 <!-- Put PHP kode her -->
                             </div>
                             
-                            <div class="input-container half-w">
+                            <div class="input-container ">
                                 <div>Password confirmation *</div>
                                 <!-- Password confirmation -->
                                 <input class="bread-txt full-w" type="password" name="r_password_check" required>
@@ -420,7 +420,7 @@ require '../src/model/form_handlers/register_handler.php';
 
                         <div class="input-wrapper-split"> <!-- Identification -->
 
-                            <div class="input-container half-w">
+                            <div class="input-container ">
                                 <div>Valid proof of existence *</div>
                                 <!-- Valid proof of existance -->
                                 <input class="bread-txt" type="file" required>
@@ -432,7 +432,7 @@ require '../src/model/form_handlers/register_handler.php';
                                 ?>
                             </div>
 
-                            <div class="input-container half-w">
+                            <div class="input-container ">
                                 <div>Valid business certification *</div>
                                 <!-- Valid business certification -->
                                 <input class="bread-txt" type="file" name="fileToUpload2" id="fileToUpload2">

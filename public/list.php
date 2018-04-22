@@ -40,7 +40,7 @@ include '../src/model/form_handlers/login_handler.php';
 					<div class="search-input full-w small-marg-bot">
 						
 						<input type="text" name="search" class="bread-txt faded-black-txt" placeholder="Search by name">
-						<button type="submit" name="search_button" class="faded-black-txt"><i class="fas fa-search fa-lg"></i></button>
+						<button id="search-button" type="submit" name="search_button" class="faded-black-txt"><i class="fas fa-search fa-lg"></i></button>
 						<!--<i class="fas fa-search fa-2x"></i>-->
 						
 					</div>

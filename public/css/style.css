@@ -124,6 +124,20 @@ a {
 	100% {transform: translateX(0)}
 } /* Pulls an element from the left to where it's suposed to be */
 
+@keyframes fade-left { /* Makes an animation variable for later use */
+	0%   {transform: translateX(-10rem)}
+	0%   {opacity: 0;}
+	70% {transform: translateX(0)}
+	100% {opacity: 1;}
+} /* Pulls an element from the left to where it's suposed to be */
+
+@keyframes fade-right { /* Makes an animation variable for later use */
+	0%   {transform: translateX(10rem)}
+	0%   {opacity: 0;}
+	70% {transform: translateX(0)}
+	100% {opacity: 1;}
+} /* Pulls an element from the left to where it's suposed to be */
+
 /* ---------->>> Titles (2.4) <<<-----------*/
 
 h1 {
@@ -496,8 +510,9 @@ main {
 .list {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: flex-start;
 	width: 100%;
+	min-height: calc(100vh - 12.6rem);
 }
 
 .list-item {
@@ -627,7 +642,7 @@ main {
 /* ---------->>> Register (4.6) <<<-----------*/
 
 .register {
-	width: 80rem;
+	width: 100%;
 }
 
 .register-tab {
@@ -638,6 +653,8 @@ main {
 
 	border-radius: 0.5rem 0.5rem 0 0;
 	cursor: pointer;
+
+	animation:
 }
 
 .register-title {
@@ -664,12 +681,18 @@ main {
 	display: none;
 	background-color: white;
 	padding: 0 1.6rem 2rem;
+	border: 0.1rem solid var(--blue);
 }
 
 .input-wrapper-split {
 	display: flex;
+	flex-direction: column;
 	justify-content: space-between;
-	align-items: flex-end;
+	align-items: center;
+}
+
+.input-wrapper-split > .input-container {
+	width: 100%;
 }
 
 .input-wrapper-full {
@@ -744,11 +767,20 @@ main {
 }
 
 .input-container > select {
+	padding: 0.6rem 0.8rem;
+	border: 0.1rem solid var(--black);
+	border-radius: 0.3rem;
+	outline: var(--blue);
+	background-color: var(--white);
+}
+
+.input-container > textarea {
 	padding: 0.4rem 0.8rem;
 	border: 0.1rem solid var(--black);
 	border-radius: 0.3rem;
 	outline: var(--blue);
 	background-color: var(--white);
+	resize: vertical;
 }
 
 .tag-list {
@@ -770,6 +802,48 @@ main {
 
 .tag-item > span {
 	user-select: none;
+}
+
+/* ---------->>> Register (4.7) <<<-----------*/
+
+.about {
+	max-width: 80rem;
+}
+
+.about-title {
+	padding: 2rem 2rem;
+	background-color: var(--blue);
+	border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.about-title > h2 {
+	padding: 0;
+}
+
+.about-info {
+	padding: 1rem 1.6rem;
+	border: 0.1rem solid var(--blue);
+}
+
+/* ---------->>> Register (4.7) <<<-----------*/
+
+.contact {
+	max-width: 80rem;
+}
+
+.contact-form {
+	border: 0.1rem solid var(--blue);
+	padding: 0 1.6rem 2rem;
+}
+
+.contact-title {
+	padding: 2rem 2rem;
+	background-color: var(--blue);
+	border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.contact-title > h2 {
+	padding: 0;
 }
 
 /* ------------------------*/ /* ---------->>> FOOTER (5) <<<-----------*/ /* ------------------------*/
@@ -949,6 +1023,45 @@ footer {
 } /* Fixes the gap created at the bottom of images */
 
 
+/* ---------->>> Load animations (6.8) <<<-----------*/
+
+.fade-right-2s {
+	animation: fade-right 2s;
+}
+
+.fade-right-3s {
+	animation: fade-right 3s;
+}
+
+.fade-right-4s {
+	animation: fade-right 4s;
+}
+
+.pull-right-2s {
+	animation: pull-right 2s;
+}
+
+.pull-right-3s {
+	animation: pull-right 3s;
+}
+
+.pull-right-4s {
+	animation: pull-right 4s;
+}
+
+.pull-left-2s {
+	animation: pull-left 2s;
+}
+
+.pull-left-3s {
+	animation: pull-left 3s;
+}
+
+.pull-left-4s {
+	animation: pull-left 4s;
+}
+
+
 /* ---------->>> Z-index list (6.9) <<<-----------*/
 
 /*
@@ -1027,6 +1140,11 @@ Footer
 
 .container {
 	padding: 0 1.6rem;
+}
+
+.marg-container {
+	margin-left: 1.6rem;
+	margin-right: 1.6rem;
 }
 
 .wrapper {
@@ -1157,6 +1275,23 @@ Footer
 		width: 50rem;
 	}
 
+	.register {
+		width: 80rem;
+	}
+
+	.input-wrapper-split {
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: flex-end;
+	}
+
+	.input-wrapper-split > .input-container {
+		width: 50%;
+	}
+
+	.input-container > input[type = submit] {
+		float: right;
+	}
 
 	/* ---------->>> Footer <<<-----------*/
 
