@@ -23,7 +23,7 @@ include '../src/model/userinfo_handler/userinfo_handler.php';
 	<?php 
 	$lsp_id = $user['lsp_id']; 
 	//Collects everything from the database lawyerusers, can be cut down when 
-	$sql = "SELECT * FROM messages WHERE reciver_id = '$lsp_id'";
+	$sql = "SELECT * FROM messages WHERE lsp_id = '$lsp_id'";
 	$query = mysqli_query($con, $sql);
 	?>
 
@@ -37,13 +37,13 @@ include '../src/model/userinfo_handler/userinfo_handler.php';
 			if (mysqli_num_rows($query) > 0) {
 				/* Output of messages, collects data from the  */
 				while($row = mysqli_fetch_assoc($query)) {	
-					$sender_id = $row['sender_id'];
+					$sender_id = $row['user_id'];
 					$message = $row['text'];
 					$message_id = $row['message_id'];
 					$title = $row['title'];
 
 
-					$sql = "SELECT first_name, last_name, email, phone_number FROM users WHERE id = '$sender_id'";
+					$sql = "SELECT first_name, last_name, email, phone_number FROM users WHERE user_id = '$sender_id'";
 					$querylu = mysqli_query($con, $sql);
 					$sender = mysqli_fetch_array($querylu);
 					$first_name = $sender['first_name'];
@@ -62,7 +62,7 @@ include '../src/model/userinfo_handler/userinfo_handler.php';
 						<?php echo $email; ?>
 						<form action="cases.php" method="POST">
 							<input type="submit" onclick="<?php 
-							$sql = "SELECT first_name, last_name, email, phone_number FROM users WHERE id = '$sender_id'";
+							$sql = "SELECT first_name, last_name, email, phone_number FROM users WHERE user_id = '$sender_id'";
 							$querylu = mysqli_query($con, $sql);
 							?>" id="<?php echo $message_id; ?>"  name="slett" value="Delete">
 						</form>

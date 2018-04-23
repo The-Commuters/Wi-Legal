@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 15. Apr, 2018 22:32 PM
+-- Generation Time: 23. Apr, 2018 21:35 PM
 -- Server-versjon: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -32,11 +32,30 @@ CREATE TABLE `admins` (
   `id` int(11) NOT NULL,
   `first_name` varchar(25) NOT NULL,
   `last_name` varchar(25) NOT NULL,
-  `username` varchar(100) NOT NULL,
+  `username` varchar(25) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
   `signup_date` date NOT NULL,
-  `profile_picture` varchar(255) NOT NULL
+  `profile_picture` varchar(255) NOT NULL,
+  `usertype` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellstruktur for tabell `contact`
+--
+
+CREATE TABLE `contact` (
+  `contact_id` int(11) NOT NULL,
+  `first_name` varchar(25) NOT NULL,
+  `last_name` varchar(25) NOT NULL,
+  `username` varchar(25) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `phone_number` int(11) NOT NULL,
+  `request_type` varchar(50) NOT NULL,
+  `message` varchar(1000) NOT NULL,
+  `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -49,6 +68,22 @@ CREATE TABLE `fieldnames` (
   `field_number` tinyint(2) NOT NULL,
   `field_name` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dataark for tabell `fieldnames`
+--
+
+INSERT INTO `fieldnames` (`field_number`, `field_name`) VALUES
+(1, 'Contract Law'),
+(2, 'Company Law'),
+(3, 'Banking and Financial Law'),
+(4, 'Consumer Protection Law'),
+(5, 'Intellectual Property Law'),
+(6, 'Investment Law'),
+(7, 'Land Law'),
+(8, 'Civil Law'),
+(9, 'Criminal Law'),
+(10, 'Marriage and Divorce Law');
 
 -- --------------------------------------------------------
 
@@ -65,7 +100,7 @@ CREATE TABLE `firms` (
   `proof_existence` varchar(100) NOT NULL,
   `buisness_cert` varchar(100) NOT NULL,
   `profile_picture` varchar(255) NOT NULL,
-  `usertype` tinyint(4) NOT NULL
+  `usertype` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -81,16 +116,28 @@ CREATE TABLE `lawyerusers` (
   `username` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `city` varchar(200) NOT NULL,
+  `city` varchar(100) NOT NULL,
   `signup_date` date NOT NULL,
   `profile_picture` varchar(255) NOT NULL,
   `id_confirm` varchar(100) NOT NULL,
   `certification` varchar(100) NOT NULL,
   `phone_number` int(11) NOT NULL,
-  `lsp_firm` varchar(100) NOT NULL,
+  `lsp_firm` varchar(100) DEFAULT NULL,
   `mainfield` varchar(25) NOT NULL,
-  `bio` text NOT NULL,
+  `payment` varchar(100) NOT NULL,
   `usertype` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellstruktur for tabell `lspbios`
+--
+
+CREATE TABLE `lspbios` (
+  `lsp_id` int(11) NOT NULL,
+  `bio` varchar(3000) NOT NULL,
+  `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -122,23 +169,38 @@ CREATE TABLE `mainfields` (
 CREATE TABLE `messages` (
   `message_id` int(11) NOT NULL,
   `title` varchar(200) NOT NULL,
-  `text` text NOT NULL,
-  `sender_id` int(11) NOT NULL,
-  `reciver_id` int(11) NOT NULL,
+  `text` varchar(1000) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `lsp_id` int(11) NOT NULL,
   `sent_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `userbio`
+-- Tabellstruktur for tabell `questions`
 --
 
-CREATE TABLE `userbio` (
-  `bio_id` int(11) NOT NULL,
-  `lsp_id` int(11) NOT NULL,
-  `bio` text NOT NULL,
+CREATE TABLE `questions` (
+  `question_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `question` varchar(1000) NOT NULL,
   `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellstruktur for tabell `ratings`
+--
+
+CREATE TABLE `ratings` (
+  `rating_id` int(11) NOT NULL,
+  `lsp_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `review` varchar(200) NOT NULL,
+  `score` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -148,7 +210,7 @@ CREATE TABLE `userbio` (
 --
 
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `first_name` varchar(25) NOT NULL,
   `last_name` varchar(25) NOT NULL,
   `username` varchar(100) NOT NULL,
@@ -171,6 +233,12 @@ ALTER TABLE `admins`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `contact`
+--
+ALTER TABLE `contact`
+  ADD PRIMARY KEY (`contact_id`);
+
+--
 -- Indexes for table `firms`
 --
 ALTER TABLE `firms`
@@ -183,22 +251,34 @@ ALTER TABLE `lawyerusers`
   ADD PRIMARY KEY (`lsp_id`);
 
 --
+-- Indexes for table `lspbios`
+--
+ALTER TABLE `lspbios`
+  ADD PRIMARY KEY (`lsp_id`);
+
+--
 -- Indexes for table `messages`
 --
 ALTER TABLE `messages`
   ADD PRIMARY KEY (`message_id`);
 
 --
--- Indexes for table `userbio`
+-- Indexes for table `questions`
 --
-ALTER TABLE `userbio`
-  ADD PRIMARY KEY (`bio_id`);
+ALTER TABLE `questions`
+  ADD PRIMARY KEY (`question_id`);
+
+--
+-- Indexes for table `ratings`
+--
+ALTER TABLE `ratings`
+  ADD PRIMARY KEY (`rating_id`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`user_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -211,6 +291,12 @@ ALTER TABLE `admins`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `contact`
+--
+ALTER TABLE `contact`
+  MODIFY `contact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `firms`
 --
 ALTER TABLE `firms`
@@ -220,25 +306,31 @@ ALTER TABLE `firms`
 -- AUTO_INCREMENT for table `lawyerusers`
 --
 ALTER TABLE `lawyerusers`
-  MODIFY `lsp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `lsp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
--- AUTO_INCREMENT for table `userbio`
+-- AUTO_INCREMENT for table `questions`
 --
-ALTER TABLE `userbio`
-  MODIFY `bio_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+ALTER TABLE `questions`
+  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `ratings`
+--
+ALTER TABLE `ratings`
+  MODIFY `rating_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

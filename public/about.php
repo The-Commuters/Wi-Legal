@@ -20,38 +20,48 @@ include '../src/model/userinfo_handler/userinfo_handler.php';
 
 	<main>
 
-		<section class="contaktText">
-			<h3>
-				Company <a href="#">facebook</a> page. 
-			</h3>
-		</section>
-		
+		<div class="about center-marg container">
 
-		
-		<section class="contaktText">
-			<h3>Send us a <a href="mailto: test@noveare.com">mail.</a></h3>
-		</section>
+			<h1 class="med-marg-top blue-txt marg-container">About Wi-Legal</h1>
 
-		<h3 class="contaktDirect">Or send us a direct message!</h3>
-		<form class="contaktForm">
-			<div class="contact-base">		
-				<div class="contaktForm">
-					<label class="contaktLabel">Name</label>
-					<input class="contaktInput" type="text" name="
-					contactName">
+			<div class="about-wrapper marg-container big-marg-bot fade-right-2s">
+				<div class="about-title card center-text white-txt">
+					<h2>OUR VISION</h2>
 				</div>
-				<div class="contaktForm">	
-					<label class="contaktLabel">Email</label>
-					<input class="contaktInput" type="email" name="contaktMail">
+				<div class="about-info card bread-txt black-txt">
+					<div>We are making the platform to become the best partner to both LSPs and clients who live or invest in Vietnam. Customers could get the trusted advices and stable relationship with LSPs through our platform.</div>
+					<br>
+					<div>The LSPs could develop their customer network and approach them in the new way, not just in person. We believe that all of us have the benefit with this platform.</div> 
 				</div>
 			</div>
-			<div class="contaktForm">
-				<label class="contaktLabel">Describe your subject</label>
-				<textarea class="contaktMessage"></textarea>
-				<input class="contaktButton" type="submit" name="contaktDone">
+			<div class="about-wrapper marg-container big-marg-bot fade-right-3s">
+				<div class="about-title card center-text white-txt">
+					<h2>OUR MISSION</h2>
+				</div>
+				<div class="about-info card bread-txt black-txt">
+					<div>- Providing an effective way in connecting LSPs and customers. We reduce the cost and time by eliminating traditional meetings and documenting processes.</div>
+					<br>
+					<div>- AI technology in matching cases. We adopt latest AI technology in recommending the best matched LSPs to customer`s cases.</div>
+					<br>
+					<div>- Socializing legal service to everyone. We focus on the demand of initial advices and small-scale cases that clients do not want to spend time to meet LSPs in person.</div>
+				</div>
 			</div>
-		</form>
+			<div class="about-wrapper marg-container big-marg-bot fade-right-4s">
+				<div class="about-title card center-text white-txt">
+					<h2>ABOUT US</h2>
+				</div>
+				<div class="about-info card bread-txt black-txt">
+					<div>We shorten the distance from legal service providers (LSPs) with the clients.</div>
+					<br>
+					<div>WiLegal is the first law-tech start-up business in Vietnam using Artificial Intelligence (AI) technology in legal services. Legal system is created to protect our legitimate rights and interest. LSPs are professionals who give the advice to people. WiLegal is the virtual broker that connects the LSPs and the customers; you can find and hire lawyers or law firms in Vietnam through our platform.</div>
+					<br>
+					<div>At WiLegal, we would like to make various legal services quick, reliable, and affordable for customers and provide the modern means to approach potential customers for LSPs.</div>
+				</div>
+			</div>
 
+		</div>
+
+		
 	</main>
 
 

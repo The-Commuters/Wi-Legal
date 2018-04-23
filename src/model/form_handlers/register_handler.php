@@ -401,7 +401,7 @@ if(isset($_POST['registerlawyer_button'])){
 
 			
 		/*Her viser man en beskjed som sier at ma er registrert*/
-		array_push($error_array, "<span style='color: #14C800;'>You're all set! Go ahead and login!</span><br>"); 
+		array_push($error_array, "<span>You're all set! Go ahead and login!</span><br>"); 
 
 		/*Her renskes $_SESSION når man har registrert en bruker, og alle input-boksene blir tomme.*/
 		$_SESSION['r_firstname'] = "";

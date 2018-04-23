@@ -1,5 +1,8 @@
+<!-- This is the homepage for the website, on this site users will be able to 
+see a list of lawyers that they can search in after different  -->
+
 <?php  
-/* Config gives a connection to the database between the website*/
+/* Config gives a connection from the database to the website*/
 require '../config/config.php';
 /* Gets $user that you can use on the website to collect data from the database*/
 include '../src/model/userinfo_handler/userinfo_handler.php';
@@ -40,23 +43,23 @@ include '../src/model/form_handlers/login_handler.php';
 					<div class="search-input full-w small-marg-bot">
 						
 						<input type="text" name="search" class="bread-txt faded-black-txt" placeholder="Search by name">
-						<button type="submit" name="search_button" class="faded-black-txt"><i class="fas fa-search fa-lg"></i></button>
+						<button id="search-button" type="submit" name="search_button" class="faded-black-txt"><i class="fas fa-search fa-lg"></i>
 						<!--<i class="fas fa-search fa-2x"></i>-->
 						
 					</div>
 
 					<!-- Kan bare kjøre en for loop her -->
 					<div class="search-options">
-						<div class="full-w faded-black-txt small-marg-bot"><input type="radio" name="field" value="Contract Law"><span class="nav-txt">Contract Law</span></div>
-						<div class="full-w faded-black-txt small-marg-bot"><input type="radio" name="field" value="Company Law"><span class="nav-txt">Company Law</span></div>
-						<div class="full-w faded-black-txt small-marg-bot"><input type="radio" name="field" value="Financial Law"><span class="nav-txt">Financial Law</span></div>
-						<div class="full-w faded-black-txt small-marg-bot"><input type="radio" name="field" value="Consumer Law"><span class="nav-txt">Consumer Law</span></div>
-						<div class="full-w faded-black-txt small-marg-bot"><input type="radio" name="field" value="Intellectual Law"><span class="nav-txt">Intellectual Law</span></div>
-						<div class="full-w faded-black-txt small-marg-bot"><input type="radio" name="field" value="Investement Law"><span class="nav-txt">Investement Law</span></div>
-						<div class="full-w faded-black-txt small-marg-bot"><input type="radio" name="field" value="Land Law"><span class="nav-txt">Land Law</span></div>
-						<div class="full-w faded-black-txt small-marg-bot"><input type="radio" name="field" value="Civil Law"><span class="nav-txt">Civil Law</span></div>
-						<div class="full-w faded-black-txt small-marg-bot"><input type="radio" name="field" value="Criminal Law"><span class="nav-txt">Criminal Law</span></div>
-						<div class="full-w faded-black-txt small-marg-bot"><input type="radio" name="field" value="Divorce Law"><span class="nav-txt">Divorce Law</span></div>
+						<div class="full-w faded-black-txt small-marg-bot"><input type="radio" name="field" value="1"><span class="nav-txt">Contract Law</span></div>
+						<div class="full-w faded-black-txt small-marg-bot"><input type="radio" name="field" value="2"><span class="nav-txt">Company Law</span></div>
+						<div class="full-w faded-black-txt small-marg-bot"><input type="radio" name="field" value="3"><span class="nav-txt">Financial Law</span></div>
+						<div class="full-w faded-black-txt small-marg-bot"><input type="radio" name="field" value="4"><span class="nav-txt">Consumer Law</span></div>
+						<div class="full-w faded-black-txt small-marg-bot"><input type="radio" name="field" value="5"><span class="nav-txt">Intellectual Law</span></div>
+						<div class="full-w faded-black-txt small-marg-bot"><input type="radio" name="field" value="6"><span class="nav-txt">Investement Law</span></div>
+						<div class="full-w faded-black-txt small-marg-bot"><input type="radio" name="field" value="7"><span class="nav-txt">Land Law</span></div>
+						<div class="full-w faded-black-txt small-marg-bot"><input type="radio" name="field" value="8"><span class="nav-txt">Civil Law</span></div>
+						<div class="full-w faded-black-txt small-marg-bot"><input type="radio" name="field" value="9"><span class="nav-txt">Criminal Law</span></div>
+						<div class="full-w faded-black-txt small-marg-bot"><input type="radio" name="field" value="10"><span class="nav-txt">Divorce Law</span></div>
 					</div>
 
 				</form>

@@ -9,7 +9,7 @@ if(isset($_POST['message_button'])){
 	$date = date("Y-m-d"); 
 
 	if ($user['usertype'] == 0) {
-		$sender = $user['id'];
+		$sender = $user['user_id'];
 	} elseif ($user['usertype'] == 1) {
 		$sender = $user['lsp_id'];
 	} 

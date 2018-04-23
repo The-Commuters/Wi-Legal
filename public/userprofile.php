@@ -41,7 +41,7 @@ include '../src/model/userinfo_handler/userinfo_handler.php';
 		include '../src/model/form_handlers/bio_handler.php';
 
 		/* Getting the latest bio that the user have made.*/
-		$query = mysqli_query($con, "SELECT bio FROM userbio WHERE lsp_id = '$lsp_id' ORDER BY bio_id DESC");
+		$query = mysqli_query($con, "SELECT bio FROM lspbios WHERE lsp_id = '$lsp_id'");
 		$bioarray = mysqli_fetch_array($query);
 		/* $bio will be shown as a placeholder in the lawyers own profile */
 		$bio = $bioarray[0];
