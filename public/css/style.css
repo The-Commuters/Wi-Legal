@@ -541,6 +541,11 @@ main {
 	overflow: hidden;
 }
 
+.list-item-avatar > div > img {
+	max-width: 100%;
+	min-height: 12rem;
+}
+
 .list-item-main {
 	padding: 1.6rem;
 }
@@ -891,6 +896,11 @@ main {
 	height: 12rem;
 	border-radius: 50%;
 	overflow: hidden;
+}
+
+.banner-profile > img {
+	max-width: 100%;
+	min-height: 12rem;
 }
 
 .banner-name {
