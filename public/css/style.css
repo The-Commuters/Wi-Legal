@@ -64,7 +64,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	min-height: calc(100vh - 5rem);
+	min-height: 100vh;
 }
 
 *, *:before, *:after {
@@ -419,7 +419,7 @@ main {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	width: 100%;
+	max-width: 120rem;
 }
 
 
@@ -531,9 +531,14 @@ main {
 	overflow: hidden;
 }
 
-.list-item-avatar > img {
-	width: 8rem;
+.list-item-avatar > div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 12rem;
+	height: 12rem;
 	border-radius: 50%;
+	overflow: hidden;
 }
 
 .list-item-main {
@@ -827,7 +832,7 @@ main {
 	background-color: white;
 }
 
-/* ---------->>> Register (4.7) <<<-----------*/
+/* ---------->>> Contact (4.8) <<<-----------*/
 
 .contact {
 	max-width: 80rem;
@@ -849,6 +854,96 @@ main {
 	padding: 0;
 }
 
+/* ---------->>> Profile (4.9) <<<-----------*/
+
+.profile {
+	max-width: 80rem;
+}
+
+.banner {
+	position: relative;
+}
+
+.banner-background {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 20rem;
+	overflow: hidden;
+}
+
+.banner-background > img {
+	width: 80rem;
+}
+
+.banner-profile {
+	display: flex;
+	position: absolute;
+	top: 100%;
+	left: 2rem;
+	transform: translateY(-65%);
+	border: 0.4rem solid white;
+	box-shadow: 0 0 0.1rem 0.12rem var(--blue);
+
+	justify-content: center;
+	align-items: center;
+	width: 12rem;
+	height: 12rem;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+.banner-name {
+	display: block;
+	position: absolute;
+	top: 82%;
+	left: 16rem;
+	text-shadow: 0 0 0.3rem var(--black);
+}
+
+.banner-bar {
+	display: flex;
+	flex-direction: row-reverse;
+	align-items: center;
+	height: 5rem;
+	border-top: 0.1rem solid var(--blue);
+	background-color: white;
+}
+
+.banner-bar-item {
+	margin-right: 2rem;
+	color: var(--faded-black);
+}
+
+.banner-bar-item:hover {
+	color: var(--blue);
+}
+
+.profile-item {
+
+}
+
+.profile-item-title {
+	background-color: var(--blue);
+}
+
+.profile-item-title > h2 {
+	margin: 0;
+	padding: 1.4rem;
+}
+
+.profile-item-info {
+	height: 30rem;
+	background-color: white;
+}
+
+.profile-item-review {
+	height: 10rem;
+	background-color: white;
+}
+
+
+
 /* ------------------------*/ /* ---------->>> FOOTER (5) <<<-----------*/ /* ------------------------*/
 
 /* ---------->>> General (5.1) <<<-----------*/
@@ -857,11 +952,6 @@ footer {
 	padding-left: 5rem; /* -- SCALE -- */
 	border-top: 0.1rem solid var(--faded-blue);
 } /* The styling for the footer */
-
-.parallax-footer {
-  position: relative;
-  transform-style: preserve-3d;
-}
 
 
 /* ---------->>> copyright (5.2) <<<-----------*/
@@ -1013,6 +1103,10 @@ footer {
 .pc-hide {
 	display: inline-block;
 } /* Makes something dissapear on pc */
+
+.tablet-show {
+	display: none;
+}
 
 .toggle {
 	display: block;
@@ -1181,6 +1275,14 @@ Footer
 	.list-item {
 		flex-direction: row;
 	}
+
+	.list-item-avatar {
+		min-width: 16rem;
+	}
+
+	.tablet-show {
+		display: block;
+	}
 }
 
 /* Medium devices (Tablet portrait, small desktops, 900px and up) (7.2) */
@@ -1260,6 +1362,7 @@ Footer
 		padding-top: 5rem;
 		padding-left: 0;
 	}
+
 	.lawyer-listing {
 		flex-direction: row;
 		align-items: flex-start;
@@ -1272,10 +1375,6 @@ Footer
 
 	.search-input {
 		width: 25rem;
-	}
-
-	.list-item {
-		width: 50rem;
 	}
 
 	.register {
@@ -1317,12 +1416,6 @@ Footer
 
 /* Large devices (Medium to large desktops, 1200px and up) (7.3) */
 @media (min-width: 1200px) {
-
-	/* ---------->>> List <<<-----------*/
-
-	.list-item {
-		width: 80rem;
-	}
 
 
 	/* ---------->>> Parallax layers <<<-----------*/

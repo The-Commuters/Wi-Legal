@@ -22,39 +22,49 @@ include '../src/model/form_handlers/rating_handler.php';
 <?php $page_title = 'Wilegal'; include '../src/utils/template/components/head.php'; ?>
 
 <body>
-
-
 	<!-- HEADER -->
 	<?php $current_page = 'profile'; include '../src/utils/template/components/header.php'; ?>
 
-	<?php 
-	/* Pulls here out all the information from the user, that will go to the profile page.*/
-	$first_name = $other_user["first_name"];
-	$last_name = $other_user["last_name"];
-	$username = $other_user["username"];
-	$profile_pic = $other_user["profile_picture"]; 
-	$city = $other_user["city"]; 
-	$firm = $other_user["lsp_firm"];
-	$mainfield = $other_user["mainfield"];
+	<!-- MAIN -->
+	<main class="marg-container">
+		<div class="profile center-marg med-marg-top">
 
+			<div class="banner-container full-w card med-marg-bot">
+				<div class="banner full-w">
+					<div class="banner-background"><img src="img/placeholders/placeholder_large_slim.jpg" class="img-fix" alt="#"></div>
+					<div class="banner-profile"><img src="img/profile/default/1.png" class="img-fix" alt="#"></div>
+					<h1 class="banner-name white-txt tablet-show fade-right-2s">Name Namerson</h1>
+				</div>
+				<div class="banner-bar full-w">
+					<a href="#" class="banner-bar-item"><i class="fas fa-envelope fa-2x"></i></a>
+				</div>
+			</div>
 
-	/* Decides what kind of user that the logged in account is and collects the template/component for the profile-page*/
-	if ($other_user['usertype'] == 1) {
-		/* if the klicked user is of usertype lawyers. */
+			<div class="profile-item full-w med-marg-bot">
+				<div class="profile-item-title full-w card">
+					<h2 class="white-txt">Book</h2>
+				</div>
+				<div class="profile-item-info full-w card"></div>
+			</div>
 
-		/* Collect here the newest bio from the lawyer. */
-		$query = mysqli_query($con, "SELECT bio FROM lspbios WHERE lsp_id = '$lsp_id'");
-		$bioarray = mysqli_fetch_array($query);
-		/* $bio will be shown as a text in the lawyers profile */
-		$bio = $bioarray[0];
+			<div class="profile-item full-w med-marg-bot">
+				<div class="profile-item-title full-w card">
+					<h2 class="white-txt">About</h2>
+				</div>
+				<div class="profile-item-info full-w card"></div>
+			</div>
 
-		include '../src/utils/template/components/profile_components/lawyers.php';
-	} elseif ($other_user['usertype'] == 2) {
-		/* if the klicked user is of usertype firms. */
-		include '../src/utils/template/components/profile_components/firms.php';
-	}
-	?>
+			<div class="profile-item full-w med-marg-bot">
+				<div class="profile-item-title full-w small-marg-bot card">
+					<h2 class="white-txt">Reviews</h2>
+				</div>
+				<div class="profile-item-review full-w small-marg-bot card"></div>
+				<div class="profile-item-review full-w small-marg-bot card"></div>
+				<div class="profile-item-review full-w small-marg-bot card"></div>
+			</div>
 
+		</div>
+	</main>
 
 	<!-- FOOTER -->
 	<?php include '../src/utils/template/components/footer.php'; ?>
