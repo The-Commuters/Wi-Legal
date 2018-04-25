@@ -83,7 +83,9 @@ include '../src/model/form_handlers/login_handler.php';
 					<div class="list-item card margin-bottom full-w">
 
 						<a href="<?php echo $username; ?>" class="list-item-avatar center-flex">
-							<img src="<?php echo $profile_pic; ?>" alt="#">
+							<div class=".img-cutter">
+								<img src="<?php echo $profile_pic; ?>" alt="#">
+							</div>
 						</a>
 
 						<div class="list-item-main full-w">
