@@ -824,6 +824,7 @@ main {
 .about-info {
 	padding: 1rem 1.6rem;
 	border: 0.1rem solid var(--blue);
+	background-color: white;
 }
 
 /* ---------->>> Register (4.7) <<<-----------*/
@@ -835,6 +836,7 @@ main {
 .contact-form {
 	border: 0.1rem solid var(--blue);
 	padding: 0 1.6rem 2rem;
+	background-color: white;
 }
 
 .contact-title {
