@@ -30,8 +30,9 @@
 					<h2 class="white-txt">About</h2>
 				</div>
 				<div class="profile-item-info full-w card">
-					<p class="bread-txt full-w black-txt"><?php echo $bio; ?></p>
-					<div class="info-row margin-bottom">
+					<p class="bread-txt full-w black-txt med-marg-bot"><?php echo $bio; ?></p>
+
+					<div class="info-row margin-bottom med-marg-bot">
 						<span>
 							<?php 	if ($firm != NULL) { echo '<i class="far fa-building"></i>' . " " . $firm;} 
 							else { echo '<i class="fas fa-street-view"></i>' . " " . "Freelance"; } ?>
