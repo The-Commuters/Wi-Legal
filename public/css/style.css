@@ -884,9 +884,9 @@ main {
 .banner-profile {
 	display: flex;
 	position: absolute;
-	top: 100%;
-	left: 2rem;
-	transform: translateY(-65%);
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
 	border: 0.4rem solid white;
 	box-shadow: 0 0 0.1rem 0.12rem var(--blue);
 
@@ -896,6 +896,8 @@ main {
 	height: 12rem;
 	border-radius: 50%;
 	overflow: hidden;
+
+	transition: 0.3s;
 }
 
 .banner-profile > img {
@@ -1363,6 +1365,12 @@ Footer
 
 	.schedule-item {
 		width: 16rem;
+	}
+
+	.banner-profile {
+		top: 100%;
+		left: 2rem;
+		transform: translate(0,-65%);
 	}
 }
 
