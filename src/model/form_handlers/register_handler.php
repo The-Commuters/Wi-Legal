@@ -11,6 +11,8 @@ $error_array = array();
 /*Hvis registrering-knappen på register.php blir presset skjer dette(Resten av siden)*/
 if(isset($_POST['register_button'])){ 
 
+
+	$toggle = 'user';
 	/*Strip_tags fjerner alle html tags som kan interfere med koden, det blir altså ikke mulig å bruke
 	tegn som disse '<>!.,^*+', dette er et sikkerhetstiltak som er med på å forhindre tukling med koden */
 	$firstname = strip_tags($_POST['r_firstname']); //Her blir fornavet satt opp.
@@ -60,43 +62,43 @@ if(isset($_POST['register_button'])){
 		/*Feilmelding: Eposten er inne i databasen.*/
 		if($num_rows > 0) {  
 
-			array_push($error_array, "Email already in use<br>");  
+			array_push($error_array, "Email already in use");  
 		}
 	}
 	/*Feilmelding: Ikke gyldig Epost-format.*/
 	else {
 
-		array_push($error_array, "Invalid email format<br>"); 
+		array_push($error_array, "Invalid email format"); 
 	}
 
 	/*Feilmelding: Hvis fornavnet ikke er i korrekt størrelse*/
 	if(strlen($firstname) > 25 || strlen($firstname) < 2) { 
 
-		array_push($error_array, "This must be between 2 and 25 characters<br>");
+		array_push($error_array, "This must be between 2 and 25 characters");
 	}
 
 	/*Feilmelding:  etternavnet ikke er i korrekt størrelse*/
 	if(strlen($lastname) > 25 || strlen($lastname) < 1) {  
 
-		array_push($error_array,  "This must be between 1 and 25 characters<br>");
+		array_push($error_array,  "This must be between 1 and 25 characters");
 	}
 
 	/*Feilmelding: Hvis passordene ikke er like.*/
 	if($password != $password_check) { 
 
-		array_push($error_array,  "Your passwords do not match<br>");
+		array_push($error_array,  "Your passwords do not match");
 	}
 
 	/*Feilmelding: Hvis passordene inneholder annet enn tall og bokstaver.*/
 	if(preg_match('/[^A-Za-z0-9]/', $password)) {  
 
-		array_push($error_array, "Your password can only contain english characters or numbers<br>");
+		array_push($error_array, "Your password can only contain english characters or numbers");
 	}
 	
 	/*Feilmelding: Hvis passordet ikke er mellom 5 og 30 characterer lang.*/
 	if(strlen($password > 30 || strlen($password) < 5)) {  
 
-		array_push($error_array, "Your password must be betwen 5 and 30 characters<br>");
+		array_push($error_array, "Your password must be betwen 5 and 30 characters");
 	}
 
 
@@ -140,7 +142,7 @@ if(isset($_POST['register_button'])){
 		$query = mysqli_query($con, "INSERT INTO users VALUES ('', '$firstname', '$lastname', '$username', '$email', '$password', '$date', '$profile_pic', '$phone_number' , 0)");
 
 		/*Her viser man en beskjed som sier at ma er registrert*/
-		array_push($error_array, "You're all set! Go ahead and login!<br>"); 
+		array_push($error_array, "<span>You're all set! Go ahead and login!</span>"); 
 
 		/*Her renskes $_SESSION når man har registrert en bruker, og alle input-boksene blir tomme.*/
 		$_SESSION['r_firstname'] = "";
@@ -155,6 +157,7 @@ if(isset($_POST['register_button'])){
 /*Hvis 'registerlawyer' registrering-knappen på register.php blir presset skjer dette(Resten av siden)*/
 if(isset($_POST['registerlawyer_button'])){ 
 
+	$toggle = 'lawyer';
 	/*Strip_tags fjerner alle html tags som kan interfere med koden, det blir altså ikke mulig å bruke
 	tegn som disse '<>!.,^*+', dette er et sikkerhetstiltak som er med på å forhindre tukling med koden */
 	$firstname = strip_tags($_POST['r_firstname']); //Her blir fornavet satt opp.
@@ -263,13 +266,13 @@ if(isset($_POST['registerlawyer_button'])){
 		/*Feilmelding: Eposten er inne i databasen.*/
 		if($e_num_rows > 0) {  
 
-			array_push($error_array, "Email already in use<br>");  
+			array_push($error_array, "Email already in use");  
 		}
 	}
 	/*Feilmelding: Ikke gyldig Epost-format.*/
 	else {
 
-		array_push($error_array, "Invalid email format<br>"); 
+		array_push($error_array, "Invalid email format"); 
 	}
 
 
@@ -279,43 +282,43 @@ if(isset($_POST['registerlawyer_button'])){
 
 	if ($u_num_rows > 0) {
 
-		array_push($error_array, "The username is already taken.<br>");
+		array_push($error_array, "The username is already taken.");
 	}
 
 	/*Feilmelding: Hvis fornavnet ikke er i korrekt størrelse*/
 	if(strlen($firstname) > 25) { 
 
-		array_push($error_array, "Must be lower than 25 characters<br>");
+		array_push($error_array, "Must be lower than 25 characters");
 	}
 
 	/*Feilmelding:  etternavnet ikke er i korrekt størrelse*/
 	if(strlen($lastname) > 25 || strlen($lastname) < 1) {  
 
-		array_push($error_array,  "This must be between 1 and 25 characters<br>");
+		array_push($error_array,  "This must be between 1 and 25 characters");
 	}
 
 	/*Feilmelding: Hvis the username ikke er i korrekt størrelse*/
 	if(strlen($username) > 25 || strlen($username) < 4) { 
 
-		array_push($error_array, "This must be between 4 and 25 characters<br>");
+		array_push($error_array, "This must be between 4 and 25 characters");
 	}
 
 	/*Feilmelding: Hvis passordene ikke er like.*/
 	if($password != $password_check) { 
 
-		array_push($error_array,  "Your passwords do not match<br>");
+		array_push($error_array,  "Your passwords do not match");
 	}
 
 	/*Feilmelding: Hvis passordene inneholder annet enn tall og bokstaver.*/
 	if(preg_match('/[^A-Za-z0-9]/', $password)) {  
 
-		array_push($error_array, "Your password can only contain english characters or numbers<br>");
+		array_push($error_array, "Your password can only contain english characters or numbers");
 	}
 	
 	/*Feilmelding: Hvis passordet ikke er mellom 5 og 30 characterer lang.*/
 	if(strlen($password > 30 || strlen($password) < 5)) {  
 
-		array_push($error_array, "Your password must be betwen 5 and 30 characters<br>");
+		array_push($error_array, "Your password must be betwen 5 and 30 characters");
 	}
 
 
@@ -341,7 +344,7 @@ if(isset($_POST['registerlawyer_button'])){
 
 		/* This line checks the file size */
 		if ($_FILES["fileToUpload"]["size"] > 500000) {
-		    array_push($error_array, "Your file is to big<br>");
+		    array_push($error_array, "Your file is to big");
 		    $upload = 0;
 		}
 
@@ -369,7 +372,7 @@ if(isset($_POST['registerlawyer_button'])){
 
 		/* This line checks the file size */
 		if ($_FILES["fileToUpload2"]["size"] > 500000) {
-		    array_push($error_array, "Your file is to big<br>");
+		    array_push($error_array, "Your file is to big");
 		    $upload = 0;
 		}
 		/* Allow only certain file formats */
@@ -401,7 +404,7 @@ if(isset($_POST['registerlawyer_button'])){
 
 			
 		/*Her viser man en beskjed som sier at ma er registrert*/
-		array_push($error_array, "<span>You're all set! Go ahead and login!</span><br>"); 
+		array_push($error_array, "<span>You're all set! Go ahead and login!</span>"); 
 
 		/*Her renskes $_SESSION når man har registrert en bruker, og alle input-boksene blir tomme.*/
 		$_SESSION['r_firstname'] = "";
@@ -418,6 +421,7 @@ if(isset($_POST['registerlawyer_button'])){
 /*Hvis 'registerfirm' registrering-knappen på register.php blir presset skjer dette(Resten av siden)*/
 if(isset($_POST['registerfirm_button'])){ 
 
+	$toggle = 'firm';
 	/*Strip_tags fjerner alle html tags som kan interfere med koden, det blir altså ikke mulig å bruke
 	tegn som disse '<>!.,^*+', dette er et sikkerhetstiltak som er med på å forhindre tukling med koden */
 	$firmname = strip_tags($_POST['r_firmname']); //Her blir fornavet satt opp.
@@ -457,31 +461,31 @@ if(isset($_POST['registerfirm_button'])){
 		/*Feilmelding: Eposten er inne i databasen.*/
 		if($num_rows > 0) {  
 
-			array_push($error_array, "Email already in use<br>");  
+			array_push($error_array, "Email already in use");  
 		}
 	}
 	/*Feilmelding: Ikke gyldig Epost-format.*/
 	else {
 
-		array_push($error_array, "Invalid email format<br>"); 
+		array_push($error_array, "Invalid email format"); 
 	}
 
 	/*Feilmelding: Hvis passordene ikke er like.*/
 	if($password != $password_check) { 
 
-		array_push($error_array,  "Your passwords do not match<br>");
+		array_push($error_array,  "Your passwords do not match");
 	}
 
 	/*Feilmelding: Hvis passordene inneholder annet enn tall og bokstaver.*/
 	if(preg_match('/[^A-Za-z0-9]/', $password)) {  
 
-		array_push($error_array, "Your password can only contain english characters or numbers<br>");
+		array_push($error_array, "Your password can only contain english characters or numbers");
 	}
 	
 	/*Feilmelding: Hvis passordet ikke er mellom 5 og 30 characterer lang.*/
 	if(strlen($password > 30 || strlen($password) < 5)) {  
 
-		array_push($error_array, "Your password must be betwen 5 and 30 characters<br>");
+		array_push($error_array, "Your password must be betwen 5 and 30 characters");
 	}
 
 
@@ -504,7 +508,7 @@ if(isset($_POST['registerfirm_button'])){
 
 		/* This line checks the file size */
 		if ($_FILES["fileToUpload"]["size"] > 500000) {
-		    array_push($error_array, "Your file is to big<br>");
+		    array_push($error_array, "Your file is to big");
 		    $upload = 0;
 		}
 
@@ -531,7 +535,7 @@ if(isset($_POST['registerfirm_button'])){
 
 		/* This line checks the file size */
 		if ($_FILES["fileToUpload2"]["size"] > 500000) {
-		    array_push($error_array, "Your file is to big<br>");
+		    array_push($error_array, "Your file is to big");
 		    $upload = 0;
 		}
 		/* Allow only certain file formats */
@@ -555,7 +559,7 @@ if(isset($_POST['registerfirm_button'])){
 		$query = mysqli_query($con, "INSERT INTO firms VALUES ('', '$firmname', '$email', '$password', '$date', '$target_file_id', '$target_file_cert','$profile_pic', 2)");
 
 		/*Her viser man en beskjed som sier at ma er registrert*/
-		array_push($error_array, "<span style='color: #14C800;'>You're all set! Go ahead and login!</span><br>"); 
+		array_push($error_array, "<span>You're all set! Go ahead and login!</span>");  
 
 		/*Her renskes $_SESSION når man har registrert en bruker, og alle input-boksene blir tomme.*/
 		$_SESSION['r_firmname'] = "";

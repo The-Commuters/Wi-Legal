@@ -3,10 +3,8 @@
 require '../config/config.php';
 /* Retrieving php code from login_handler.php */
 include '../src/model/form_handlers/login_handler.php';
-/* $loggedinuser will tell the rest of the site what user is connected */
+/* $user will tell the rest of the site what user is connected */
 include '../src/model/userinfo_handler/userinfo_handler.php';
-/* Collects all reviews for the lawyer in question */	
-
 ?>
 
 <!DOCTYPE html>

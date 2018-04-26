@@ -29,14 +29,15 @@ require '../src/model/form_handlers/register_handler.php';
 
             <!-- User register -->
             <div class="med-marg-bot card fade-right-2s">
-                <div id="user" class="register-tab full-w">
+                <div id="user" class="register-tab full-w ">
                     <div class="register-title center-marg container white-txt">
                         <h2>User</h2>
                         <i class="fas fa-play"></i>
                     </div>
                 </div>
             
-                <div id="user-register" class="register-form full-w bread-txt faded-black-txt">
+                <div id="user-register" class="register-form full-w bread-txt faded-black-txt 
+                    <?php if (isset($toggle) && $toggle=='user') { echo 'toggle'; } ?>">
 
 
                     <form action="register.php" method="POST">
@@ -50,9 +51,9 @@ require '../src/model/form_handlers/register_handler.php';
                                 if(isset($_SESSION['r_firstname'])) {
                                     echo $_SESSION['r_firstname'];
                                 } ?>" required>
-                                <!-- Put PHP kode her -->
-                                <?php if(in_array("Your first name must be between 2 and 25 characters<br>", $error_array)) 
-                                 echo "Your first name must be between 2 and 25 characters<br>"; ?>
+                                
+                                <?php if(in_array("Your first name must be between 2 and 25 characters", $error_array)) 
+                                 echo "Your first name must be between 2 and 25 characters"; ?>
                             </div>
                             
                             <div class="input-container ">
@@ -63,9 +64,8 @@ require '../src/model/form_handlers/register_handler.php';
                                     echo $_SESSION['r_lastname'];
                                 } 
                                 ?>" required>
-                                <!-- Put PHP kode her -->
-                                <?php if(in_array("Your last name must be between 2 and 25 characters<br>", $error_array)) 
-                                 echo "Your last name must be between 2 and 25 characters<br>"; ?>
+                                <?php if(in_array("Your last name must be between 2 and 25 characters", $error_array)) 
+                                 echo "Your last name must be between 2 and 25 characters"; ?>
                             </div>
 
                         </div>
@@ -80,9 +80,8 @@ require '../src/model/form_handlers/register_handler.php';
                                     echo $_SESSION['r_email'];
                                 } 
                                 ?>" required>
-                                <!-- Put PHP kode her -->
-                                    <?php if(in_array("Email already in use<br>", $error_array)) echo "Email already in use<br>"; 
-                                    else if(in_array("Invalid email format<br>", $error_array)) echo "Invalid email format<br>"; ?>
+                                    <?php if(in_array("Email already in use", $error_array)) echo "Email already in use"; 
+                                    else if(in_array("Invalid email format", $error_array)) echo "Invalid email format"; ?>
                             </div>
 
                         </div>
@@ -93,19 +92,22 @@ require '../src/model/form_handlers/register_handler.php';
                                 <div>Password *</div>
                                 <!-- Password input -->
                                 <input class="bread-txt full-w" type="password" name="r_password" required>
-                                <!-- Put PHP kode her -->
+                                        <?php if(in_array("Your passwords do not match", $error_array)) echo "Your passwords do not match"; 
+                                        else if(in_array("Your password can only contain english characters or numbers", 
+                                            $error_array)) echo "Your password can only contain english characters or numbers";
+                                        else if(in_array("Your password must be betwen 5 and 30 characters", $error_array)) 
+                                            echo "Your password must be betwen 5 and 30 characters"; ?>
                             </div>
                             
                             <div class="input-container ">
                                 <div>Password confirmation *</div>
                                 <!-- Password confirmation -->
                                 <input class="bread-txt full-w" type="password" name="r_password_check" required>
-                                <!-- Put PHP kode her -->
-                                        <?php if(in_array("Your passwords do not match<br>", $error_array)) echo "Your passwords do not match<br>"; 
-                                        else if(in_array("Your password can only contain english characters or numbers<br>", 
-                                            $error_array)) echo "Your password can only contain english characters or numbers<br>";
-                                        else if(in_array("Your password must be betwen 5 and 30 characters<br>", $error_array)) 
-                                            echo "Your password must be betwen 5 and 30 characters<br>"; ?>
+                                        <?php if(in_array("Your passwords do not match", $error_array)) echo "Your passwords do not match"; 
+                                        else if(in_array("Your password can only contain english characters or numbers", 
+                                            $error_array)) echo "Your password can only contain english characters or numbers";
+                                        else if(in_array("Your password must be betwen 5 and 30 characters", $error_array)) 
+                                            echo "Your password must be betwen 5 and 30 characters"; ?>
                             </div>
 
                         </div>
@@ -116,15 +118,13 @@ require '../src/model/form_handlers/register_handler.php';
                                 <div>Phone-number *</div>
                                 <!-- Phone-number input -->
                                 <input class="bread-txt full-w" type="tel" name="r_phone_number" required>
-                                <!-- Put PHP kode her -->
                             </div>
 
                             <div class="input-container">
                                 <!-- Submit -->
                                 <input class="center-txt bread-txt" type="submit" name="register_button" value="Register">
-                                <!-- Put PHP kode her -->
-                                <?php if(in_array("You're all set! Go ahead and login!<br>", $error_array)) 
-                                echo "You're all set! Go ahead and login!<br>"; ?>
+                                <?php if(in_array("<span>You're all set! Go ahead and login!</span>", $error_array)) 
+                                echo "<span>You're all set! Go ahead and login!</span>"; ?>
                             </div>
 
                         </div>
@@ -142,7 +142,8 @@ require '../src/model/form_handlers/register_handler.php';
                     </div>
                 </div>
             
-                <div id="lawyer-register" class="register-form full-w bread-txt faded-black-txt">
+                <div id="lawyer-register" class="register-form full-w bread-txt faded-black-txt 
+                    <?php if (isset($toggle) && $toggle=='lawyer') { echo 'toggle'; } ?>">
                     <form action="register.php" method="POST" enctype="multipart/form-data">
 
                         <div class="input-wrapper-split"> <!-- Name -->
@@ -155,9 +156,9 @@ require '../src/model/form_handlers/register_handler.php';
                                     echo $_SESSION['r_firstname'];
                                 } 
                                 ?>" required>
-                                <!-- Put PHP kode her -->
-                                <?php if(in_array("Your first name must be between 2 and 25 characters<br>", $error_array)) 
-                                echo "Your first name must be between 2 and 25 characters<br>"; ?>
+                                
+                                <?php if(in_array("Your first name must be between 2 and 25 characters", $error_array)) 
+                                echo "Your first name must be between 2 and 25 characters"; ?>
                             </div>
                             
                             <div class="input-container ">
@@ -168,9 +169,9 @@ require '../src/model/form_handlers/register_handler.php';
                                     echo $_SESSION['r_lastname'];
                                 } 
                                 ?>" required>
-                                <!-- Put PHP kode her -->
-                                <?php if(in_array("Your last name must be between 2 and 25 characters<br>", $error_array)) 
-                                echo "Your last name must be between 2 and 25 characters<br>"; ?>
+                                
+                                <?php if(in_array("Your last name must be between 2 and 25 characters", $error_array)) 
+                                echo "Your last name must be between 2 and 25 characters"; ?>
                             </div>
 
                         </div>
@@ -185,9 +186,9 @@ require '../src/model/form_handlers/register_handler.php';
                                     echo $_SESSION['r_email'];
                                 } 
                                 ?>" required>
-                                <!-- Put PHP kode her -->
-                                <?php if(in_array("Email already in use<br>", $error_array)) echo "Email already in use<br>"; 
-                                else if(in_array("Invalid email format<br>", $error_array)) echo "Invalid email format<br>"; ?>
+                                
+                                <?php if(in_array("Email already in use", $error_array)) echo "Email already in use"; 
+                                else if(in_array("Invalid email format", $error_array)) echo "Invalid email format"; ?>
                             </div>
 
                         </div>
@@ -198,19 +199,22 @@ require '../src/model/form_handlers/register_handler.php';
                                 <div>Password *</div>
                                 <!-- Password input -->
                                 <input class="bread-txt full-w" type="password" name="r_password" required>
-                                <!-- Put PHP kode her -->
+                                <?php if(in_array("Your passwords do not match", $error_array)) echo "Your passwords do not match"; 
+                                else if(in_array("Your password can only contain english characters or numbers", 
+                                    $error_array)) echo "Your password can only contain english characters or numbers";
+                                else if(in_array("Your password must be betwen 5 and 30 characters", $error_array)) 
+                                    echo "Your password must be betwen 5 and 30 characters"; ?>
                             </div>
                             
                             <div class="input-container ">
                                 <div>Password confirmation *</div>
                                 <!-- Password confirmation -->
                                 <input class="bread-txt full-w" type="password" name="r_password_check" required>
-                                <!-- Put PHP kode her -->
-                                <?php if(in_array("Your passwords do not match<br>", $error_array)) echo "Your passwords do not match<br>"; 
-                                else if(in_array("Your password can only contain english characters or numbers<br>", 
-                                    $error_array)) echo "Your password can only contain english characters or numbers<br>";
-                                else if(in_array("Your password must be betwen 5 and 30 characters<br>", $error_array)) 
-                                    echo "Your password must be betwen 5 and 30 characters<br>"; ?>
+                                <?php if(in_array("Your passwords do not match", $error_array)) echo "Your passwords do not match"; 
+                                else if(in_array("Your password can only contain english characters or numbers", 
+                                    $error_array)) echo "Your password can only contain english characters or numbers";
+                                else if(in_array("Your password must be betwen 5 and 30 characters", $error_array)) 
+                                    echo "Your password must be betwen 5 and 30 characters"; ?>
                             </div>
 
                         </div>
@@ -225,11 +229,11 @@ require '../src/model/form_handlers/register_handler.php';
                                     echo $_SESSION['r_username'];
                                 } 
                                 ?>" required>
-                                <!-- Put PHP kode her -->
-                                <?php if(in_array("This must be between 3 and 25 characters<br>", $error_array)) 
-                                echo "This must be between 3 and 25 characters<br>";
-                                elseif (in_array("The username is already taken.<br>", $error_array)) 
-                                    echo "The username is already taken.<br>";?>
+
+                                <?php if(in_array("This must be between 3 and 25 characters", $error_array)) 
+                                echo "This must be between 3 and 25 characters";
+                                elseif (in_array("The username is already taken.", $error_array)) 
+                                    echo "The username is already taken.";?>
                             </div>
 
                             <div class="input-container ">
@@ -240,7 +244,6 @@ require '../src/model/form_handlers/register_handler.php';
                                     echo $_SESSION['r_phone_number'];
                                 } 
                                 ?>" required>
-                                <!-- Put PHP kode her -->
                             </div>
 
                         </div>
@@ -255,7 +258,6 @@ require '../src/model/form_handlers/register_handler.php';
                                     echo $_SESSION['r_city'];
                                 } 
                                 ?>">
-                                <!-- Put PHP kode her -->
                             </div>
 
                             <div class="input-container ">
@@ -266,7 +268,6 @@ require '../src/model/form_handlers/register_handler.php';
                                     echo $_SESSION['r_firm'];
                                 } 
                                 ?>">
-                                <!-- Put PHP kode her -->
                             </div>
 
                         </div>
@@ -277,9 +278,9 @@ require '../src/model/form_handlers/register_handler.php';
                                 <div>Valid ID *</div>
                                 <!-- Valid ID input -->
                                 <input class="bread-txt" type="file" name="fileToUpload" required>
-                                <!-- Put PHP kode her -->
-                                <?php if(in_array("Your file is not an image<br>", $error_array)) echo "Your file is not an image<br>"; 
-                                else if(in_array("Your file is to big<br>", $error_array)) echo "Your file is to big<br>";
+
+                                <?php if(in_array("Your file is not an image", $error_array)) echo "Your file is not an image"; 
+                                else if(in_array("Your file is to big", $error_array)) echo "Your file is to big";
                                 else if(in_array("Sorry, only JPG, JPEG, PNG & GIF files are allowed.", $error_array)) 
                                     echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
                                 ?>
@@ -289,9 +290,9 @@ require '../src/model/form_handlers/register_handler.php';
                                 <div>Valid lsp certification *</div>
                                 <!-- Valid lsp certification input -->
                                 <input class="bread-txt" type="file" name="fileToUpload2" required>
-                                <!-- Put PHP kode her -->
-                                <?php if(in_array("Your file is not an image<br>", $error_array)) echo "Your file is not an image<br>"; 
-                                else if(in_array("Your file is to big<br>", $error_array)) echo "Your file is to big<br>";
+
+                                <?php if(in_array("Your file is not an image", $error_array)) echo "Your file is not an image"; 
+                                else if(in_array("Your file is to big", $error_array)) echo "Your file is to big";
                                 else if(in_array("Sorry, only JPG, JPEG, PNG & GIF files are allowed.", $error_array)) 
                                     echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
                                 ?>
@@ -317,7 +318,7 @@ require '../src/model/form_handlers/register_handler.php';
 					                <option value="Criminal Law">Criminal Law</option>
 					                <option value="Marriage and Divorce Law">Marriage and Divorce Law</option>
                                 </select>
-                                <!-- Put PHP kode her -->
+
                             </div>
 
                         </div>
@@ -350,9 +351,9 @@ require '../src/model/form_handlers/register_handler.php';
                             <div class="input-container">
                                 <!-- Submit -->
                                 <input class="center-txt bread-txt" type="submit" name="registerlawyer_button" value="Register">
-                                <!-- Put PHP kode her -->
-                                <?php if(in_array("<span style='color: #14C800;'>You're all set! Go ahead and login!</span><br>", $error_array)) 
-                                echo "<span style='color: #14C800;'>You're all set! Go ahead and login!</span><br><br>"; ?>
+                                
+                                <?php if(in_array("<span>You're all set! Go ahead and login!</span>", $error_array)) 
+                                echo "<span>You're all set! Go ahead and login!</span>"; ?>
                             </div>
                             
                         </div>
@@ -370,7 +371,8 @@ require '../src/model/form_handlers/register_handler.php';
                     </div>
                 </div>
             
-                <div id="firm-register" class="register-form full-w bread-txt faded-black-txt">
+                <div id="firm-register" class="register-form full-w bread-txt faded-black-txt 
+                    <?php if (isset($toggle) && $toggle=='firm') { echo 'toggle'; } ?>">
                     <form action="register.php" method="POST" enctype="multipart/form-data">
 
                         <div class="input-wrapper-full full-w"> <!-- Email -->
@@ -379,7 +381,7 @@ require '../src/model/form_handlers/register_handler.php';
                                 <div>Firm name *</div>
                                 <!-- Firm name input -->
                                 <input class="bread-txt full-w" type="text" name="r_firmname" required>
-                                <!-- Put PHP kode her -->
+                                
                             </div>
 
                         </div>
@@ -390,7 +392,8 @@ require '../src/model/form_handlers/register_handler.php';
                                 <div>Email *</div>
                                 <!-- Email input -->
                                 <input class="bread-txt full-w" type="email" name="r_email" required>
-                                <!-- Put PHP kode her -->
+                                <?php if(in_array("Email already in use", $error_array)) echo "Email already in use"; 
+                                else if(in_array("Invalid email format", $error_array)) echo "Invalid email format"; ?>
                             </div>
 
                         </div>
@@ -401,19 +404,23 @@ require '../src/model/form_handlers/register_handler.php';
                                 <div>Password *</div>
                                 <!-- Password input -->
                                 <input class="bread-txt full-w" type="password" name="r_password" required>
-                                <!-- Put PHP kode her -->
+                                <?php if(in_array("Your passwords do not match", $error_array)) echo "Your passwords do not match"; 
+                                else if(in_array("Your password can only contain english characters or numbers", 
+                                    $error_array)) echo "Your password can only contain english characters or numbers";
+                                else if(in_array("Your password must be betwen 5 and 30 characters", $error_array)) 
+                                        echo "Your password must be betwen 5 and 30 characters"; ?>
                             </div>
                             
                             <div class="input-container ">
                                 <div>Password confirmation *</div>
                                 <!-- Password confirmation -->
                                 <input class="bread-txt full-w" type="password" name="r_password_check" required>
-                                <!-- Put PHP kode her -->
-                                <?php if(in_array("Your passwords do not match<br>", $error_array)) echo "Your passwords do not match<br>"; 
-                                else if(in_array("Your password can only contain english characters or numbers<br>", 
-                                    $error_array)) echo "Your password can only contain english characters or numbers<br>";
-                                else if(in_array("Your password must be betwen 5 and 30 characters<br>", $error_array)) 
-                                        echo "Your password must be betwen 5 and 30 characters<br>"; ?>
+                                
+                                <?php if(in_array("Your passwords do not match", $error_array)) echo "Your passwords do not match"; 
+                                else if(in_array("Your password can only contain english characters or numbers", 
+                                    $error_array)) echo "Your password can only contain english characters or numbers";
+                                else if(in_array("Your password must be betwen 5 and 30 characters", $error_array)) 
+                                        echo "Your password must be betwen 5 and 30 characters"; ?>
                             </div>
 
                         </div>
@@ -423,10 +430,10 @@ require '../src/model/form_handlers/register_handler.php';
                             <div class="input-container ">
                                 <div>Valid proof of existence *</div>
                                 <!-- Valid proof of existance -->
-                                <input class="bread-txt" type="file" required>
-                                <!-- Put PHP kode her -->
-                                <?php if(in_array("Your file is not an image<br>", $error_array)) echo "Your file is not an image<br>"; 
-                                else if(in_array("Your file is to big<br>", $error_array)) echo "Your file is to big<br>";
+                                <input class="bread-txt" type="file" name="fileToUpload" id="fileToUpload" required>
+                                
+                                <?php if(in_array("Your file is not an image", $error_array)) echo "Your file is not an image"; 
+                                else if(in_array("Your file is to big", $error_array)) echo "Your file is to big";
                                 else if(in_array("Sorry, only JPG, JPEG, PNG & GIF files are allowed.", $error_array)) 
                                     echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
                                 ?>
@@ -435,10 +442,10 @@ require '../src/model/form_handlers/register_handler.php';
                             <div class="input-container ">
                                 <div>Valid business certification *</div>
                                 <!-- Valid business certification -->
-                                <input class="bread-txt" type="file" name="fileToUpload2" id="fileToUpload2">
-                                <!-- Put PHP kode her -->
-                                <?php if(in_array("Your file is not an image<br>", $error_array)) echo "Your file is not an image<br>"; 
-                                else if(in_array("Your file is to big<br>", $error_array)) echo "Your file is to big<br>";
+                                <input class="bread-txt" type="file" name="fileToUpload2" id="fileToUpload2" required="">
+                            
+                                <?php if(in_array("Your file is not an image", $error_array)) echo "Your file is not an image"; 
+                                else if(in_array("Your file is to big", $error_array)) echo "Your file is to big";
                                 else if(in_array("Sorry, only JPG, JPEG, PNG & GIF files are allowed.", $error_array)) 
                                     echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
                                 ?>
@@ -453,7 +460,8 @@ require '../src/model/form_handlers/register_handler.php';
                             <div class="input-container">
                                 <!-- Submit -->
                                 <input class="center-txt bread-txt" type="submit" name="registerfirm_button" value="Register">
-                                <!-- Put PHP kode her -->
+                                <?php if(in_array("<span>You're all set! Go ahead and login!</span>", $error_array)) 
+                                echo "<span>You're all set! Go ahead and login!</span>"; ?>
                             </div>
                             
                         </div>

@@ -8,8 +8,6 @@ if(isset($_POST['bio_button'])){
 	$date = date("Y-m-d"); /* Date that the bio was last changed. */
 	$input_bio = $_POST['m_bio']; /* What is in the 'input bio' textbox. */
 	$query = mysqli_query($con, "INSERT INTO lspbios VALUES ('$lsp_id', '$input_bio', '$date')");
-
-
 }
 
 ?>
