@@ -121,29 +121,33 @@
 
 				<!-- This is where the reivew-box that will be shown is made. -->
 				<div class="list-item card margin-bottom full-w">
-					<div class="list-item profile-item-review full-w small-marg-bot card">
-						<a href="#" class="list-item-avatar center-flex pc-show">
-							<!-- This is the image of the user that the review belongs to. -->
-							<div class=".img-cutter">
-								<img src="<?php echo $reviewpic; ?>" alt="#">
-							</div>
-						</a>
-						<a class="lsp-name"><?php echo $reviewfname . " " . $reviewlname  ?></a>
-						<p class="bread-txt full-w black-txt"><?php echo '<br>' . $reviewtext; ?></p>
+					<div class="profile-item full-w med-marg-bot">
+						<div class="profile-item-title full-w small-marg-bot card">
+							<h2 class="white-txt">Reviews</h2>
+						</div>
+						<div class="list-item profile-item-review full-w small-marg-bot card">
+							<a href="#" class="list-item-avatar center-flex pc-show">
+								<!-- This is the image of the user that the review belongs to. -->
+								<div class=".img-cutter">
+									<img src="<?php echo $reviewpic; ?>" alt="#">
+								</div>
+							</a>
+							<a class="lsp-name"><?php echo $reviewfname . " " . $reviewlname  ?></a>
+							<p class="bread-txt full-w black-txt"><?php echo '<br>' . $reviewtext; ?></p>
 
-						<!--This is the number of stars that the reviewee gave this lawyer. -->
-						<?php 
-						for ($i=1; $i <= $reviewscore; $i++) { 
-							echo '<i class="fas fa-star" style="font-size:4em"></i>';
-						} 
-						for ($i=$reviewscore; $i<=4; $i++) { 
-							echo '<i class="far fa-star" style="font-size:4em"></i>';
-						}
-						?>
+							<!--This is the number of stars that the reviewee gave this lawyer. -->
+							<?php 
+							for ($i=1; $i <= $reviewscore; $i++) { 
+								echo '<i class="fas fa-star" style="font-size:4em"></i>';
+							} 
+							for ($i=$reviewscore; $i<=4; $i++) { 
+								echo '<i class="far fa-star" style="font-size:4em"></i>';
+							}
+							?>
+						</div>
 					</div>
-				</div>
-				<?php }} ?>
+					<?php }} ?>
 
-			</div>
-		</main>
+				</div>
+			</main>
 
