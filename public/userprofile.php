@@ -5,6 +5,7 @@ require '../config/config.php';
 include '../src/model/form_handlers/login_handler.php';
 /* $loggedinuser will tell the rest of the site what user is connected */
 include '../src/model/userinfo_handler/userinfo_handler.php';
+/* Collects all reviews for the lawyer in question */	
 
 ?>
 
@@ -39,6 +40,8 @@ include '../src/model/userinfo_handler/userinfo_handler.php';
 
 		/* If the lawyer wants to change hos bio, it will be done here. */
 		include '../src/model/form_handlers/bio_handler.php';
+		/* Include rating handler to get the reviews on the side, only for lawyers */
+		include '../src/model/form_handlers/rating_handler.php';
 
 		/* Getting the latest bio that the user have made.*/
 		$query = mysqli_query($con, "SELECT bio FROM lspbios WHERE lsp_id = '$lsp_id'");

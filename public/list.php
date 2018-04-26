@@ -9,8 +9,7 @@ include '../src/model/userinfo_handler/userinfo_handler.php';
 /* Userlist handler that sets up the list on this site.*/
 include '../src/model/form_handlers/userlist_handler.php';
 /* Retrieving php code from login_handler.php */
-include '../src/model/form_handlers/login_handler.php';
-
+include '../src/model/form_handlers/login_handler.php';	
 ?>
 
 <!DOCTYPE html>
@@ -79,6 +78,8 @@ include '../src/model/form_handlers/login_handler.php';
 					$city = $row["city"]; 
 					$firm = $row["lsp_firm"];
 					$mainfield = $row["mainfield"];
+					/* Needs this to place the stars where they should be. */
+					include '../src/model/form_handlers/rating_handler.php';
 					?>
 					<div class="list-item card margin-bottom full-w">
 
@@ -92,7 +93,14 @@ include '../src/model/form_handlers/login_handler.php';
 
 							<div class="title-row margin-bottom">
 								<a href="<?php echo $username; ?>" class="lsp-name"><?php echo $first_name . " " . $last_name  ?></a>
-								<a href="<?php echo $username; ?>" class="pc-show visit-button">Visit page</a>
+								
+								<?php if ($reviews > 0) { ?>
+								
+									<div class="center-flex">
+										<span class="bread-txt black-txt"><?php echo number_format($scoresum[0]/$reviews, 1); ?></span><i class="fas fa-star fa-2x"></i>
+									</div>
+								
+								<?php } ?>
 							</div>
 
 							<div class="info-row margin-bottom">

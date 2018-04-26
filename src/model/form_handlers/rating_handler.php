@@ -8,9 +8,9 @@ $reviews = $ratings_info[0];
 /* Collects all reviews that the lawyer has. */
 $lspallreviews = mysqli_query($con, "SELECT * FROM ratings WHERE lsp_id='$lsp_id'");
 
-
 $sumofscore = mysqli_query($con, "SELECT SUM(score) FROM ratings WHERE lsp_id='$lsp_id'");
 $scoresum = mysqli_fetch_array($sumofscore);
+
 
 /* Gets the number that is used to decide if the user have posted a review before. */
 if (isset($user)) {

@@ -12,6 +12,7 @@ include '../src/model/form_handlers/login_handler.php';
 /*Uses this in next include, had to put it here*/
 include '../src/model/form_handlers/message_handler.php';
 /* Collects all reviews for the lawyer in question */
+$page = 'profile';
 include '../src/model/form_handlers/rating_handler.php';		
 
 ?>
@@ -25,111 +26,33 @@ include '../src/model/form_handlers/rating_handler.php';
 	<!-- HEADER -->
 	<?php $current_page = 'profile'; include '../src/utils/template/components/header.php'; ?>
 
-	<!-- MAIN -->
-	<main class="marg-container">
-		<div class="profile center-marg med-marg-top">
+	<?php 
+	/* Pulls here out all the information from the user, that will go to the profile page.*/
+	$first_name = $other_user["first_name"];
+	$last_name = $other_user["last_name"];
+	$username = $other_user["username"];
+	$profile_pic = $other_user["profile_picture"]; 
+	$city = $other_user["city"]; 
+	$firm = $other_user["lsp_firm"];
+	$mainfield = $other_user["mainfield"];
 
-			<div class="banner-container full-w card med-marg-bot">
-				<div class="banner full-w">
-					<div class="banner-background"><img src="img/placeholders/placeholder_large_slim.jpg" class="img-fix" alt="#"></div>
-					<div class="banner-profile"><img src="img/profile/default/1.png" class="img-fix" alt="#"></div>
-					<h1 class="banner-name white-txt tablet-show fade-right-2s">Name Namerson</h1>
-					<div class="banner-rating card">
-						<div class="center-flex">
-							<span class="bread-txt black-txt">4.0</span><i class="fas fa-star fa-2x"></i>
-						</div>
-					</div>
-				</div>
-				<div class="banner-bar full-w">
-					<a href="#" class="banner-bar-item"><i class="fas fa-envelope fa-2x"></i></a>
-				</div>
-			</div>
 
-			<div class="profile-item full-w med-marg-bot">
-				<div class="profile-item-title full-w card">
-					<h2 class="white-txt">About</h2>
-				</div>
-				<div class="profile-item-info full-w card">
-					<!-- Vises for userprofile -->
-					<textarea class="bread-txt full-w" name="message" placeholder="Max 1000 characters." rows="6" required></textarea>
-					<!-- Vises for profile -->
-					<p class="bread-txt full-w black-txt"></p>
-				</div>
-			</div>
+	/* Decides what kind of user that the logged in account is and collects the template/component for the profile-page*/
+	if ($other_user['usertype'] == 1) {
+		/* if the klicked user is of usertype lawyers. */
 
-			<div class="profile-item full-w med-marg-bot">
-				<div class="profile-item-title full-w card">
-					<h2 class="white-txt">Schedule</h2>
-				</div>
-				<div class="profile-item-info full-w card">
+		/* Collect here the newest bio from the lawyer. */
+		$query = mysqli_query($con, "SELECT bio FROM lspbios WHERE lsp_id = '$lsp_id'");
+		$bioarray = mysqli_fetch_array($query);
+		/* $bio will be shown as a text in the lawyers profile */
+		$bio = $bioarray[0];
 
-					<div class="full-w">
-						<div class="schedule">
-							<div class="schedule-item bread-txt">
-								<span class="white-txt full-w center-text">Monday</span>
-								<p>17:00 - 18:00</p>
-							</div>
-							<div class="schedule-item bread-txt">
-								<span class="white-txt full-w center-text">Tuesday</span>
-								<p>17:00 - 18:00</p>
-							</div>
-							<div class="schedule-item bread-txt">
-								<span class="white-txt full-w center-text">Wednesday</span>
-								<p>17:00 - 18:00</p>
-							</div>
-							<div class="schedule-item bread-txt">
-								<span class="white-txt full-w center-text">Thursday</span>
-								<p>17:00 - 18:00</p>
-							</div>
-							<div class="schedule-item bread-txt">
-								<span class="white-txt full-w center-text">Friday</span>
-								<p>17:00 - 18:00</p>
-							</div>
-							<div class="schedule-item bread-txt">
-								<span class="white-txt full-w center-text">Saturday</span>
-								<p>17:00 - 18:00</p>
-							</div>
-							<div class="schedule-item bread-txt">
-								<span class="white-txt full-w center-text">Sunday</span>
-								<p>17:00 - 18:00</p>
-							</div>
-						</div>
-					</div>
-
-				</div>
-			</div>
-
-			<div class="profile-item full-w med-marg-bot">
-				<div class="profile-item-title full-w small-marg-bot card">
-					<h2 class="white-txt">Reviews</h2>
-				</div>
-				<div class="list-item profile-item-review full-w small-marg-bot card">
-					<a href="#" class="list-item-avatar center-flex pc-show">
-						<div class=".img-cutter">
-							<img src="img/profile/default/1.png" alt="#">
-						</div>
-					</a>
-
-					<div class="list-item-main full-w">
-						<div class="title-row margin-bottom">
-							<a href="Name namerson" class="lsp-name">Name Namerson</a>
-							<!-- Vises for reviewer -->
-							<div><!-- vis en metode for å gi stjerner her --></div>
-							<!-- Vises for profile -->
-							<div><!-- vis hvor mange stjerner som ble gitt her --></div>
-						</div>
-						<div class="info-row margin-bottom">
-							<!-- Vises for reviewer -->
-							<textarea class="bread-txt black-txt full-w" name="#" id="#" rows="6" placeholder="Write a review please"></textarea>
-							<!-- Vises for profile -->
-							<p class="bread-txt full-w black-txt"></p>
-						</div>
-					</div>
-				</div>
-			</div>
-
-		</div>
-	</main>
+		include '../src/utils/template/components/profile_components/lawyers.php';
+	} elseif ($other_user['usertype'] == 2) {
+		/* if the klicked user is of usertype firms. */
+		include '../src/utils/template/components/profile_components/firms.php';
+	}
+	?>
 
 	<!-- FOOTER -->
 	<?php include '../src/utils/template/components/footer.php'; ?>
