@@ -911,6 +911,28 @@ main {
 	text-shadow: 0 0 0.3rem var(--black);
 }
 
+.banner-rating {
+	display: block;
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	border: 0.1rem solid var(--blue);
+	border-radius: 0.5rem;
+	background-color: var(--white);
+}
+
+.banner-rating > div {
+	padding: 0.8rem 1.4rem;
+}
+
+.banner-rating span {
+	margin-right: 0.8rem;
+}
+
+.banner-rating svg {
+	color: rgb(255, 208, 0);
+}
+
 .banner-bar {
 	display: flex;
 	flex-direction: row-reverse;
@@ -943,15 +965,60 @@ main {
 }
 
 .profile-item-info {
-	height: 30rem;
 	background-color: white;
+	padding: 2rem 1rem;
 }
 
 .profile-item-review {
-	height: 10rem;
 	background-color: white;
 }
 
+.profile-item-info > textarea {
+	padding: 0.4rem 0.8rem;
+	border: 0.1rem solid var(--black);
+	border-radius: 0.3rem;
+	outline: var(--blue);
+	background-color: var(--white);
+	resize: vertical;
+}
+
+.info-row > textarea {
+	padding: 0.4rem 0.8rem;
+	border: 0.1rem solid var(--black);
+	border-radius: 0.3rem;
+	outline: var(--blue);
+	background-color: var(--white);
+	resize: vertical;
+}
+
+.split-flex {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.schedule {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.schedule-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	border: 0.1rem solid var(--blue);
+	margin: 1rem;
+}
+
+.schedule-item > span {
+	background-color: var(--blue);
+}
+
+.book-button {
+
+}
 
 
 /* ------------------------*/ /* ---------->>> FOOTER (5) <<<-----------*/ /* ------------------------*/
@@ -1292,6 +1359,10 @@ Footer
 
 	.tablet-show {
 		display: block;
+	}
+
+	.schedule-item {
+		width: 16rem;
 	}
 }
 
