@@ -18,6 +18,9 @@
 				<?php } ?>
 			</div>
 			<div class="banner-bar full-w">
+				<a href="../src/model/session_handler/logout_handler.php" class="banner-bar-item">
+					<i class="fas fa-sign-out-alt fa-2x"></i>
+				</a>
 				<a href="cases.php" class="banner-bar-item">
 					<i class="fas fa-envelope fa-2x"></i>
 				</a>
@@ -42,9 +45,6 @@
 					<span>
 						<i class="fas fa-map-marker"></i> <?php echo $city ?>
 					</span> 
-					<span>
-						<a href="../src/model/session_handler/logout_handler.php">Logout</a>
-					</span>
 				</div>
 
 				<?php 

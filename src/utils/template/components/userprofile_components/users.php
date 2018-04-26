@@ -13,6 +13,9 @@
 				<h1 class="banner-name white-txt tablet-show fade-right-2s"><?php echo $first_name . " " . $last_name  ?></h1>
 			</div>
 			<div class="banner-bar full-w">
+				<a href="../src/model/session_handler/logout_handler.php" class="banner-bar-item">
+					<i class="fas fa-sign-out-alt fa-2x"></i>
+				</a>
 			</div>
 		</div>
 	</div>
