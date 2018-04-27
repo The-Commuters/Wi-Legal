@@ -155,6 +155,12 @@ h2 {
 	padding-bottom: 2rem;
 } /* Personalized h2 title */
 
+h3 {
+	font-family: "proxima-nova", arial, sans-serif;
+	font-size: 2.2rem;
+	font-weight: 500;
+} /* Personalized h3 title */
+
 
 /* ------------------------*/ /* ---------->>> HEADER (3) <<<-----------*/ /* ------------------------*/
 
@@ -973,6 +979,10 @@ main {
 
 .profile-item-review {
 	background-color: white;
+}
+
+.profile-item-review-padding {
+	padding: 0.8rem 1.2rem;
 }
 
 .profile-item-info > textarea {
