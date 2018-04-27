@@ -32,20 +32,10 @@
 				<h2 class="white-txt">About</h2>
 			</div>
 			<div class="profile-item-info full-w card">
-				<form action="userprofile.php" method="POST">
-					<textarea class="bread-txt full-w" name="m_bio" placeholder="<?php echo $bio; ?>" rows="6" required><?php echo $bio; ?></textarea>
-					<button type="submit" name="bio_button">Update Bio</button>
+				<form class="small-marg-bot flex-end" action="userprofile.php" method="POST">
+					<textarea class="bread-txt full-w small-marg-bot" name="m_bio" placeholder="<?php echo $bio; ?>" rows="6" required><?php echo $bio; ?></textarea>
+					<button type="submit" class="update-button bread-txt" name="bio_button">Update</button>
 				</form>
-
-				<div class="info-row margin-bottom">
-					<span>
-						<?php 	if ($firm != NULL) { echo '<i class="far fa-building"></i>' . " " . $firm;} 
-						else { echo '<i class="fas fa-street-view"></i>' . " " . "Freelance"; } ?>
-					</span> 
-					<span>
-						<i class="fas fa-map-marker"></i> <?php echo $city ?>
-					</span> 
-				</div>
 
 				<?php 
 				$sqlMf = "SELECT * FROM mainfields WHERE lsp_id='$lsp_id'";
@@ -119,7 +109,6 @@
 				include '../src/model/form_handlers/reviewlist_handler.php';	
 				?>
 
-<<<<<<< HEAD
 				<!-- This is where the reivew-box that will be shown is made. -->
 				<div class="list-item card margin-bottom full-w">
 					<div class="list-item profile-item-review full-w card">
@@ -151,32 +140,6 @@
 						</div>
 
 						
-=======
-					<!-- This is where the reivew-box that will be shown is made. -->
-					<div class="list-item card margin-bottom full-w">
-						<div class="list-item profile-item-review full-w small-marg-bot card">
-							<a href="#" class="list-item-avatar center-flex pc-show">
-
-								<!-- This is the image of the user that the review belongs to. -->
-								<div class=".img-cutter">
-									<img src="<?php echo $reviewpic; ?>" alt="#">
-								</div>
-							</a>
-							<a class="lsp-name"><?php echo $reviewfname . " " . $reviewlname  ?></a>
-							<p class="bread-txt full-w black-txt"><?php echo '<br>' . $reviewtext; ?></p>
-							
-							<!--This is the number of stars that the reviewee gave this lawyer. -->
-							<?php 
-							for ($i=1; $i <= $reviewscore; $i++) { 
-								echo '<i class="fas fa-star" style="font-size:4em"></i>';
-							} 
-							for ($i=$reviewscore; $i<=4; $i++) { 
-								echo '<i class="far fa-star" style="font-size:4em"></i>';
-							}
-							?>
-
-						</div>
->>>>>>> master
 					</div>
 					<?php }} ?>
 

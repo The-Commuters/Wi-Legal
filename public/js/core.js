@@ -4,7 +4,7 @@ $(function(){
 
 	// LOGIN DROPDOWN FUNCTION
 
-	// Displays and hides the login box onclick anywhere
+	// Displays login box and hides the login box onclick anywhere
 	$(".login-container").click(function(){
 		$("header").toggleClass("login-jq");
 	});
@@ -17,6 +17,11 @@ $(function(){
 	// Stops the login box from hiding when clicked on
 	$('.login-box-container').click(function(e) {
 		e.stopPropagation();
+	});
+
+	// Hides the login box using the X button
+	$("#msglog").click(function(){
+		$("header").toggleClass("login-jq");
 	});
 
 	// END OF LOGIN DROPDOWN FUNCTION

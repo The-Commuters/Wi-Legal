@@ -306,12 +306,17 @@ nav {
 	right: 1rem;
 	color: transparent;
 	cursor: pointer;
+	transition: 0.3s;
 
 	z-index: 15;
 } /* The quit button for the login form */
 
 	.login-jq .login-quit {
 		color: var(--faded-black);
+	} /* The hover for the quit button */
+
+	.login-jq .login-quit:hover {
+		color: var(--faded-blue);
 	} /* The hover for the quit button */
 
 .login-title {
@@ -829,8 +834,6 @@ main {
 
 .about-title {
 	padding: 2rem 2rem;
-	background-color: var(--blue);
-	border-radius: 0.5rem 0.5rem 0 0;
 }
 
 .about-title > h2 {
@@ -839,8 +842,6 @@ main {
 
 .about-info {
 	padding: 1rem 1.6rem;
-	border: 0.1rem solid var(--blue);
-	background-color: white;
 }
 
 /* ---------->>> Contact (4.8) <<<-----------*/
@@ -985,13 +986,21 @@ main {
 	padding: 0.8rem 1.2rem;
 }
 
-.profile-item-info > textarea {
+.profile-item-info > form > textarea {
 	padding: 0.4rem 0.8rem;
 	border: 0.1rem solid var(--black);
 	border-radius: 0.3rem;
 	outline: var(--blue);
 	background-color: var(--white);
 	resize: vertical;
+}
+
+.profile-item-info > form > [type = text] {
+	padding: 0.4rem 0.8rem;
+	border: 0.1rem solid var(--black);
+	border-radius: 0.3rem;
+	outline: var(--blue);
+	background-color: var(--white);
 }
 
 .info-row > textarea {
@@ -1028,8 +1037,18 @@ main {
 	background-color: var(--blue);
 }
 
-.book-button {
+.flex-end {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
 
+.update-button {
+	padding: 0.4rem 1rem;
+	border-radius: 0.4rem;
+	background-color: var(--blue);
+	color: var(--white);
+	width: fit-content;
 }
 
 

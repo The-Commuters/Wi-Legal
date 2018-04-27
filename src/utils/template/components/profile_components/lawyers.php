@@ -19,7 +19,12 @@
 					<?php } ?>
 				</div>
 				<div class="banner-bar full-w">
-					<a href="#" class="banner-bar-item">
+					<!-- vis denne hvis det ikke er en logged in user (ikke legg til link) -->
+					<a id="msglog" href="#" class="banner-bar-item">
+						<i class="fas fa-envelope fa-2x"></i>
+					</a>
+					<!-- vis denne hvis det er en logged in user -->
+					<a href="#msg" class="banner-bar-item">
 						<i class="fas fa-envelope fa-2x"></i>
 					</a>
 				</div>
@@ -30,15 +35,7 @@
 					<h2 class="white-txt">About</h2>
 				</div>
 				<div class="profile-item-info full-w card">
-					<p class="bread-txt full-w black-txt med-marg-bot"><?php echo $bio; ?></p>
-
-					<div class="info-row margin-bottom med-marg-bot">
-						<span>
-							<?php 	if ($firm != NULL) { echo '<i class="far fa-building"></i>' . " " . $firm;} 
-							else { echo '<i class="fas fa-street-view"></i>' . " " . "Freelance"; } ?>
-						</span> 
-						<span><i class="fas fa-map-marker"></i> <?php echo $city ?></span> 
-					</div>
+					<p class="bread-txt full-w black-txt med-marg-bot container"><?php echo $bio; ?></p>
 
 					<?php 
 					$sqlMf = "SELECT * FROM mainfields WHERE lsp_id='$lsp_id'";
@@ -113,24 +110,22 @@
 			-->
 
 			<?php if (isset($user) && $user['usertype'] == 0) { ?> 
-			<div class="profile-item full-w med-marg-bot">
+			<div id="msg" class="profile-item full-w med-marg-bot">
 				<div class="profile-item-title full-w card">
 					<h2 class="white-txt">Message this lawyer</h2>
 				</div>
 				<div class="profile-item-info full-w card">
 
 					<!--The form for registering a new user-->
-					<form action="<?php echo $username; ?>" method="POST">
+					<form action="<?php echo $username; ?>" method="POST" class="flex-end bread-txt">
 						<!--Title input-box-->
-						<input type="text" name="m_title" placeholder="Title" required>
-						<br>
+						<input type="text" name="m_title" placeholder="Title" required class="full-w small-marg-bot">
 
 						<!--Message input-box-->
-						<input type="text" name="m_message" placeholder="Message" required>
-						<br>
+						<textarea name="m_message" placeholder="Message" class="full-w small-marg-bot" rows="8" required></textarea>
 
 						<!--Message-button, starts register_handler.php-->
-						<input type="submit" name="message_button" value="Send Message">
+						<input type="submit" class="update-button" name="message_button" value="Send Message">
 					</form>
 					
 				</div>
