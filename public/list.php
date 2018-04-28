@@ -96,9 +96,11 @@ include '../src/model/form_handlers/login_handler.php';
 								
 								<?php if ($reviews > 0) { ?>
 								
+								<div class="profile-rating tablet-show">
 									<div class="center-flex">
 										<span class="bread-txt black-txt"><?php echo number_format($scoresum[0]/$reviews, 1); ?></span><i class="fas fa-star fa-2x"></i>
 									</div>
+								</div>
 								
 								<?php } ?>
 							</div>

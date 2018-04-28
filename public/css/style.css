@@ -942,6 +942,26 @@ main {
 	color: rgb(255, 208, 0);
 }
 
+.profile-rating {
+	display: block;
+}
+
+.profile-rating > div {
+	padding: 0.8rem 1.4rem;
+}
+
+.profile-rating span {
+	margin-right: 0.8rem;
+}
+
+.profile-rating svg {
+	color: rgb(255, 208, 0);
+}
+
+.yellow-star {
+	color: rgb(255, 208, 0);
+}
+
 .banner-bar {
 	display: flex;
 	flex-direction: row-reverse;
@@ -1051,6 +1071,26 @@ main {
 	width: fit-content;
 }
 
+.star-wrapper {
+	display: flex;
+}
+
+.star-container {
+	display: flex;
+  	position: relative;
+  	cursor: pointer;
+  	user-select: none;
+}
+
+.star-container input {
+	position: absolute;
+	opacity: 0;
+	top: -1rem;
+}
+
+.checkmark {
+	
+}
 
 /* ------------------------*/ /* ---------->>> FOOTER (5) <<<-----------*/ /* ------------------------*/
 

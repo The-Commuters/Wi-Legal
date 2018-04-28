@@ -152,20 +152,39 @@
 								<a href="<?php echo $username; ?>" class="lsp-name"><?php echo $first_name . " " . $last_name  ?></a>
 								
 								<div>						
-									<div class="tag-item">
-										<input type="radio" name="rating" value="1" required><span>1 star</span>
-										<input type="radio" name="rating" value="2" required><span>2 star</span>
-										<input type="radio" name="rating" value="3" required><span>3 star</span>
-										<input type="radio" name="rating" value="4" required><span>4 star</span>
-										<input type="radio" name="rating" value="5" required><span>5 star</span>
+									<div class="star-wrapper">
+										<label id="star1con" class="star-container">
+											<input type="radio" name="rating" value="1" required>
+											<i id="star1" class="yellow-star far fa-star fa-2x"></i>
+										</label>
+
+										<label id="star2con" class="star-container">
+											<input type="radio" name="rating" value="2" required>
+											<i id="star2" class="yellow-star far fa-star fa-2x"></i>
+										</label>
+
+										<label id="star3con" class="star-container">
+											<input type="radio" name="rating" value="3" required>
+											<i id="star3" class="yellow-star far fa-star fa-2x"></i>
+										</label>
+
+										<label id="star4con" class="star-container">
+											<input type="radio" name="rating" value="4" required>
+											<i id="star4" class="yellow-star far fa-star fa-2x"></i>
+										</label>
+
+										<label id="star5con" class="star-container">
+											<input type="radio" name="rating" value="5" required>
+											<i id="star5" class="yellow-star far fa-star fa-2x"></i>
+										</label>
 									</div>
 								</div>
 
 							</div>
-							<div class="info-row margin-bottom">
+							<div class="info-row margin-bottom flex-end">
 
-								<textarea class="bread-txt black-txt full-w" name="review" rows="6" placeholder="Write a review please"></textarea>
-								<button type="submit" name="rate_button" value="Rate this lawyer">Here</button>
+								<textarea class="bread-txt black-txt full-w small-marg-bot" name="review" rows="6" placeholder="Write a review please"></textarea>
+								<button type="submit" class="update-button bread-txt" name="rate_button" value="Rate this lawyer">Submit</button>
 
 							</div>
 						</form>
@@ -199,16 +218,16 @@
 						</a>
 						<div class="full-w profile-item-review-padding">
 							<div class="title-row small-marg-bot">
-							<a><h3><?php echo $reviewfname . " " . $reviewlname  ?></h3></a>
+							<a href="<?php echo $username; ?>" class="lsp-name black-txt"><?php echo $reviewfname . " " . $reviewlname  ?></a>
 								
 								<div>
 									<!--This is the number of stars that the reviewee gave this lawyer. -->
 									<?php 
 									for ($i=1; $i <= $reviewscore; $i++) { 
-										echo '<i class="fas fa-star fa-2x"></i>';
+										echo '<i class="yellow-star fas fa-star fa-2x"></i>';
 									} 
 									for ($i=$reviewscore; $i<=4; $i++) { 
-										echo '<i class="far fa-star fa-2x"></i>';
+										echo '<i class="yellow-star far fa-star fa-2x"></i>';
 									}
 									?>
 								</div>

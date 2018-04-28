@@ -47,6 +47,52 @@ $(function(){
 
 	// END OF REGISTER DROPDOWN FUNCTION
 
+
+
+	// STAR FUNCTION
+
+	$("#star1con").click(function(){
+		$("#star1").addClass("fas")
+		$("#star2").addClass("far")
+		$("#star3").addClass("far")
+		$("#star4").addClass("far")
+		$("#star5").addClass("far")
+	});
+
+	$("#star2con").click(function(){
+		$("#star1").addClass("fas")
+		$("#star2").addClass("fas")
+		$("#star3").addClass("far")
+		$("#star4").addClass("far")
+		$("#star5").addClass("far")
+	});
+
+	$("#star3con").click(function(){
+		$("#star1").addClass("fas")
+		$("#star2").addClass("fas")
+		$("#star3").addClass("fas")
+		$("#star4").addClass("far")
+		$("#star5").addClass("far")
+	});
+
+	$("#star4con").click(function(){
+		$("#star1").addClass("fas")
+		$("#star2").addClass("fas")
+		$("#star3").addClass("fas")
+		$("#star4").addClass("fas")
+		$("#star5").addClass("far")
+	});
+
+	$("#star5con").click(function(){
+		$("#star1").addClass("fas")
+		$("#star2").addClass("fas")
+		$("#star3").addClass("fas")
+		$("#star4").addClass("fas")
+		$("#star5").addClass("fas")
+	});
+
+	// END OF STAR FUNCTION
+
 	
 
 	// ... FUNCTION

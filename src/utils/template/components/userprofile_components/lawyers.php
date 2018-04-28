@@ -120,15 +120,15 @@
 						</a>
 						<div class="full-w profile-item-review-padding">
 							<div class="title-row small-marg-bot">
-								<a><h3><?php echo $reviewfname . " " . $reviewlname  ?></h3></a>
+								<a href="<?php echo $username; ?>" class="lsp-name black-txt"><?php echo $reviewfname . " " . $reviewlname  ?></a>
 								<div>
 									<!--This is the number of stars that the reviewee gave this lawyer. -->
 									<?php 
 									for ($i=1; $i <= $reviewscore; $i++) { 
-										echo '<i class="fas fa-star fa-2x"></i>';
+										echo '<i class="yellow-star fas fa-star fa-2x"></i>';
 									} 
 									for ($i=$reviewscore; $i<=4; $i++) { 
-										echo '<i class="far fa-star fa-2x"></i>';
+										echo '<i class="yellow-star far fa-star fa-2x"></i>';
 									}
 									?>
 								</div>
