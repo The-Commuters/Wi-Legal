@@ -18,12 +18,15 @@
 	4.1  - General
 	4.2  - Hero
 	4.3  - Call To Action (CTA)
-	4.4  - ...
-	4.5  - list
+	4.4  - Search
+	4.5  - List
+	4.6  - Register
+	4.7  - About
+	4.8  - Contact
+	4.9  - Profile
 5. Footer'
 	5.1  - General
-	5.2  - Top footer
-	5.3  - Bottom footer
+	5.2  - Copyright
 6. Dev Resources
 	6.1  - Color glossary
 	6.2  - Typography
@@ -33,8 +36,10 @@
 	6.6  - Background colors
 	6.7  - Display scaling
 	6.8  - Quick fixes
-	6.9  - Z-index list
-	6.10 - Margin
+	6.9  - Onload animations
+	6.10 - Z-index list
+	6.11 - Margin
+	6.12 - Containers
 7. Media Queries
 	7.1  - 600px and up
 	7.2  - 900px and up
@@ -675,8 +680,6 @@ main {
 
 	border-radius: 0.5rem 0.5rem 0 0;
 	cursor: pointer;
-
-	animation:
 }
 
 .register-title {
@@ -826,7 +829,7 @@ main {
 	user-select: none;
 }
 
-/* ---------->>> Register (4.7) <<<-----------*/
+/* ---------->>> About (4.7) <<<-----------*/
 
 .about {
 	max-width: 80rem;
@@ -980,10 +983,6 @@ main {
 	color: var(--blue);
 }
 
-.profile-item {
-
-}
-
 .profile-item-title {
 	background-color: var(--blue);
 }
@@ -1086,10 +1085,6 @@ main {
 	position: absolute;
 	opacity: 0;
 	top: -1rem;
-}
-
-.checkmark {
-	
 }
 
 /* ------------------------*/ /* ---------->>> FOOTER (5) <<<-----------*/ /* ------------------------*/
@@ -1268,7 +1263,7 @@ footer {
 } /* Fixes the gap created at the bottom of images */
 
 
-/* ---------->>> Load animations (6.8) <<<-----------*/
+/* ---------->>> Load animations (6.9) <<<-----------*/
 
 .fade-right-2s {
 	animation: fade-right 2s;
@@ -1307,7 +1302,7 @@ footer {
 }
 
 
-/* ---------->>> Z-index list (6.9) <<<-----------*/
+/* ---------->>> Z-index list (6.10) <<<-----------*/
 
 /*
 
@@ -1336,7 +1331,7 @@ Footer
 
 */
 
-/* ---------->>> Margin (6.10) <<<-----------*/
+/* ---------->>> Margin (6.11) <<<-----------*/
 
 .small-marg-top {
 	margin-top: 1rem;
@@ -1381,7 +1376,7 @@ Footer
 	margin-top: 0.8rem;
 }
 
-/* ---------->>> Containers (6.11) <<<-----------*/
+/* ---------->>> Containers (6.12) <<<-----------*/
 
 .container {
 	padding: 0 1.6rem;
