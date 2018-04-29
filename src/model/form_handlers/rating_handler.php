@@ -1,5 +1,6 @@
 <?php 
-/* Rating handler bring information about the ratings, and sends information when someone rates them. */
+/* Rating handler bring information about the ratings, 
+and sends information when someone rates them. */
 
 /* Get count of reviews that the lawyer has gotten. */
 $rating_details = mysqli_query($con, "SELECT COUNT(*) FROM ratings WHERE lsp_id='$lsp_id'");

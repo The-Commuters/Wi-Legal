@@ -1,6 +1,6 @@
 <?Php  
-/* This is the homepage for the website, on this site users will be able to 
-see a list of lawyers that they can search in after different */
+/*  This is the homepage for the website, on this site users will be able to 
+	see a list of lawyers that they can search in after different */
 
 /* Config gives a connection from the database to the website*/
 require '../config/config.php';
