@@ -1,10 +1,7 @@
-
-<!-- This is the actual registration page where users are created,
-It contains two pages where you can log in already
-users and one who registers new users .-->
-
-<!-- Required files to load for page to work -->
 <?Php
+/* This is the registration page where users are created,
+It contains three forms where you can  one who registers new users */
+
 /* Connects to database and retrieves time */
 require '../config/config.php';
 /* Retrieving php code from register_handler.php */

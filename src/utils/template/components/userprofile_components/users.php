@@ -1,6 +1,4 @@
-<!-- Profile page for lawyer if user is lawyer -->
-
-<!-- Profile page for logged in lawyers, can be found profile.php if user -->
+<!-- Personal profile page for user if user is logged in -->
 
 <!-- MAIN -->
 <main class="marg-container">
@@ -19,6 +17,4 @@
 			</div>
 		</div>
 	</div>
-
-	<a href="../src/model/session_handler/logout_handler.php">Logout</a>
 </main>

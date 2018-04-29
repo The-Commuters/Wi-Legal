@@ -19,14 +19,17 @@
 					<?php } ?>
 				</div>
 				<div class="banner-bar full-w">
-					<!-- vis denne hvis det ikke er en logged in user (ikke legg til link) -->
-					<a id="msglog" href="#" class="banner-bar-item">
-						<i class="fas fa-envelope fa-2x"></i>
-					</a>
+					<?php if (isset($user)) { ?>
 					<!-- vis denne hvis det er en logged in user -->
 					<a href="#msg" class="banner-bar-item">
 						<i class="fas fa-envelope fa-2x"></i>
 					</a>
+					<?php } else {?>
+					<!-- vis denne hvis det ikke er en logged in user (ikke legg til link) -->
+					<a id="msglog" href="#" class="banner-bar-item">
+						<i class="fas fa-envelope fa-2x"></i>
+					</a>
+					<?php } ?>
 				</div>
 			</div>
 
@@ -103,12 +106,7 @@
 				</div>
 			</div>
 
-			<!--Message BOX, Only visible for users
-
-				David, Fix this, should come visible when button is pressed, Yes?.
-
-			-->
-
+			<!--Message BOX, Only visible for users -->
 			<?php if (isset($user) && $user['usertype'] == 0) { ?> 
 			<div id="msg" class="profile-item full-w med-marg-bot">
 				<div class="profile-item-title full-w card">
@@ -133,23 +131,25 @@
 			<?php } ?>
 
 
-			<!-- Review box that only shows for users that have not reviewed this lsp before. -->
-			<?php if (isset($user) && $user['usertype'] == 0 && $userreview == 0) {?>
-			<div class="profile-item full-w med-marg-bot">
+			<div class="profile-item full-w small-marg-bot">
 				<div class="profile-item-title full-w small-marg-bot card">
 					<h2 class="white-txt">Reviews</h2>
 				</div>
+			</div>
+			<!-- Review box that only shows for users that have not reviewed this lsp before. -->
+			<?php if (isset($user) && $user['usertype'] == 0 && $userreview == 0) {?>
+			<div class="profile-item full-w med-marg-bot">
 				<div class="list-item profile-item-review full-w small-marg-bot card">
 					<a href="#" class="list-item-avatar center-flex pc-show">
 						<div class=".img-cutter">
-							<img src="img/profile/default/1.png" alt="#">
+							<img src="<?php echo $user['profile_picture']; ?>" alt="#">
 						</div>
 					</a>
 
 					<div class="list-item-main full-w">
 						<form action="<?php echo $username; ?>" method="POST">
 							<div class="title-row margin-bottom">
-								<a href="<?php echo $username; ?>" class="lsp-name"><?php echo $first_name . " " . $last_name  ?></a>
+								<a href="<?php echo $username; ?>" class="lsp-name"><?php echo $user['first_name'] . " " . $user['last_name'];  ?></a>
 								
 								<div>						
 									<div class="star-wrapper">
@@ -193,11 +193,6 @@
 			</div>
 			<?php } ?>
 
-			<div class="profile-item full-w med-marg-bot">
-				<div class="profile-item-title full-w small-marg-bot card">
-					<h2 class="white-txt">Reviews</h2>
-				</div>
-			</div>
 			<!-- This is the function that lists all reviews that the lsp have. -->
 			<?php
 			if (mysqli_num_rows($lspallreviews) > 0) {

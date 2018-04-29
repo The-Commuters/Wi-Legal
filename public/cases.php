@@ -1,5 +1,5 @@
 <?Php
-/*This is the page where lawyers can read their messages that users have sent them*/
+/* This is the page where messages is showed, only lawyers will have acces to this page. */
 
 /* Connects to database and retrieves time */
 require '../config/config.php';
@@ -21,8 +21,8 @@ include '../src/model/userinfo_handler/userinfo_handler.php';
 	<?php $current_page = 'userprofile'; include '../src/utils/template/components/header.php'; ?>
 
 	<?php 
+	/*Collects every message from the datababase for the logged in user. */
 	$lsp_id = $user['lsp_id']; 
-	//Collects everything from the database lawyerusers, can be cut down when 
 	$sql = "SELECT * FROM messages WHERE lsp_id = '$lsp_id'";
 	$query = mysqli_query($con, $sql);
 	?>
@@ -30,14 +30,14 @@ include '../src/model/userinfo_handler/userinfo_handler.php';
 	<main class="marg-container">
 
 		<?php
+		/*  Output of messages, collects data from the different senders and 
+			posts their information(tel, mail) Together with the messages. */
 		if (mysqli_num_rows($query) > 0) {
-			/* Output of messages, collects data from the  */
 			while($row = mysqli_fetch_assoc($query)) {	
 				$sender_id = $row['user_id'];
 				$message = $row['text'];
 				$message_id = $row['message_id'];
 				$title = $row['title'];
-
 
 				$sql = "SELECT first_name, last_name, email, phone_number FROM users WHERE user_id = '$sender_id'";
 				$querylu = mysqli_query($con, $sql);
@@ -47,30 +47,27 @@ include '../src/model/userinfo_handler/userinfo_handler.php';
 				$phone_number = $sender['phone_number'];
 				$email = $sender['email'];
 				$name = $first_name . ' ' . $last_name;
-
 				?>
 				
 				<div class="profile center-marg med-marg-top">
-					<div class="banner-container full-w card med-marg-bot">
 					<div class="profile-item full-w med-marg-bot">
 						<div class="profile-item-title full-w card">
 							<h2 class="white-txt"><?php echo $name; ?></h2>
-							<h2 class="white-txt"><?php echo $title; ?></h2>
 						</div>
 						<div class="profile-item-info full-w card">
-							<?php echo $message; ?><br>
-							<?php echo $phone_number; ?><br>
-							<?php echo $email; ?>
-
-							<form action="cases.php" method="POST">
-								<input type="submit" id="<?php echo $message_id; ?>"  name="slett" value="Delete">
-							</form>
-
+							
+							<div class="about-info bread-txt black-txt">
+								<h2><?php echo $title; ?></h2>
+							<div><?php echo $message; ?></div>
+							<br>
+							<div><p>Contact me at:</p></div>
+							<div><?php echo 'Phone Number: ' . $phone_number; ?></div>
+							<div><?php echo 'Contact Email: ' . $email; ?></div>
+							</div>
 						</div>
 						<?php }} ?>
 					</div>
-				</div>
-
+				
 
 			</main>
 

@@ -1,4 +1,6 @@
 <?Php
+/* The page where the logged in user can see, when they click on profile. */
+
 /* Connects to database and retrieves time */
 require '../config/config.php';
 /* Retrieving php code from login_handler.php */

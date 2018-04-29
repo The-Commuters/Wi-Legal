@@ -1,4 +1,5 @@
 <?php 
+/* Rating handler bring information about the ratings, and sends information when someone rates them. */
 
 /* Get count of reviews that the lawyer has gotten. */
 $rating_details = mysqli_query($con, "SELECT COUNT(*) FROM ratings WHERE lsp_id='$lsp_id'");
@@ -7,6 +8,7 @@ $reviews = $ratings_info[0];
 
 /* Collects all reviews that the lawyer has. */
 $lspallreviews = mysqli_query($con, "SELECT * FROM ratings WHERE lsp_id='$lsp_id'");
+$row = mysqli_fetch_assoc($lspallreviews);
 
 $sumofscore = mysqli_query($con, "SELECT SUM(score) FROM ratings WHERE lsp_id='$lsp_id'");
 $scoresum = mysqli_fetch_array($sumofscore);

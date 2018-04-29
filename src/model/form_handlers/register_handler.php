@@ -1,150 +1,149 @@
-<!--Dette er en side med php-kode som omhandler register.php hvor
-	nye brukere kan registrere seg eller logge inn på nettstedet, 
-	alle feilmeldinger innenfor registrering blir og lagret her-->
-
 <?php
+/* This is a page with the php code that deals with register.php where
+New users can register or log in to the site,
+All error messages within registration will be stored here */
 
-/*Kommer til å holde alle feilmeldingene som kommer opp, vil lagre flere feilmeldinger
-og kommer til å vise dem frem på register.php hvis noe er feil med brukerinformasjonen.*/
+
+/* Will keep all the error messages that appear, will save more error messages
+and will display them on register.php if something is wrong with the user information.*/
 $error_array = array(); 
 
-/*Hvis registrering-knappen på register.php blir presset skjer dette(Resten av siden)*/
+/*If the registration button on register.php gets squeezed this happens (the rest of the page)*/
 if(isset($_POST['register_button'])){ 
 
-
+	/* Is used to keep the forms open after submittiong a new userregistering. */
 	$toggle = 'user';
-	/*Strip_tags fjerner alle html tags som kan interfere med koden, det blir altså ikke mulig å bruke
-	tegn som disse '<>!.,^*+', dette er et sikkerhetstiltak som er med på å forhindre tukling med koden */
-	$firstname = strip_tags($_POST['r_firstname']); //Her blir fornavet satt opp.
-	$lastname = strip_tags($_POST['r_lastname']);  //Her blir etternavnet satt opp.
-	$email = strip_tags($_POST['r_email']); //Her blir eposten satt opp.
-	$password = strip_tags($_POST['r_password']); //Her blir Passordet satt opp
+
+	/* Strip_tags removes all html tags that may interfere with the code, so it will not be possible to use
+	characters like these '<>!, ^ * +', this is a security measure that helps prevent tampering with the code */
+	$firstname = strip_tags($_POST['r_firstname']); //Here is the firstname collected.
+	$lastname = strip_tags($_POST['r_lastname']);  //Here is the lastname collected.
+	$email = strip_tags($_POST['r_email']); //Here is the email collected.
+	$password = strip_tags($_POST['r_password']); //Here is the password collected.
 	$password_check = strip_tags($_POST['r_password_check']);
-	$phone_number = strip_tags($_POST['r_phone_number']); // The phone number to the lawyer
+	$phone_number = strip_tags($_POST['r_phone_number']); //Here is the phone number collected.
 
 
-	/*Her fjerner man alle mellomrom og bytter dem ut med ingenrom, slik at alt blir et ord.*/
+	/*Here you remove all spaces and replace them with a single room so everything becomes a word.*/
 	$firstname = str_replace(' ', '', $firstname); 
 	$lastname = str_replace(' ', '', $lastname);
 	$email = str_replace(' ', '', $email);
 	$phone_number = str_replace(' ', '', $phone_number);
 
-	/*Gjør all input om til ord med stor forbokstav og fjerner alle andre store bokstaver*/
+	/*Revert all input to words with big capital letters and remove all other capital letters*/
 	$firstname = ucfirst(strtolower($firstname)); 
 	$lastname = ucfirst(strtolower($lastname)); 
-	//$email = ucfirst(strtolower($email)); 
-
-	/*Navn og Epost blir lagret i $_SESSION, slik at man ikke trenger 
-	å skrive dem inn igjen hvis man skriver inn feil passord*/
+	
+	/* Name and Email are stored in $ _SESSION, so you do not need to
+	to re-enter them if you enter incorrect passwords*/
 	$_SESSION['r_firstname'] = $firstname; 
 	$_SESSION['r_lastname'] = $lastname;
 	$_SESSION['r_email'] = $email; 
 	$_SESSION['r_phone_number'] = $phone_number;
 
-	/*Tar å legger ned dagens dato på en variabel, vil bli lagret i databasen.*/
+	/* Taking down today's date on a variable will be stored in the database.*/
 	$date = date("Y-m-d"); 
 
-	/*Fra her er det bare mange feilmeldinger innenfor innlogging eller registrering av bruker.*/
+	/*From here there are only a lot of error messages within login or user registration.*/
 	/*-----------------------------------------------------------------------------------------*/
 
-	/*Sjekker her om epostene følger riktig format(Dio@Brando.en),
-	Og om den ligger inne i databasen*/
+	/* Checks here if the emails follow the correct format (Dio@Brando.en),
+	And if it is inside the database*/
 	if(filter_var($email, FILTER_VALIDATE_EMAIL)) { 
 
 		$email = filter_var($email, FILTER_VALIDATE_EMAIL); 
 
-		/*Sjekker her om Eposten allerede er inne i databasen.*/
+		/*Checks here if Eposten is already in the database.*/
 		$e_check = mysqli_query($con, "SELECT email FROM users WHERE email='$email'"); 
 
-		/*Teller hvor mange ganger eposten ligger inne i databasen(enten 1 eller 0)*/
+		/*Count how many times the email is in the database (either 1 or 0)*/
 		$num_rows = mysqli_num_rows($e_check); 
 
-		/*Feilmelding: Eposten er inne i databasen.*/
+		/*Error message: The email is in the database.*/
 		if($num_rows > 0) {  
 
 			array_push($error_array, "Email already in use");  
 		}
 	}
-	/*Feilmelding: Ikke gyldig Epost-format.*/
+	/*Error message: Not valid Email format.*/
 	else {
 
 		array_push($error_array, "Invalid email format"); 
 	}
 
-	/*Feilmelding: Hvis fornavnet ikke er i korrekt størrelse*/
+	/*Error Message: If the first name is not in the correct size*/
 	if(strlen($firstname) > 25 || strlen($firstname) < 2) { 
 
 		array_push($error_array, "This must be between 2 and 25 characters");
 	}
 
-	/*Feilmelding:  etternavnet ikke er i korrekt størrelse*/
+	/*Error message: Last name not in correct size*/
 	if(strlen($lastname) > 25 || strlen($lastname) < 1) {  
 
 		array_push($error_array,  "This must be between 1 and 25 characters");
 	}
 
-	/*Feilmelding: Hvis passordene ikke er like.*/
+	/*Error message: If the passwords are not the same*/
 	if($password != $password_check) { 
 
 		array_push($error_array,  "Your passwords do not match");
 	}
 
-	/*Feilmelding: Hvis passordene inneholder annet enn tall og bokstaver.*/
+	/*Error message: If the passwords contain other than numbers and letters.*/
 	if(preg_match('/[^A-Za-z0-9]/', $password)) {  
 
 		array_push($error_array, "Your password can only contain english characters or numbers");
 	}
 	
-	/*Feilmelding: Hvis passordet ikke er mellom 5 og 30 characterer lang.*/
+	/*Error message: If the password is not between 5 and 30 characters long.*/
 	if(strlen($password > 30 || strlen($password) < 5)) {  
 
 		array_push($error_array, "Your password must be betwen 5 and 30 characters");
 	}
 
 
-	/*Hvis det ikke er noen feilmeldinger i $error_array, skjer så dette.*/
+	/*If there are no error messages in $ error_array, this will happen.*/
 	/*-------------------------------------------------------------------*/
 
 	if(empty($error_array)) { 
-		/*Passordet blir kryptert.*/
+		/*The password will be encrypted.*/
 		$password = md5($password); 
 
-		/*Her lager man et brukernavn av fornavnet og etternavnet, det ender opp med å være fornavn_etternavn*/
+		/*Here you create a username of the first name and last name, it ends up being the first_name_name*/
 		$username = strtolower($firstname . "_" . $lastname);
 		$check_username_query = mysqli_query($con, "SELECT username FROM users WHERE username='$username'");
 
 
-		/*Denne variablen skal brukes når man lager et brukernavn på neste linje.*/
+		/*This variable should be used when creating a username on the next line.*/
 		$i = 0; 
 	 	$temp_username = $username; 
 
-	 	/*Hvis 'fornavn_etternavn' ligger i databasen, blir brukernavnet 'fornavn_etternavn_x' 
-		der 'x' er hvor mange 'fornavn_etternavn' som ligger i databasen*/
+	 	/*If 'first_name_name' is in the database, the username will be 'first_name_name_x' The 'x' is how many 'first_name_name' located in the database*/
 		while(mysqli_num_rows($check_username_query) != 0){
 			/*setter midlertidig brukernavn til å bli lik brukernavnet som har blitt laget.*/
 		    $temp_username = $username; 
 		    $i++;
-		    /*setter her opp det nye brukernavnet.*/
+		    /*sets temporary username to match the username that has been created.*/
 
 		    $temp_username = $username."_".$i; 
 		    $check_username_query = mysqli_query($con, "SELECT username FROM users WHERE username='$temp_username'");
 		}
 		
-		/*Setter så opp brukernavnet til å være det som while-løkken slapp igjennom*/
+		/*Then sets up the username to be what the while loop slipped through*/
 		$username = $temp_username;
 
 
-		/*Setter opp et profilbilde til kontoen.*/
+		/*Sets a profile image to the account.*/
 		$rand = rand(1, 12);
 		$profile_pic = "img/profile/default/" . $rand . ".png" ;
 
-		/*Her blir all informasjonen lagret i databasen, denne linjen er viktig i det at den legger informasjonen inn i databasen '1' på slutten er er brukertype.*/
+		/*Here, all the information is stored in the database, this line is important in that it adds the information into the database '1' at the end is the user type.*/
 		$query = mysqli_query($con, "INSERT INTO users VALUES ('', '$firstname', '$lastname', '$username', '$email', '$password', '$date', '$profile_pic', '$phone_number' , 0)");
 
-		/*Her viser man en beskjed som sier at ma er registrert*/
+		/*Here's a message saying that mom is registered.*/
 		array_push($error_array, "<span>You're all set! Go ahead and login!</span>"); 
 
-		/*Her renskes $_SESSION når man har registrert en bruker, og alle input-boksene blir tomme.*/
+		/*Here you will be renamed $ _SESSION once you have registered a user and all the input boxes will be empty.*/
 		$_SESSION['r_firstname'] = "";
 		$_SESSION['r_lastname'] = "";
 		$_SESSION['r_email'] = "";
@@ -154,29 +153,27 @@ if(isset($_POST['register_button'])){
 
 }
 
-/*Hvis 'registerlawyer' registrering-knappen på register.php blir presset skjer dette(Resten av siden)*/
+/*If the 'registerlawyer' registration button on register.php is pressed this happens (the rest of the page)*/
 if(isset($_POST['registerlawyer_button'])){ 
 
 	$toggle = 'lawyer';
-	/*Strip_tags fjerner alle html tags som kan interfere med koden, det blir altså ikke mulig å bruke
-	tegn som disse '<>!.,^*+', dette er et sikkerhetstiltak som er med på å forhindre tukling med koden */
-	$firstname = strip_tags($_POST['r_firstname']); //Her blir fornavet satt opp.
-	$lastname = strip_tags($_POST['r_lastname']);  //Her blir etternavnet satt opp.
-	$email = strip_tags($_POST['r_email']); //Her blir eposten satt opp.
-	$username = strip_tags($_POST['r_username']); //Her blir eposten satt opp.
-	$password = strip_tags($_POST['r_password']); //Her blir Passordet satt opp
+
+	$firstname = strip_tags($_POST['r_firstname']); 
+	$lastname = strip_tags($_POST['r_lastname']);  
+	$email = strip_tags($_POST['r_email']); 
+	$username = strip_tags($_POST['r_username']); 
+	$password = strip_tags($_POST['r_password']); 
 	$password_check = strip_tags($_POST['r_password_check']);
 	$phone_number = strip_tags($_POST['r_phone_number']); // The phone number to the lawyer
 	$workplace = strip_tags($_POST['r_firm']); // The phone number to the lawyer
 	$city = strip_tags($_POST['r_city']);  //The city that the person works in.
 
-	/*Her fjerner man alle mellomrom og bytter dem ut med ingenrom, slik at alt blir et ord.*/
+
 	$lastname = str_replace(' ', '', $lastname);
 	$username = str_replace(' ', '', $username);
 	$email = str_replace(' ', '', $email);
 	$phone_number = str_replace(' ', '', $phone_number);
 
-	/*Gjør all input om til ord med stor forbokstav og fjerner alle andre store bokstaver*/
 	$firstname = ucfirst(strtolower($firstname)); 
 	$lastname = ucfirst(strtolower($lastname)); 
 	$username = ucfirst(strtolower($username)); 
@@ -235,8 +232,6 @@ if(isset($_POST['registerlawyer_button'])){
 
  /*End checkbox input*/
 
-	/*Navn og Epost blir lagret i $_SESSION, slik at man ikke trenger 
-	å skrive dem inn igjen hvis man skriver inn feil passord*/
 	$_SESSION['r_firstname'] = $firstname; 
 	$_SESSION['r_lastname'] = $lastname;
 	$_SESSION['r_username'] = $username;
@@ -245,31 +240,24 @@ if(isset($_POST['registerlawyer_button'])){
 	$_SESSION['r_firm'] = $workplace;
 	$_SESSION['r_city'] = $city;
 
-	/*Tar å legger ned dagens dato på en variabel, vil bli lagret i databasen.*/
 	$date = date("Y-m-d"); 
 
-	/*Fra her er det bare mange feilmeldinger innenfor innlogging eller registrering av bruker.*/
 	/*-----------------------------------------------------------------------------------------*/
 
-	/*Sjekker her om epostene følger riktig format(Dio@Brando.en),
-	Og om den ligger inne i databasen*/
+
 	if(filter_var($email, FILTER_VALIDATE_EMAIL)) { 
 
 		$email = filter_var($email, FILTER_VALIDATE_EMAIL); 
 
-		/*Sjekker her om Eposten allerede er inne i databasen.*/
 		$e_check = mysqli_query($con, "SELECT email FROM lawyerusers WHERE email='$email'"); 
 
-		/*Teller hvor mange ganger eposten ligger inne i databasen(enten 1 eller 0)*/
 		$e_num_rows = mysqli_num_rows($e_check); 
 
-		/*Feilmelding: Eposten er inne i databasen.*/
 		if($e_num_rows > 0) {  
 
 			array_push($error_array, "Email already in use");  
 		}
 	}
-	/*Feilmelding: Ikke gyldig Epost-format.*/
 	else {
 
 		array_push($error_array, "Invalid email format"); 
@@ -285,52 +273,40 @@ if(isset($_POST['registerlawyer_button'])){
 		array_push($error_array, "The username is already taken.");
 	}
 
-	/*Feilmelding: Hvis fornavnet ikke er i korrekt størrelse*/
 	if(strlen($firstname) > 25) { 
 
 		array_push($error_array, "Must be lower than 25 characters");
 	}
 
-	/*Feilmelding:  etternavnet ikke er i korrekt størrelse*/
 	if(strlen($lastname) > 25 || strlen($lastname) < 1) {  
 
 		array_push($error_array,  "This must be between 1 and 25 characters");
 	}
 
-	/*Feilmelding: Hvis the username ikke er i korrekt størrelse*/
 	if(strlen($username) > 25 || strlen($username) < 4) { 
 
 		array_push($error_array, "This must be between 4 and 25 characters");
 	}
 
-	/*Feilmelding: Hvis passordene ikke er like.*/
 	if($password != $password_check) { 
 
 		array_push($error_array,  "Your passwords do not match");
 	}
 
-	/*Feilmelding: Hvis passordene inneholder annet enn tall og bokstaver.*/
 	if(preg_match('/[^A-Za-z0-9]/', $password)) {  
 
 		array_push($error_array, "Your password can only contain english characters or numbers");
 	}
 	
-	/*Feilmelding: Hvis passordet ikke er mellom 5 og 30 characterer lang.*/
 	if(strlen($password > 30 || strlen($password) < 5)) {  
 
 		array_push($error_array, "Your password must be betwen 5 and 30 characters");
 	}
 
-
-	/*Hvis det ikke er noen feilmeldinger i $error_array, skjer så dette.*/
 	/*-------------------------------------------------------------------*/
 	if(empty($error_array)) { 
-		/*Passordet blir kryptert.*/
 		$password = md5($password); 
 
-
-
-		/*Setter opp et profilbilde til kontoen.*/
 		$rand = rand(1, 12);
 		$profile_pic = "img/profile/default/" . $rand . ".png" ;
 
@@ -391,7 +367,7 @@ if(isset($_POST['registerlawyer_button'])){
 		}
 		/*____________________________________________________________________________________________________________________*/
 
-		/*Her blir all informasjonen lagret i databasen, denne linjen er viktig i det at den legger informasjonen inn i databasen, '1' på slutten er er brukertype Lsp.*/
+		/*Here, all information is stored in the database, this line is important in that it adds the information into the database, '1' at the end is user type Lsp.*/
 		$query = mysqli_query($con, "INSERT INTO lawyerusers VALUES ('', '$firstname', '$lastname', '$username', '$email', '$password', '$city', '$date', '$profile_pic', '$target_file_id', '$target_file_cert', '$phone_number' , '$workplace', '$mainField', 0, 1)");
 
 		/*Collects the row of the user that was just made and gets the lsp_id*/
@@ -403,10 +379,8 @@ if(isset($_POST['registerlawyer_button'])){
 		$query = mysqli_query($con, "INSERT INTO mainfields VALUES ('$lsp_id','$cb1', '$cb2', '$cb3', '$cb4', '$cb5', '$cb6', '$cb7', '$cb8', '$cb9', '$cb10')");
 
 			
-		/*Her viser man en beskjed som sier at ma er registrert*/
 		array_push($error_array, "<span>You're all set! Go ahead and login!</span>"); 
 
-		/*Her renskes $_SESSION når man har registrert en bruker, og alle input-boksene blir tomme.*/
 		$_SESSION['r_firstname'] = "";
 		$_SESSION['r_lastname'] = "";
 		$_SESSION['r_email'] = "";
@@ -422,80 +396,61 @@ if(isset($_POST['registerlawyer_button'])){
 if(isset($_POST['registerfirm_button'])){ 
 
 	$toggle = 'firm';
-	/*Strip_tags fjerner alle html tags som kan interfere med koden, det blir altså ikke mulig å bruke
-	tegn som disse '<>!.,^*+', dette er et sikkerhetstiltak som er med på å forhindre tukling med koden */
-	$firmname = strip_tags($_POST['r_firmname']); //Her blir fornavet satt opp.
-	$email = strip_tags($_POST['r_email']); //Her blir eposten satt opp.
-	$password = strip_tags($_POST['r_password']); //Her blir Passordet satt opp
+	$firmname = strip_tags($_POST['r_firmname']);
+	$email = strip_tags($_POST['r_email']); 
+	$password = strip_tags($_POST['r_password']); 
 	$password_check = strip_tags($_POST['r_password_check']);
 
-
-	/*Her fjerner man alle mellomrom og bytter dem ut med ingenrom, slik at alt blir et ord.*/
 	$email = str_replace(' ', '', $email);
 
-	/*Gjør all input om til ord med stor forbokstav og fjerner alle andre store bokstaver*/
 	$email = ucfirst(strtolower($email)); 
 
-	/*Tar å legger ned dagens dato på en variabel, vil bli lagret i databasen.*/
 	$date = date("Y-m-d"); 
 
 	$_SESSION['r_firmname'] = $firmname; 
 	$_SESSION['r_email'] = $email; 
 
 
-	/*Fra her er det bare mange feilmeldinger innenfor innlogging eller registrering av bruker.*/
 	/*-----------------------------------------------------------------------------------------*/
 
-	/*Sjekker her om epostene følger riktig format(Dio@Brando.en),
-	Og om den ligger inne i databasen*/
 	if(filter_var($email, FILTER_VALIDATE_EMAIL)) { 
 
 		$email = filter_var($email, FILTER_VALIDATE_EMAIL); 
 
-		/*Sjekker her om Eposten allerede er inne i databasen.*/
 		$e_check = mysqli_query($con, "SELECT email FROM firms WHERE email='$email'"); 
 
-		/*Teller hvor mange ganger eposten ligger inne i databasen(enten 1 eller 0)*/
 		$num_rows = mysqli_num_rows($e_check); 
 
-		/*Feilmelding: Eposten er inne i databasen.*/
 		if($num_rows > 0) {  
 
 			array_push($error_array, "Email already in use");  
 		}
 	}
-	/*Feilmelding: Ikke gyldig Epost-format.*/
 	else {
 
 		array_push($error_array, "Invalid email format"); 
 	}
 
-	/*Feilmelding: Hvis passordene ikke er like.*/
 	if($password != $password_check) { 
 
 		array_push($error_array,  "Your passwords do not match");
 	}
 
-	/*Feilmelding: Hvis passordene inneholder annet enn tall og bokstaver.*/
 	if(preg_match('/[^A-Za-z0-9]/', $password)) {  
 
 		array_push($error_array, "Your password can only contain english characters or numbers");
 	}
 	
-	/*Feilmelding: Hvis passordet ikke er mellom 5 og 30 characterer lang.*/
 	if(strlen($password > 30 || strlen($password) < 5)) {  
 
 		array_push($error_array, "Your password must be betwen 5 and 30 characters");
 	}
 
 
-	/*Hvis det ikke er noen feilmeldinger i $error_array, skjer så dette.*/
 	/*-------------------------------------------------------------------*/
 	if(empty($error_array)) { 
-		/*Passordet blir kryptert.*/
 		$password = md5($password); 
 
-		/*Setter opp et profilbilde til kontoen.*/
 		$profile_pic = "link til hvor profilbildet ligger";
 
 
@@ -506,20 +461,17 @@ if(isset($_POST['registerfirm_button'])){
 		$upload = 1;
 		$imageFileType = strtolower(pathinfo($target_file_id,PATHINFO_EXTENSION));
 
-		/* This line checks the file size */
 		if ($_FILES["fileToUpload"]["size"] > 500000) {
 		    array_push($error_array, "Your file is to big");
 		    $upload = 0;
 		}
 
-		/* Allow only certain file formats */
 		if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
 		&& $imageFileType != "pdf" ) {
 			array_push($error_array, "Sorry, only JPG, JPEG, PNG & PDF files are allowed.");
 		    $upload = 0;
 		}
 
-		/* If the files get uploaded to the userfolder correctly */
 		if ($upload != 0) {
 			if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file_id)) {
 		    } else {
@@ -555,13 +507,10 @@ if(isset($_POST['registerfirm_button'])){
 		/*____________________________________________________________________________________________________________________*/
 
 
-		/*Her blir all informasjonen lagret i databasen, denne linjen er viktig i det at den legger informasjonen inn i databasen, '1' på slutten er er brukertype Lsp.*/
 		$query = mysqli_query($con, "INSERT INTO firms VALUES ('', '$firmname', '$email', '$password', '$date', '$target_file_id', '$target_file_cert','$profile_pic', 2)");
 
-		/*Her viser man en beskjed som sier at ma er registrert*/
 		array_push($error_array, "<span>You're all set! Go ahead and login!</span>");  
 
-		/*Her renskes $_SESSION når man har registrert en bruker, og alle input-boksene blir tomme.*/
 		$_SESSION['r_firmname'] = "";
 		$_SESSION['r_email'] = "";
 	}

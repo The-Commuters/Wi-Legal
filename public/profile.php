@@ -1,6 +1,6 @@
-<!--Home for other lawyers.-->
-
 <?php  
+/* Home for lawyers that the logged in user. */
+
 /* Connection to the database. */
 require '../config/config.php';
 /*Retrives the info of the user*/
@@ -39,8 +39,8 @@ include '../src/model/form_handlers/rating_handler.php';
 
 	/* Decides what kind of user that the logged in account is and collects the template/component for the profile-page*/
 	if ($other_user['usertype'] == 1) {
-		/* if the klicked user is of usertype lawyers. */
 
+		/* if the clicked user is of usertype lawyers. */
 		/* Collect here the newest bio from the lawyer. */
 		$query = mysqli_query($con, "SELECT bio FROM lspbios WHERE lsp_id = '$lsp_id'");
 		$bioarray = mysqli_fetch_array($query);

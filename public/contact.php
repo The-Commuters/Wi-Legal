@@ -1,6 +1,6 @@
-<!-- Required files to load for page to work -->
-
 <?Php
+/* This is the page containing the contact form. */
+
 /* Connects to database and retrieves time */
 require '../config/config.php';
 /* Retrieving php code from login_handler.php */

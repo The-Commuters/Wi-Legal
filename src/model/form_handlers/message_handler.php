@@ -1,6 +1,6 @@
-<!--Handler for the message form on the profile-page.-->
-
 <?php
+/* Handler for the message form on the profile-page. */
+
 /*If the send button is pressed this happens, the message get stored in the database.*/
 if(isset($_POST['message_button'])){ 
 

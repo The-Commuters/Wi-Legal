@@ -1,10 +1,8 @@
-<!--Here i have placed things that all the pages needs.-->
-
 <?php 
-
 /*Retrieving all information from the user account, loggedInUser will be the username,
 It and the user can then be used to retrieve information. If there is a header that should be
 on all sides, this can be placed there.*/
+
 if (isset($_SESSION['username'])) {
 	$loggedInUser = $_SESSION['username'];
 
@@ -21,9 +19,8 @@ if (isset($_SESSION['username'])) {
 }
 else {
 
-
 }
-/*Important to know that all the information now lies in $user*/
+/*Important to know that all the information of the logged in user/lawyer/firm, now lies in $user*/
 
 
 ?>

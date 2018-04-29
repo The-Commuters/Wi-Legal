@@ -1,4 +1,5 @@
 <?php 
+/* Used for search button on the lawyerlist. */
 
 if (isset($_POST['search_button'])) {
 	$searchbox = $_POST['search'];

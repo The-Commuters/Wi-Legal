@@ -1,15 +1,18 @@
+	<!--This is the header that are being 
+		used on all of the website pages -->
+
 	<!-- HEADER -->
 	<header>
 
 		<!-- LOGO -->
-		<a href="list.php" class=" logo-container center-flex">
+		<a href="index.php" class=" logo-container center-flex">
 			<h1 class="full-w full-h center-flex"><span class="blue-txt">WI</span></h1>
 		</a>
 
 		<!-- NAVIGATION -->
 		<nav class="full-h full-w">
 
-			<a href="list.php" class="nav-item full-w full-h center-flex 
+			<a href="index.php" class="nav-item full-w full-h center-flex 
 			<?php if ($current_page == 'list') {echo active;} ?>">
 				<i class="pc-hide fas fa-list fa-fw fa-2x"></i>
 				<span class="pc-show nav-txt">Lawyers</span>
@@ -60,7 +63,7 @@
 							<h2 class="login-title blue-txt">Login</h2>
 
 							<!-- LOGIN FORM.PHP -->
-							<form action="list.php" method="POST" class="login-form center-abs">
+							<form action="index.php" method="POST" class="login-form center-abs">
 
 								<!--Email input-box-->
 								<input class="small-marg-bot full-w" type="email" 

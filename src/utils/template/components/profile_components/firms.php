@@ -1,1 +1,1 @@
-<!-- Profile page for other lawyers, can be found on list -->
+<!-- Profile page for other firms, can be found on list -->

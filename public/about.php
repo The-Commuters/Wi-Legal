@@ -1,10 +1,11 @@
-<!-- Required files to load for page to work -->
 <?Php
-/* Connects to database and retrieves time */
+/* This is the about page, it is where people can read about the website.*/
+
+/* Connects to database and retrieves the time */
 require '../config/config.php';
-/* Retrieving php code from login_handler.php */
+/* Retrieving php code from login_handler.php, used for the login function */
 include '../src/model/form_handlers/login_handler.php';
-/* $loggedinuser will tell the rest of the site what user is connected */
+/* $user will tell the rest of the site what user is connected */
 include '../src/model/userinfo_handler/userinfo_handler.php';
 ?>
 
@@ -15,6 +16,7 @@ include '../src/model/userinfo_handler/userinfo_handler.php';
 <?php $page_title = 'Wilegal'; include '../src/utils/template/components/head.php'; ?>
 
 <body>
+	
 	<!-- HEADER -->
 	<?php $current_page = 'about'; include '../src/utils/template/components/header.php';?>
 
@@ -39,11 +41,11 @@ include '../src/model/userinfo_handler/userinfo_handler.php';
 					<h2>OUR MISSION</h2>
 				</div>
 				<div class="about-info bread-txt black-txt">
-					<div>- Providing an effective way in connecting LSPs and customers. We reduce the cost and time by eliminating traditional meetings and documenting processes.</div>
+					<div>Providing an effective way in connecting LSPs and customers. We reduce the cost and time by eliminating traditional meetings and documenting processes.</div>
 					<br>
-					<div>- AI technology in matching cases. We adopt latest AI technology in recommending the best matched LSPs to customer`s cases.</div>
+					<div>AI technology in matching cases. We adopt latest AI technology in recommending the best matched LSPs to customer`s cases.</div>
 					<br>
-					<div>- Socializing legal service to everyone. We focus on the demand of initial advices and small-scale cases that clients do not want to spend time to meet LSPs in person.</div>
+					<div>Socializing legal service to everyone. We focus on the demand of initial advices and small-scale cases that clients do not want to spend time to meet LSPs in person.</div>
 				</div>
 			</div>
 			<div class="about-wrapper marg-container big-marg-bot fade-right-4s">
@@ -61,13 +63,10 @@ include '../src/model/userinfo_handler/userinfo_handler.php';
 
 		</div>
 
-		
 	</main>
-
 
 	<!-- FOOTER -->
 	<?php include '../src/utils/template/components/footer.php';?>
-
 
 </body>
 </html>
