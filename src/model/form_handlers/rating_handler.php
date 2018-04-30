@@ -2,18 +2,6 @@
 /* Rating handler bring information about the ratings, 
 and sends information when someone rates them. */
 
-/* Get count of reviews that the lawyer has gotten. */
-$rating_details = mysqli_query($con, "SELECT COUNT(*) FROM ratings WHERE lsp_id='$lsp_id'");
-$ratings_info = mysqli_fetch_array($rating_details);
-$reviews = $ratings_info[0];
-
-/* Collects all reviews that the lawyer has. */
-$lspallreviews = mysqli_query($con, "SELECT * FROM ratings WHERE lsp_id='$lsp_id'");
-$row = mysqli_fetch_assoc($lspallreviews);
-
-$sumofscore = mysqli_query($con, "SELECT SUM(score) FROM ratings WHERE lsp_id='$lsp_id'");
-$scoresum = mysqli_fetch_array($sumofscore);
-
 
 /* Gets the number that is used to decide if the user have posted a review before. */
 if (isset($user)) {
@@ -30,10 +18,30 @@ if (isset($user)) {
 			$review = $_POST['review'];
 			$rating = $_POST['rating']; 
 
+			/* Deletes the former lawyer review from the user and uploads a new one. */
 			$query = mysqli_query($con, "DELETE FROM ratings WHERE lsp_id='$lsp_id' AND user_id='$user_id'");
 			$query = mysqli_query($con, "INSERT INTO ratings VALUES ('', '$lsp_id', '$user_id', '$review', '$rating')");
+
+			/* Needed to reload the website to remove the rating box */
+			header('Location: ' . $username);
 		}
 	}
 }
+
+
+/* Get count of reviews that the lawyer has gotten. */
+$rating_details = mysqli_query($con, "SELECT COUNT(*) FROM ratings WHERE lsp_id='$lsp_id'");
+$ratings_info = mysqli_fetch_array($rating_details);
+$reviews = $ratings_info[0];
+
+/* Collects all reviews that the lawyer has. */
+$lspallreviews = mysqli_query($con, "SELECT * FROM ratings WHERE lsp_id='$lsp_id'");
+$row = mysqli_fetch_assoc($lspallreviews);
+
+/* Collect the sum of the ratings the lawyer has been given.  */
+$sumofscore = mysqli_query($con, "SELECT SUM(score) FROM ratings WHERE lsp_id='$lsp_id'");
+$scoresum = mysqli_fetch_array($sumofscore);
+
+
 
 ?>

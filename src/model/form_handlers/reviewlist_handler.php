@@ -1,6 +1,6 @@
 <?php
-/*Collects information about a person who sent a review,
-it is needed for on the lawyerlist */
+/* Collects information about a person who sent a review,
+   it is needed for on the lawyerlist */
 
 /* Collects here information about the current review */	
 $reviewtext = $row['review'];

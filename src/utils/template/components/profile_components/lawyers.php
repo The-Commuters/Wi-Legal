@@ -20,12 +20,13 @@
 				</div>
 				<div class="banner-bar full-w">
 					<?php if (isset($user)) { ?>
-					<!-- vis denne hvis det er en logged in user -->
+					<?php if ($user['usertype'] == 0) { ?>
+					<!-- If logged in and a normal user -->
 					<a href="#msg" class="banner-bar-item">
 						<i class="fas fa-envelope fa-2x"></i>
 					</a>
-					<?php } else {?>
-					<!-- vis denne hvis det ikke er en logged in user (ikke legg til link) -->
+					<?php }} else {?>
+					<!-- If not logged in -->
 					<a id="msglog" href="#" class="banner-bar-item">
 						<i class="fas fa-envelope fa-2x"></i>
 					</a>
@@ -151,6 +152,7 @@
 							<div class="title-row margin-bottom">
 								<a href="<?php echo $username; ?>" class="lsp-name"><?php echo $user['first_name'] . " " . $user['last_name'];  ?></a>
 								
+								<!-- These is the stars that users can review lawers with. -->
 								<div>						
 									<div class="star-wrapper">
 										<label id="star1con" class="star-container">
@@ -194,13 +196,11 @@
 			<?php } ?>
 
 			<!-- This is the function that lists all reviews that the lsp have. -->
-			<?php
-			if (mysqli_num_rows($lspallreviews) > 0) {
+			<?php if (mysqli_num_rows($lspallreviews) > 0) {
 				while($row = mysqli_fetch_assoc($lspallreviews)) {
 
 					/* Collects all the reviews and information about the ones who reviewed the lsp */
-					include '../src/model/form_handlers/reviewlist_handler.php';	
-					?>
+					include '../src/model/form_handlers/reviewlist_handler.php'; ?>
 
 					<!-- This is where the reivew-box that will be shown is made. -->
 				<div class="list-item card margin-bottom full-w">
